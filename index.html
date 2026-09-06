@@ -23,6 +23,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;600;700;800&family=Cinzel:wght@500;600;700;800;900&family=Great+Vibes&family=Playfair+Display:wght@600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Three.js for 3D WebXR AR Ring -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <style>
         /* ═══════════════════════════════════════
            RESET & BASE
@@ -1290,6 +1292,181 @@
             margin: 10px 0 14px;
             background: #000;
         }
+
+        /* ═══════════════════════════════════════
+           VOICE GUESTBOOK STYLES 🎤✨
+           ═══════════════════════════════════════ */
+        .wish-mode-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 14px;
+            background: rgba(0,0,0,0.05);
+            padding: 4px;
+            border-radius: 14px;
+        }
+        .wish-tab-btn {
+            flex: 1;
+            padding: 9px 12px;
+            border-radius: 10px;
+            border: none;
+            background: transparent;
+            font-family: 'Cairo', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+        .wish-tab-btn.active {
+            background: var(--cream);
+            color: var(--burgundy);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: 1.5px solid var(--gold);
+        }
+        .voice-wish-container {
+            padding: 6px 0;
+            margin-bottom: 14px;
+        }
+        .voice-recorder-card {
+            background: rgba(212,175,55,0.08);
+            border: 1.5px dashed var(--gold);
+            border-radius: 18px;
+            padding: 18px 14px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .voice-status-label {
+            font-size: 13px;
+            color: var(--burgundy);
+            font-weight: 700;
+            text-align: center;
+        }
+        .voice-timer {
+            font-family: monospace;
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--gold);
+            letter-spacing: 2px;
+        }
+        .voice-record-btn {
+            position: relative;
+            width: 68px;
+            height: 68px;
+            border-radius: 50%;
+            border: none;
+            background: linear-gradient(135deg, var(--burgundy) 0%, #881932 100%);
+            color: #fff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 20px rgba(112,27,46,0.35);
+            transition: transform 0.2s ease;
+        }
+        .voice-record-btn:active {
+            transform: scale(0.92);
+        }
+        .voice-record-btn .mic-icon {
+            font-size: 28px;
+            z-index: 2;
+        }
+        .voice-record-btn.recording {
+            background: linear-gradient(135deg, #e50914 0%, #ff4b2b 100%);
+            animation: recordPulse 1.2s infinite;
+        }
+        @keyframes recordPulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(229,9,20,0.6); }
+            50% { transform: scale(1.08); box-shadow: 0 0 0 16px rgba(229,9,20,0); }
+        }
+        .voice-preview-wrap {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            margin-top: 6px;
+        }
+        .voice-preview-wrap audio {
+            width: 100%;
+            height: 38px;
+            border-radius: 12px;
+        }
+        .btn-rerecord {
+            background: none;
+            border: none;
+            font-family: 'Cairo', sans-serif;
+            font-size: 12px;
+            color: var(--burgundy);
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        /* ═══════════════════════════════════════
+           3D AR RING BUTTON & MODAL STYLES 💍✨
+           ═══════════════════════════════════════ */
+        .btn-ar-ring {
+            background: linear-gradient(135deg, #12070A 0%, #3E0613 50%, #9A7726 100%) !important;
+            color: #FAF0D7 !important;
+            border: 1.5px solid #D4AF37 !important;
+            box-shadow: 0 4px 18px rgba(212,175,55,0.4) !important;
+            position: relative;
+            overflow: hidden;
+            font-weight: 800 !important;
+        }
+        .btn-ar-ring::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -60%; width: 200%; height: 200%;
+            background: linear-gradient(60deg, transparent, rgba(255,215,0,0.35), transparent);
+            transform: rotate(25deg);
+            animation: btnFilterShimmer 3.5s infinite;
+        }
+        #arRingCanvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            touch-action: none;
+        }
+        .ar-ring-overlay-hint {
+            position: absolute;
+            top: 75px;
+            left: 14px;
+            right: 14px;
+            background: rgba(0,0,0,0.78);
+            border: 1px solid rgba(212,175,55,0.6);
+            border-radius: 14px;
+            padding: 8px 14px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 11.5px;
+            color: #FAF0D7;
+            text-align: center;
+            z-index: 20;
+            backdrop-filter: blur(8px);
+            pointer-events: none;
+        }
+        .ar-control-pill {
+            background: rgba(0,0,0,0.75);
+            border: 1.5px solid var(--gold);
+            color: #FAF0D7;
+            padding: 6px 13px;
+            border-radius: 18px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            backdrop-filter: blur(6px);
+            transition: all 0.2s ease;
+        }
+        .ar-control-pill:active { transform: scale(0.92); }
+        .ar-control-pill.active {
+            background: var(--gold);
+            color: #000;
+        }
     </style>
 </head>
 <body>
@@ -1682,8 +1859,9 @@
                     </div>
 
                     <div class="card-actions">
-                        <button class="btn btn-primary" onclick="showWishes(event)">✍️ سجّل تهنئتك للعروسين</button>
+                        <button class="btn btn-primary" onclick="showWishes(event)">✍️ & 🎤 دفتر تهاني العروسين</button>
                         <button class="btn btn-filter" onclick="openCameraFilter(event)">📸 تصوّر مع العروسين ✨</button>
+                        <button class="btn btn-ar-ring" onclick="openRingAR(event)">💍 تجربة خاتم الخطوبة 3D في غرفتك (AR)</button>
                         <button class="btn btn-save-image" onclick="saveInvitationCard(event)">🖼️ حفظ كارت الدعوة كصورة للموبايل</button>
                         <button class="btn btn-whatsapp" onclick="shareWhatsApp(event)">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
@@ -1705,19 +1883,44 @@
 
             <!-- FORM -->
             <div id="wishForm">
-                <h3>✍️ دفتر التهاني</h3>
-                <div class="sub">سجّل كلمتك للعروسين — هتوصلهم مباشرة 🤍</div>
+                <h3>✍️ & 🎤 دفتر تهاني العروسين</h3>
+                <div class="sub">سجّل تهنئتك بصوتك أو كتابة — هتوصلهم مباشرة 🤍</div>
 
                 <div class="form-group">
-                    <label>اسمك</label>
+                    <label>اسمك الكريم</label>
                     <input type="text" id="w-name" placeholder="مثال: أحمد محمد" autocomplete="name">
                 </div>
-                <div class="form-group">
-                    <label>تهنئتك</label>
-                    <textarea id="w-msg" placeholder="اكتب كلمتك هنا..."></textarea>
+
+                <!-- Mode Switcher Tabs -->
+                <div class="wish-mode-tabs">
+                    <button type="button" class="wish-tab-btn active" id="tabTextWishIndex" onclick="switchWishModeIndex('text')">✍️ كتابة تهنئة</button>
+                    <button type="button" class="wish-tab-btn" id="tabVoiceWishIndex" onclick="switchWishModeIndex('voice')">🎤 تسجيل صوتي</button>
                 </div>
 
-                <button class="btn btn-primary" style="width:100%; margin-top:5px;" onclick="submitWish()">إرسال التهنئة 💌</button>
+                <!-- Text Mode Box -->
+                <div id="textWishBoxIndex" class="form-group">
+                    <label>تهنئتك المباركة</label>
+                    <textarea id="w-msg" placeholder="اكتب كلمتك ودعواتك الطيبة هنا..."></textarea>
+                </div>
+
+                <!-- Voice Mode Box -->
+                <div id="voiceWishBoxIndex" class="voice-wish-container" style="display:none;">
+                    <div class="voice-recorder-card">
+                        <div class="voice-status-label" id="voiceStatusLabelIndex">اضغط على المايك لبدء تسجيل تهنئتك بصوتك 🎙️</div>
+                        <div class="voice-timer" id="voiceTimerIndex">00:00</div>
+                        
+                        <button type="button" class="voice-record-btn" id="voiceRecordBtnIndex" onclick="toggleVoiceRecordingIndex()">
+                            <span class="mic-icon">🎙️</span>
+                        </button>
+                        
+                        <div class="voice-preview-wrap" id="voicePreviewWrapIndex" style="display:none;">
+                            <audio id="voiceAudioPreviewIndex" controls></audio>
+                            <button type="button" class="btn-rerecord" onclick="resetVoiceRecordingIndex()">🔄 تسجيل من جديد</button>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" id="sendWishBtnIndex" style="width:100%; margin-top:8px;" onclick="submitWish()">إرسال التهنئة 💌</button>
                 <br><br>
                 <button class="btn btn-secondary" style="width:100%;" onclick="hideWishes()">إغلاق</button>
             </div>
@@ -1793,6 +1996,38 @@
                 </button>
                 <button class="btn btn-secondary" onclick="closeSnapPreview()" style="width:100%;">
                     إغلاق
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════
+         ROYAL 3D AR RING MODAL 💍✨
+         ═══════════════════════════════════ -->
+    <div id="ringARModal" class="camera-modal" style="display:none;">
+        <div class="camera-viewport">
+            <video id="arRingVideo" autoplay playsinline muted></video>
+            <canvas id="arRingCanvas"></canvas>
+            
+            <div class="cam-top-bar">
+                <button type="button" class="cam-btn" onclick="closeRingAR()" title="إغلاق">✕</button>
+                <div class="cam-title-tag">💍 خاتم الخطوبة 3D الملكي</div>
+                <button type="button" class="cam-btn" onclick="flipRingCamera()" title="قلب الكاميرا">🔄</button>
+            </div>
+
+            <!-- AR Floating Controls & Info -->
+            <div class="ar-ring-overlay-hint">
+                <span>👆 المس الشاشة لتحديد مكان الخاتم | حرّك بإصبعك للفّه 360° | كبّر وصغّر باللمس</span>
+            </div>
+
+            <div class="cam-bottom-bar">
+                <div style="display:flex; gap:8px; align-items:center;">
+                    <button type="button" class="ar-control-pill active" id="btnGoldYellow" onclick="changeRingGold('gold')">✨ ذهب أصفر</button>
+                    <button type="button" class="ar-control-pill" id="btnGoldRose" onclick="changeRingGold('rose')">🌹 روز جولد</button>
+                    <button type="button" class="ar-control-pill" id="btnGoldWhite" onclick="changeRingGold('white')">💎 وايت جولد</button>
+                </div>
+                <button type="button" class="cam-shutter-btn" onclick="takeRingSnap()" title="التقاط صورة مع الخاتم">
+                    <div class="cam-shutter-inner"></div>
                 </button>
             </div>
         </div>
@@ -2034,50 +2269,171 @@
         setInterval(update, 1000);
     }
 
-    /* ══════ WISHES OVERLAY ══════ */
+    /* ══════ WISHES OVERLAY & VOICE GUESTBOOK ══════ */
+    let currentWishModeIndex = 'text'; // 'text' | 'voice'
+    let mediaRecorderIndex = null;
+    let audioChunksIndex = [];
+    let voiceTimerIntervalIndex = null;
+    let voiceSecondsIndex = 0;
+    let recordedVoiceDataUrlIndex = null;
+
     function showWishes(e) {
         if (e) e.stopPropagation();
         document.getElementById('wishesOverlay').classList.add('visible');
+        document.getElementById('wishForm').style.display = 'block';
+        document.getElementById('wishSuccess').style.display = 'none';
+        switchWishModeIndex(currentWishModeIndex);
     }
 
     function hideWishes() {
         document.getElementById('wishesOverlay').classList.remove('visible');
+        if (mediaRecorderIndex && mediaRecorderIndex.state === 'recording') {
+            mediaRecorderIndex.stop();
+        }
+        clearInterval(voiceTimerIntervalIndex);
+    }
+
+    function switchWishModeIndex(mode) {
+        currentWishModeIndex = mode;
+        document.getElementById('tabTextWishIndex').classList.toggle('active', mode === 'text');
+        document.getElementById('tabVoiceWishIndex').classList.toggle('active', mode === 'voice');
+        document.getElementById('textWishBoxIndex').style.display = (mode === 'text') ? 'block' : 'none';
+        document.getElementById('voiceWishBoxIndex').style.display = (mode === 'voice') ? 'block' : 'none';
+        
+        const sendBtn = document.getElementById('sendWishBtnIndex');
+        if (mode === 'voice') {
+            sendBtn.textContent = 'إرسال التهنئة الصوتية 🎤💌';
+        } else {
+            sendBtn.textContent = 'إرسال التهنئة 💌';
+        }
+    }
+
+    async function toggleVoiceRecordingIndex() {
+        const btn = document.getElementById('voiceRecordBtnIndex');
+        const status = document.getElementById('voiceStatusLabelIndex');
+        const timer = document.getElementById('voiceTimerIndex');
+
+        if (mediaRecorderIndex && mediaRecorderIndex.state === 'recording') {
+            mediaRecorderIndex.stop();
+            btn.classList.remove('recording');
+            clearInterval(voiceTimerIntervalIndex);
+            status.textContent = 'تم تسجيل رسالتك! استمع إليها أدناه أو أعد تسجيلها 🎧';
+            return;
+        }
+
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            audioChunksIndex = [];
+            const options = MediaRecorder.isTypeSupported('audio/webm') ? { mimeType: 'audio/webm' } : {};
+            mediaRecorderIndex = new MediaRecorder(stream, options);
+
+            mediaRecorderIndex.ondataavailable = e => {
+                if (e.data.size > 0) audioChunksIndex.push(e.data);
+            };
+
+            mediaRecorderIndex.onstop = () => {
+                const mimeType = mediaRecorderIndex.mimeType || 'audio/webm';
+                const audioBlob = new Blob(audioChunksIndex, { type: mimeType });
+                const reader = new FileReader();
+                reader.onloadend = () => {
+                    recordedVoiceDataUrlIndex = reader.result;
+                    const audioPreview = document.getElementById('voiceAudioPreviewIndex');
+                    audioPreview.src = URL.createObjectURL(audioBlob);
+                    document.getElementById('voicePreviewWrapIndex').style.display = 'flex';
+                };
+                reader.readAsDataURL(audioBlob);
+                stream.getTracks().forEach(t => t.stop());
+            };
+
+            mediaRecorderIndex.start(100);
+            btn.classList.add('recording');
+            document.getElementById('voicePreviewWrapIndex').style.display = 'none';
+            recordedVoiceDataUrlIndex = null;
+            voiceSecondsIndex = 0;
+            timer.textContent = '00:00';
+            status.textContent = '🔴 جاري التسجيل الآن.. تكلّم واهدِ أحلى دعوة للعروسين 🤍';
+
+            voiceTimerIntervalIndex = setInterval(() => {
+                voiceSecondsIndex++;
+                const mins = String(Math.floor(voiceSecondsIndex / 60)).padStart(2, '0');
+                const secs = String(voiceSecondsIndex % 60).padStart(2, '0');
+                timer.textContent = `${mins}:${secs}`;
+                if (voiceSecondsIndex >= 120) {
+                    toggleVoiceRecordingIndex();
+                }
+            }, 1000);
+        } catch(err) {
+            console.error("Mic access error:", err);
+            alert("يرجى السماح بالوصول إلى الميكروفون من إعدادات المتصفح لتسجيل رسالتك الصوتية 🎙️");
+        }
+    }
+
+    function resetVoiceRecordingIndex() {
+        recordedVoiceDataUrlIndex = null;
+        document.getElementById('voicePreviewWrapIndex').style.display = 'none';
+        document.getElementById('voiceTimerIndex').textContent = '00:00';
+        document.getElementById('voiceStatusLabelIndex').textContent = 'اضغط على المايك لبدء تسجيل تهنئتك بصوتك 🎙️';
     }
 
     function submitWish() {
         const name = document.getElementById('w-name').value.trim();
-        const msg  = document.getElementById('w-msg').value.trim();
-
-        if (!name || !msg) {
-            alert('من فضلك اكتب اسمك وتهنئتك 🤍');
+        if (!name) {
+            alert('من فضلك اكتب اسمك الكريم أولاً 🤍');
             return;
         }
 
-        // 1. حفظ التهنئة محلياً
-        try {
-            const saved = JSON.parse(localStorage.getItem('wedding_wishes_saved') || '[]');
-            saved.unshift({ name, message: msg, date: new Date().toISOString() });
-            localStorage.setItem('wedding_wishes_saved', JSON.stringify(saved));
-        } catch(e) {}
+        const sendBtn = document.getElementById('sendWishBtnIndex');
+        const originalText = sendBtn.textContent;
 
-        // 2. إرسال لشيت جوجل في الخلفية
+        let payload = {
+            name: name,
+            source: 'main_invite',
+            timestamp: new Date().toISOString()
+        };
+
+        if (currentWishModeIndex === 'voice') {
+            if (!recordedVoiceDataUrlIndex) {
+                alert('من فضلك سجّل رسالتك الصوتية أولاً بالضغط على أيقونة المايك 🎙️');
+                return;
+            }
+            payload.action = 'voice';
+            payload.audio = recordedVoiceDataUrlIndex;
+            payload.message = '🎤 تهنئة صوتية للعروسين (' + document.getElementById('voiceTimerIndex').textContent + ')';
+        } else {
+            const msg = document.getElementById('w-msg').value.trim();
+            if (!msg) {
+                alert('من فضلك اكتب تهنئتك المباركة 🤍');
+                return;
+            }
+            payload.action = 'wish';
+            payload.message = msg;
+        }
+
+        sendBtn.textContent = 'جاري الإرسال... ⏳';
+        sendBtn.disabled = true;
+
         if (SHEET_URL && SHEET_URL.startsWith('http')) {
             fetch(SHEET_URL, {
                 method: 'POST',
                 mode: 'no-cors',
-                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-                body: JSON.stringify({
-                    name: name,
-                    message: msg,
-                    timestamp: new Date().toLocaleString('ar-EG', { timeZone: 'Africa/Cairo' })
-                })
-            }).catch(err => console.log('Sheet error:', err));
+                headers: { 'Content-Type': 'text/plain' },
+                body: JSON.stringify(payload)
+            }).then(() => {
+                document.getElementById('wishForm').style.display = 'none';
+                document.getElementById('wishSuccess').style.display = 'block';
+                resetVoiceRecordingIndex();
+                sendBtn.textContent = originalText;
+                sendBtn.disabled = false;
+                incrementWishesCount();
+            }).catch(err => {
+                document.getElementById('wishForm').style.display = 'none';
+                document.getElementById('wishSuccess').style.display = 'block';
+                resetVoiceRecordingIndex();
+                sendBtn.textContent = originalText;
+                sendBtn.disabled = false;
+                incrementWishesCount();
+            });
         }
-
-        // 3. إظهار رسالة النجاح وتحديث العداد
-        document.getElementById('wishForm').style.display = 'none';
-        document.getElementById('wishSuccess').style.display = 'block';
-        incrementWishesCount();
     }
 
     /* ══════ MUSIC TOGGLE ══════ */
@@ -2597,6 +2953,437 @@
 
     function retakeSnap() {
         closeSnapPreview();
+    }
+
+    /* ══════════════════════════════════════════
+       ROYAL 3D AR RING LOGIC (THREE.JS WEBXR) 💍✨
+       ══════════════════════════════════════════ */
+    let arRingStream = null;
+    let arRingFacingMode = 'environment';
+    let ringScene, ringCamera, ringRenderer, ringGroup, ringGoldMaterial, diamondMaterial, ringParticles;
+    let isRingARRunning = false;
+    let ringAnimFrameId = null;
+
+    // Interaction state
+    let isPointerDown = false;
+    let prevPointerX = 0;
+    let prevPointerY = 0;
+    let ringRotationX = 0.2;
+    let ringRotationY = 0;
+    let ringScale = 0.85;
+    let ringPosX = 0;
+    let ringPosY = -0.65;
+    let initialPinchDist = null;
+    let diamondFlareSprite = null;
+
+    async function openRingAR(e) {
+        if (e) e.stopPropagation();
+        const modal = document.getElementById('ringARModal');
+        modal.style.display = 'flex';
+        await startRingCameraStream();
+        initRingThreeScene();
+    }
+
+    async function startRingCameraStream() {
+        const video = document.getElementById('arRingVideo');
+        if (arRingStream) {
+            arRingStream.getTracks().forEach(t => t.stop());
+        }
+
+        try {
+            const constraints = {
+                video: {
+                    facingMode: arRingFacingMode,
+                    width: { ideal: 1920 },
+                    height: { ideal: 1080 }
+                },
+                audio: false
+            };
+            arRingStream = await navigator.mediaDevices.getUserMedia(constraints);
+            video.srcObject = arRingStream;
+            video.style.transform = (arRingFacingMode === 'user') ? 'scaleX(-1)' : 'none';
+        } catch (err) {
+            console.error("AR Ring camera error:", err);
+            video.style.background = '#0a0508';
+        }
+    }
+
+    function closeRingAR() {
+        const modal = document.getElementById('ringARModal');
+        if (modal) modal.style.display = 'none';
+        if (arRingStream) {
+            arRingStream.getTracks().forEach(t => t.stop());
+            arRingStream = null;
+        }
+        if (ringAnimFrameId) {
+            cancelAnimationFrame(ringAnimFrameId);
+            ringAnimFrameId = null;
+        }
+        isRingARRunning = false;
+    }
+
+    async function flipRingCamera() {
+        arRingFacingMode = (arRingFacingMode === 'user') ? 'environment' : 'user';
+        await startRingCameraStream();
+    }
+
+    function initRingThreeScene() {
+        const canvas = document.getElementById('arRingCanvas');
+        const container = canvas.parentElement;
+        const width = container.clientWidth || window.innerWidth;
+        const height = container.clientHeight || window.innerHeight;
+
+        if (ringRenderer) {
+            ringRenderer.setSize(width, height);
+            isRingARRunning = true;
+            animateRing();
+            return;
+        }
+
+        ringScene = new THREE.Scene();
+        ringCamera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
+        ringCamera.position.set(0, 0, 8);
+
+        ringRenderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true, preserveDrawingBuffer: true });
+        ringRenderer.setSize(width, height);
+        ringRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        ringRenderer.toneMapping = THREE.ACESFilmicToneMapping;
+        ringRenderer.toneMappingExposure = 1.25;
+
+        // Lighting
+        const ambient = new THREE.AmbientLight(0xffffff, 1.2);
+        ringScene.add(ambient);
+
+        const dirLight1 = new THREE.DirectionalLight(0xfffaed, 2.2);
+        dirLight1.position.set(4, 7, 5);
+        ringScene.add(dirLight1);
+
+        const dirLight2 = new THREE.DirectionalLight(0xd4af37, 1.5);
+        dirLight2.position.set(-4, -3, -3);
+        ringScene.add(dirLight2);
+
+        const diamondLight = new THREE.PointLight(0xffffff, 2.8, 8);
+        diamondLight.position.set(0, 1.8, 0);
+        ringScene.add(diamondLight);
+
+        // Construct 3D Ring Group
+        ringGroup = new THREE.Group();
+        ringGroup.position.set(ringPosX, ringPosY, 0);
+
+        // 1. Ring Band (18k Gold)
+        const bandGeo = new THREE.TorusGeometry(1.35, 0.2, 30, 80);
+        ringGoldMaterial = new THREE.MeshStandardMaterial({
+            color: 0xE6B738,
+            metalness: 0.94,
+            roughness: 0.14
+        });
+        const bandMesh = new THREE.Mesh(bandGeo, ringGoldMaterial);
+        ringGroup.add(bandMesh);
+
+        // 2. Prongs (6 Gold Prongs holding diamond)
+        const prongGeo = new THREE.CylinderGeometry(0.04, 0.05, 0.65, 12);
+        for (let i = 0; i < 6; i++) {
+            const angle = (i / 6) * Math.PI * 2;
+            const prong = new THREE.Mesh(prongGeo, ringGoldMaterial);
+            prong.position.set(Math.cos(angle) * 0.42, 1.45 + 0.24, Math.sin(angle) * 0.42);
+            prong.rotation.z = -Math.cos(angle) * 0.18;
+            prong.rotation.x = Math.sin(angle) * 0.18;
+            ringGroup.add(prong);
+        }
+
+        // 3. Faceted Brilliant Cut Diamond
+        diamondMaterial = new THREE.MeshPhysicalMaterial({
+            color: 0xE8F5FF,
+            emissive: 0x335577,
+            emissiveIntensity: 0.4,
+            transmission: 0.7,
+            opacity: 0.98,
+            transparent: true,
+            roughness: 0.04,
+            ior: 2.417,
+            reflectivity: 1.0,
+            clearcoat: 1.0,
+            clearcoatRoughness: 0.05
+        });
+
+        // Diamond Crown
+        const dTopGeo = new THREE.CylinderGeometry(0.38, 0.62, 0.32, 8);
+        const dTop = new THREE.Mesh(dTopGeo, diamondMaterial);
+        dTop.position.set(0, 1.76, 0);
+        ringGroup.add(dTop);
+
+        // Diamond Pavilion
+        const dBottomGeo = new THREE.ConeGeometry(0.62, 0.65, 8);
+        dBottomGeo.rotateX(Math.PI);
+        const dBottom = new THREE.Mesh(dBottomGeo, diamondMaterial);
+        dBottom.position.set(0, 1.44, 0);
+        ringGroup.add(dBottom);
+
+        // Diamond Twinkling Star Flare
+        const flareCanvas = document.createElement('canvas');
+        flareCanvas.width = 128; flareCanvas.height = 128;
+        const fCtx = flareCanvas.getContext('2d');
+        const fGrad = fCtx.createRadialGradient(64, 64, 2, 64, 64, 55);
+        fGrad.addColorStop(0, 'rgba(255,255,255,1)');
+        fGrad.addColorStop(0.3, 'rgba(255,245,200,0.85)');
+        fGrad.addColorStop(0.6, 'rgba(212,175,55,0.25)');
+        fGrad.addColorStop(1, 'rgba(0,0,0,0)');
+        fCtx.fillStyle = fGrad;
+        fCtx.fillRect(0,0,128,128);
+        fCtx.strokeStyle = 'rgba(255,255,255,0.95)';
+        fCtx.lineWidth = 2.5;
+        fCtx.beginPath();
+        fCtx.moveTo(64, 8); fCtx.lineTo(64, 120);
+        fCtx.moveTo(8, 64); fCtx.lineTo(120, 64);
+        fCtx.stroke();
+        const flareTex = new THREE.CanvasTexture(flareCanvas);
+        const flareMat = new THREE.SpriteMaterial({ map: flareTex, blending: THREE.AdditiveBlending, transparent: true });
+        diamondFlareSprite = new THREE.Sprite(flareMat);
+        diamondFlareSprite.scale.set(1.4, 1.4, 1.4);
+        diamondFlareSprite.position.set(0, 1.86, 0.4);
+        ringGroup.add(diamondFlareSprite);
+
+        // 4. Floating 3D Golden Halo / Ribbon with "MOHAMED & SHIMAA 💍"
+        const canvasText = document.createElement('canvas');
+        canvasText.width = 1024;
+        canvasText.height = 256;
+        const tCtx = canvasText.getContext('2d');
+        tCtx.fillStyle = 'rgba(0,0,0,0)';
+        tCtx.fillRect(0, 0, 1024, 256);
+        tCtx.font = 'bold 64px "Cinzel", "Amiri", serif';
+        tCtx.textAlign = 'center';
+        tCtx.fillStyle = '#D4AF37';
+        tCtx.shadowColor = 'rgba(212,175,55,0.9)';
+        tCtx.shadowBlur = 18;
+        tCtx.fillText('👑 MOHAMED & SHIMAA 💍', 512, 105);
+        tCtx.font = 'bold 36px "Cairo", sans-serif';
+        tCtx.fillStyle = '#FAF0D7';
+        tCtx.fillText('١٨ سبتمبر ٢٠٢٦ 🤍✨', 512, 175);
+
+        const textTex = new THREE.CanvasTexture(canvasText);
+        const textGeo = new THREE.PlaneGeometry(3.6, 0.9);
+        const textMat = new THREE.MeshBasicMaterial({
+            map: textTex,
+            transparent: true,
+            side: THREE.DoubleSide
+        });
+        const textMesh = new THREE.Mesh(textGeo, textMat);
+        textMesh.position.set(0, 2.35, 0);
+        ringGroup.add(textMesh);
+
+        // 5. Sparkling Diamond Star Particles
+        const particleGeo = new THREE.BufferGeometry();
+        const pCount = 35;
+        const pArray = new Float32Array(pCount * 3);
+        for (let i = 0; i < pCount * 3; i += 3) {
+            pArray[i] = (Math.random() - 0.5) * 4.2;
+            pArray[i+1] = 1.8 + (Math.random() - 0.5) * 2.5;
+            pArray[i+2] = (Math.random() - 0.5) * 4.2;
+        }
+        particleGeo.setAttribute('position', new THREE.BufferAttribute(pArray, 3));
+        const pMat = new THREE.PointsMaterial({
+            size: 0.09,
+            color: 0xFFF5B0,
+            transparent: true,
+            opacity: 0.85,
+            blending: THREE.AdditiveBlending
+        });
+        ringParticles = new THREE.Points(particleGeo, pMat);
+        ringGroup.add(ringParticles);
+
+        ringScene.add(ringGroup);
+
+        setupRingInteraction(canvas);
+
+        isRingARRunning = true;
+        animateRing();
+
+        window.addEventListener('resize', () => {
+            const w = container.clientWidth || window.innerWidth;
+            const h = container.clientHeight || window.innerHeight;
+            ringCamera.aspect = w / h;
+            ringCamera.updateProjectionMatrix();
+            ringRenderer.setSize(w, h);
+        });
+    }
+
+    function setupRingInteraction(canvas) {
+        canvas.addEventListener('pointerdown', e => {
+            isPointerDown = true;
+            prevPointerX = e.clientX;
+            prevPointerY = e.clientY;
+        });
+
+        window.addEventListener('pointermove', e => {
+            if (!isPointerDown || !isRingARRunning) return;
+            const dx = e.clientX - prevPointerX;
+            const dy = e.clientY - prevPointerY;
+            ringRotationY += dx * 0.012;
+            ringRotationX += dy * 0.012;
+            prevPointerX = e.clientX;
+            prevPointerY = e.clientY;
+        });
+
+        window.addEventListener('pointerup', () => {
+            isPointerDown = false;
+        });
+
+        canvas.addEventListener('touchstart', e => {
+            if (e.touches.length === 2) {
+                const dx = e.touches[0].clientX - e.touches[1].clientX;
+                const dy = e.touches[0].clientY - e.touches[1].clientY;
+                initialPinchDist = Math.hypot(dx, dy);
+            } else if (e.touches.length === 1) {
+                const rect = canvas.getBoundingClientRect();
+                const touchX = ((e.touches[0].clientX - rect.left) / rect.width) * 2 - 1;
+                const touchY = -((e.touches[0].clientY - rect.top) / rect.height) * 2 + 1;
+                ringPosX = touchX * 2.8;
+                ringPosY = touchY * 4.2;
+            }
+        }, { passive: true });
+
+        canvas.addEventListener('touchmove', e => {
+            if (e.touches.length === 2 && initialPinchDist) {
+                const dx = e.touches[0].clientX - e.touches[1].clientX;
+                const dy = e.touches[0].clientY - e.touches[1].clientY;
+                const currentDist = Math.hypot(dx, dy);
+                const factor = currentDist / initialPinchDist;
+                ringScale = Math.min(Math.max(ringScale * factor, 0.4), 2.5);
+                initialPinchDist = currentDist;
+            }
+        }, { passive: true });
+
+        canvas.addEventListener('touchend', () => {
+            initialPinchDist = null;
+        });
+    }
+
+    function changeRingGold(type) {
+        document.querySelectorAll('.ar-control-pill').forEach(el => el.classList.remove('active'));
+        if (type === 'gold') {
+            document.getElementById('btnGoldYellow').classList.add('active');
+            if (ringGoldMaterial) ringGoldMaterial.color.setHex(0xE6B738);
+        } else if (type === 'rose') {
+            document.getElementById('btnGoldRose').classList.add('active');
+            if (ringGoldMaterial) ringGoldMaterial.color.setHex(0xB76E79);
+        } else if (type === 'white') {
+            document.getElementById('btnGoldWhite').classList.add('active');
+            if (ringGoldMaterial) ringGoldMaterial.color.setHex(0xE0E4E8);
+        }
+    }
+
+    function animateRing() {
+        if (!isRingARRunning) return;
+        ringAnimFrameId = requestAnimationFrame(animateRing);
+
+        if (!isPointerDown) {
+            ringRotationY += 0.008;
+        }
+
+        if (ringGroup) {
+            ringGroup.rotation.y = ringRotationY;
+            ringGroup.rotation.x = ringRotationX;
+            ringGroup.scale.set(ringScale, ringScale, ringScale);
+            ringGroup.position.set(ringPosX, ringPosY, 0);
+        }
+
+        if (ringParticles) {
+            ringParticles.rotation.y -= 0.012;
+        }
+
+        if (diamondFlareSprite) {
+            const flareS = 1.2 + Math.sin(Date.now() * 0.006) * 0.35;
+            diamondFlareSprite.scale.set(flareS, flareS, 1);
+        }
+
+        ringRenderer.render(ringScene, ringCamera);
+    }
+
+    async function takeRingSnap() {
+        const video = document.getElementById('arRingVideo');
+        const arCanvas = document.getElementById('arRingCanvas');
+        if (!video) return;
+
+        const flash = document.createElement('div');
+        flash.style.position = 'fixed';
+        flash.style.inset = '0';
+        flash.style.background = '#fff';
+        flash.style.zIndex = '999999';
+        flash.style.opacity = '0.9';
+        flash.style.transition = 'opacity 0.3s ease';
+        document.body.appendChild(flash);
+        setTimeout(() => {
+            flash.style.opacity = '0';
+            setTimeout(() => flash.remove(), 300);
+        }, 50);
+
+        const c = document.createElement('canvas');
+        c.width = 1080;
+        c.height = 1920;
+        const ctx = c.getContext('2d');
+
+        if (video.videoWidth) {
+            const vW = video.videoWidth;
+            const vH = video.videoHeight;
+            const targetRatio = 1080 / 1920;
+            const videoRatio = vW / vH;
+            let sx, sy, sW, sH;
+            if (videoRatio > targetRatio) {
+                sH = vH;
+                sW = vH * targetRatio;
+                sx = (vW - sW) / 2;
+                sy = 0;
+            } else {
+                sW = vW;
+                sH = vW / targetRatio;
+                sx = 0;
+                sy = (vH - sH) / 2;
+            }
+            ctx.save();
+            if (arRingFacingMode === 'user') {
+                ctx.translate(1080, 0);
+                ctx.scale(-1, 1);
+            }
+            ctx.drawImage(video, sx, sy, sW, sH, 0, 0, 1080, 1920);
+            ctx.restore();
+        } else {
+            ctx.fillStyle = '#110508';
+            ctx.fillRect(0, 0, 1080, 1920);
+        }
+
+        ctx.drawImage(arCanvas, 0, 0, 1080, 1920);
+
+        ctx.textAlign = 'center';
+        ctx.font = 'bold 36px "Cinzel", serif';
+        ctx.fillStyle = '#D4AF37';
+        ctx.shadowColor = 'rgba(0,0,0,0.8)';
+        ctx.shadowBlur = 8;
+        ctx.fillText('MOHAMED & SHIMAA 💍', 540, 1840);
+        ctx.font = 'bold 24px "Cairo", sans-serif';
+        ctx.fillStyle = '#FAF0D7';
+        ctx.fillText('١٨ سبتمبر ٢٠٢٦ — قاعة دايماً عامر', 540, 1880);
+
+        const dataUrl = c.toDataURL('image/png', 0.95);
+
+        try {
+            const link = document.createElement('a');
+            link.href = dataUrl;
+            link.download = 'MOHAMED_SHIMAA_RING_3D.png';
+            document.body.appendChild(link);
+            link.click();
+            setTimeout(() => link.remove(), 100);
+        } catch(e){}
+
+        document.getElementById('snapResultImg').src = dataUrl;
+        document.getElementById('snapDownloadBtn').href = dataUrl;
+        const badge = document.getElementById('driveUploadBadge');
+        if (badge) {
+            badge.innerHTML = '✅ <b>تم حفظ صورتك مع الخاتم الملكي فوراً! 🤍</b><br><span id="driveSubStatus" style="font-size:11px; color:var(--gold); font-weight:normal;">☁️ جاري إرسال نسختك لألبوم العروسين تلقائياً...</span>';
+            badge.style.color = '#25D366';
+        }
+        document.getElementById('snapPreviewModal').style.display = 'flex';
+
+        uploadPhotoToDrive(dataUrl);
     }
 
     // Initialize Theme and Counter
