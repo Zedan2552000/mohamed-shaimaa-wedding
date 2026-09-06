@@ -26,6 +26,234 @@
             --text-muted: #383838;
         }
 
+        /* ═══════ ROYAL MIDNIGHT DARK MODE ═══════ */
+        body.dark-mode {
+            --burgundy: #D4AF37;
+            --burgundy-light: #FFD700;
+            --cream: #14070B;
+            --cream-dark: #0D0305;
+            --ribbon: #240C12;
+            --gold: #E5C158;
+            --gold-light: #FFF0C2;
+            --text-dark: #FAF0D7;
+            --text-muted: #D9C8B5;
+            background: linear-gradient(135deg, #0A0204 0%, #1A0B10 50%, #0F0407 100%) !important;
+            color: #FAF0D7 !important;
+        }
+
+        body.dark-mode #cover {
+            background: linear-gradient(135deg, #16070B 0%, #0D0305 100%) !important;
+        }
+
+        body.dark-mode .card {
+            background: linear-gradient(180deg, #1C0B12 0%, #2A0E18 40%, #18090F 100%) !important;
+            border-color: rgba(212,175,55,0.45);
+            box-shadow: 0 0 35px rgba(212,175,55,0.15);
+        }
+
+        body.dark-mode .bismillah {
+            color: #D4AF37 !important;
+            text-shadow: 0 0 10px rgba(212,175,55,0.4);
+        }
+
+        body.dark-mode .quran-verse {
+            color: #FAF0D7 !important;
+        }
+
+        body.dark-mode .full-name {
+            color: #FFFFFF !important;
+            text-shadow: 0 0 8px rgba(255,255,255,0.3);
+        }
+
+        body.dark-mode .subtitle {
+            color: #D9C8B5 !important;
+        }
+
+        body.dark-mode .date-text {
+            background: rgba(212,175,55,0.12) !important;
+            border-color: rgba(212,175,55,0.5) !important;
+            color: #FFF !important;
+        }
+
+        body.dark-mode .venue > div {
+            background: rgba(255,255,255,0.06) !important;
+            border-color: rgba(212,175,55,0.45) !important;
+        }
+
+        body.dark-mode .venue-name {
+            color: #FFFFFF !important;
+        }
+
+        body.dark-mode .song-ticker-bar {
+            background: linear-gradient(135deg, rgba(212,175,55,0.15) 0%, rgba(142,27,52,0.2) 100%) !important;
+            border-color: rgba(212,175,55,0.6) !important;
+        }
+
+        body.dark-mode .song-ticker-bar .ticker-text {
+            color: #FAF0D7 !important;
+        }
+
+        body.dark-mode .cd-num {
+            color: #FFD700 !important;
+            background: rgba(255,255,255,0.07) !important;
+            border: 1px solid rgba(212,175,55,0.35);
+        }
+
+        body.dark-mode .cd-label {
+            color: #D9C8B5 !important;
+        }
+
+        body.dark-mode .overlay-card {
+            background: #1C0B12 !important;
+            border: 2px solid var(--gold);
+            color: #FAF0D7 !important;
+        }
+
+        body.dark-mode .form-group label {
+            color: #FAF0D7 !important;
+        }
+
+        body.dark-mode .form-group input,
+        body.dark-mode .form-group textarea {
+            background: rgba(255,255,255,0.08) !important;
+            color: #FFFFFF !important;
+            border-color: rgba(212,175,55,0.4) !important;
+        }
+
+        /* ═══════ WISHES COUNTER PILL ═══════ */
+        .wishes-counter-pill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 7px 18px;
+            background: rgba(91,12,29,0.06);
+            border: 1.5px solid rgba(154,119,38,0.45);
+            border-radius: 25px;
+            margin-bottom: 12px;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--burgundy);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
+        }
+        body.dark-mode .wishes-counter-pill {
+            background: rgba(212,175,55,0.12) !important;
+            border-color: rgba(212,175,55,0.5) !important;
+            color: #FFD700 !important;
+        }
+        .wishes-counter-pill .pulse-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #25D366;
+            box-shadow: 0 0 8px #25D366;
+            animation: livePulse 1.8s infinite;
+        }
+        @keyframes livePulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.35); opacity: 0.6; }
+        }
+        .wishes-counter-pill .pill-num {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--gold);
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+        .wishes-counter-pill .pill-num.bump {
+            transform: scale(1.45);
+            color: #25D366;
+        }
+
+        /* ═══════ THEME TOGGLE BUTTON ═══════ */
+        .theme-toggle-btn {
+            position: fixed;
+            top: 24px;
+            left: 24px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.92);
+            border: 2px solid var(--gold);
+            color: var(--burgundy);
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1001;
+            transition: all 0.3s ease;
+        }
+        body.dark-mode .theme-toggle-btn {
+            background: #1C0B12;
+            color: #FFD700;
+            border-color: #FFD700;
+            box-shadow: 0 0 15px rgba(255,215,0,0.3);
+        }
+        .theme-toggle-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* ═══════ SAVE IMAGE BUTTON & MODAL ═══════ */
+        .btn-save-image {
+            background: linear-gradient(135deg, #FAF0D7 0%, #E8D3A2 100%);
+            color: #3E0613 !important;
+            border: 1.5px solid var(--gold);
+            font-weight: 800;
+            box-shadow: 0 4px 14px rgba(154,119,38,0.25);
+        }
+        .btn-save-image:hover {
+            background: linear-gradient(135deg, #FFF6E0 0%, #F3E0B5 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 7px 20px rgba(154,119,38,0.35);
+        }
+        body.dark-mode .btn-save-image {
+            background: linear-gradient(135deg, #2D0F19 0%, #1A070E 100%) !important;
+            color: #FFD700 !important;
+            border-color: #FFD700;
+        }
+
+        .img-modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+            animation: fadeIn 0.35s ease;
+        }
+        .img-modal-overlay.active { display: flex; }
+        .img-modal-box {
+            background: var(--cream);
+            border-radius: 22px;
+            padding: 22px 18px;
+            max-width: 380px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            border: 2px solid var(--gold);
+            max-height: 92vh;
+            overflow-y: auto;
+        }
+        body.dark-mode .img-modal-box {
+            background: #1C0B12;
+            color: #FAF0D7;
+        }
+        .img-preview {
+            width: 100%;
+            border-radius: 14px;
+            border: 1.5px solid var(--gold);
+            margin-bottom: 12px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+            display: block;
+        }
+
         html { scroll-behavior: smooth; }
 
         body {
@@ -36,6 +264,7 @@
             min-height: 100vh;
             min-height: 100dvh;
             -webkit-font-smoothing: antialiased;
+            transition: background 0.5s ease, color 0.5s ease;
         }
 
         /* ═══════════════════════════════════════
@@ -859,6 +1088,12 @@
 </head>
 <body>
 
+    <!-- Floating Theme Toggle Button -->
+    <button class="theme-toggle-btn" id="themeBtn" onclick="toggleTheme()" title="تبديل الوضع الليلي">🌙</button>
+
+    <!-- Royal Confetti Canvas -->
+    <canvas id="confettiCanvas" style="position:fixed; inset:0; pointer-events:none; z-index:9999;"></canvas>
+
     <!-- ═══════════════════════════════════
          COVER SCREEN
          ═══════════════════════════════════ -->
@@ -1232,8 +1467,17 @@
                         <div class="cd-unit"><div class="cd-num" id="cd-secs">00</div><div class="cd-label">ثانية</div></div>
                     </div>
 
+                    <!-- WISHES COUNTER PILL -->
+                    <div class="wishes-counter-pill" id="wishesCounter">
+                        <span class="pulse-dot"></span>
+                        <span class="pill-icon">💌</span>
+                        <span class="pill-num" id="wCountNum">٢٤</span>
+                        <span class="pill-text">تهنئة ومباركة وصلت حتى الآن</span>
+                    </div>
+
                     <div class="card-actions">
                         <button class="btn btn-primary" onclick="showWishes(event)">✍️ سجّل تهنئتك للعروسين</button>
+                        <button class="btn btn-save-image" onclick="saveInvitationCard(event)">📸 حفظ كارت الدعوة كصورة للموبايل</button>
                         <button class="btn btn-whatsapp" onclick="shareWhatsApp(event)">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
                             مشاركة الدعوة عبر WhatsApp
@@ -1283,6 +1527,18 @@
                 <button class="btn btn-secondary" style="width:100%;" onclick="hideWishes()">إغلاق</button>
             </div>
 
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════
+         IMAGE PREVIEW MODAL
+         ═══════════════════════════════════ -->
+    <div class="img-modal-overlay" id="imgModal" onclick="closeImgModal()">
+        <div class="img-modal-box" onclick="event.stopPropagation()">
+            <h3 style="font-family:'Amiri',serif; font-size:22px; color:var(--burgundy); margin-bottom:8px;">📸 كارت الدعوة للموبايل</h3>
+            <p style="font-size:13px; color:var(--text-muted); margin-bottom:12px;">تم بدء تنزيل الصورة تلقائياً، ويمكنك الضغط مطولاً على الصورة لحفظها مباشرة في الألبوم 📲</p>
+            <img id="generatedCardImg" class="img-preview" alt="كارت الدعوة">
+            <button class="btn btn-secondary" style="width:100%;" onclick="closeImgModal()">إغلاق</button>
         </div>
     </div>
 
@@ -1403,7 +1659,10 @@
         // 2. فتح درف الظرف
         document.getElementById('envelope').classList.add('opened');
 
-        // 3. تشغيل أغنية الخطوبة بعد حركة فتح الورق (مع التحويل التلقائي للإنترنت لو الملف المحلي مش موجود)
+        // 3. انفجار كونفيتي ذهبي ملكي مبهر 🎆
+        launchRoyalConfetti();
+
+        // 4. تشغيل أغنية الخطوبة بعد حركة فتح الورق (مع التحويل التلقائي للإنترنت لو الملف المحلي مش موجود)
         setTimeout(() => {
             const music = document.getElementById('bgMusic');
             music.volume = 0.55;
@@ -1529,9 +1788,10 @@
             }).catch(err => console.log('Sheet error:', err));
         }
 
-        // 3. إظهار رسالة النجاح
+        // 3. إظهار رسالة النجاح وتحديث العداد
         document.getElementById('wishForm').style.display = 'none';
         document.getElementById('wishSuccess').style.display = 'block';
+        incrementWishesCount();
     }
 
     /* ══════ MUSIC TOGGLE ══════ */
@@ -1569,6 +1829,317 @@
         for (let i = 0; i < 15; i++) setTimeout(create, i * 200);
         setInterval(() => { if (document.visibilityState === 'visible') create(); }, 1500);
     }
+
+    /* ══════ 1. ROYAL CONFETTI EXPLOSION 🎆 ══════ */
+    function launchRoyalConfetti() {
+        const canvas = document.getElementById('confettiCanvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const colors = ['#D4AF37', '#FFD700', '#FFF2D6', '#881932', '#5B0C1D', '#FAF0D7', '#E5C158', '#FFFFFF'];
+        const particles = [];
+        const count = 140;
+
+        for (let i = 0; i < count; i++) {
+            particles.push({
+                x: canvas.width / 2 + (Math.random() * 80 - 40),
+                y: canvas.height * 0.4 + (Math.random() * 40 - 20),
+                w: Math.random() * 11 + 6,
+                h: Math.random() * 7 + 4,
+                color: colors[Math.floor(Math.random() * colors.length)],
+                vx: (Math.random() - 0.5) * 20,
+                vy: (Math.random() * -15) - 7,
+                rotation: Math.random() * 360,
+                rotationSpeed: (Math.random() - 0.5) * 14,
+                gravity: 0.38,
+                drag: 0.982,
+                opacity: 1
+            });
+        }
+
+        let startTime = performance.now();
+        function render(currentTime) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const elapsed = currentTime - startTime;
+            let alive = false;
+
+            particles.forEach(p => {
+                p.vx *= p.drag;
+                p.vy += p.gravity;
+                p.vy *= p.drag;
+                p.x += p.vx;
+                p.y += p.vy;
+                p.rotation += p.rotationSpeed;
+
+                if (elapsed > 2000) {
+                    p.opacity = Math.max(0, 1 - (elapsed - 2000) / 1200);
+                }
+
+                if (p.opacity > 0 && p.y < canvas.height + 50) {
+                    alive = true;
+                    ctx.save();
+                    ctx.translate(p.x, p.y);
+                    ctx.rotate((p.rotation * Math.PI) / 180);
+                    ctx.globalAlpha = p.opacity;
+                    ctx.fillStyle = p.color;
+                    ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+                    ctx.restore();
+                }
+            });
+
+            if (alive && elapsed < 3500) {
+                requestAnimationFrame(render);
+            } else {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+        }
+        requestAnimationFrame(render);
+    }
+
+    /* ══════ 2. LIVE WISHES COUNTER 🔢 ══════ */
+    function toArabicNum(num) {
+        return String(num).replace(/[0-9]/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
+    }
+
+    function initWishesCount() {
+        let saved = localStorage.getItem('weddingWishesCount');
+        let count = saved ? parseInt(saved, 10) : 24;
+        updateWishesDisplay(count);
+    }
+
+    function incrementWishesCount() {
+        let saved = localStorage.getItem('weddingWishesCount');
+        let count = (saved ? parseInt(saved, 10) : 24) + 1;
+        localStorage.setItem('weddingWishesCount', count);
+        updateWishesDisplay(count);
+    }
+
+    function updateWishesDisplay(count) {
+        const el = document.getElementById('wCountNum');
+        if (el) {
+            el.textContent = toArabicNum(count);
+            el.classList.add('bump');
+            setTimeout(() => el.classList.remove('bump'), 400);
+        }
+    }
+
+    /* ══════ 3. ROYAL MIDNIGHT DARK MODE 🌙 ══════ */
+    function initTheme() {
+        const saved = localStorage.getItem('weddingTheme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (saved === 'dark' || (!saved && prefersDark)) {
+            document.body.classList.add('dark-mode');
+            const btn = document.getElementById('themeBtn');
+            if (btn) btn.textContent = '☀️';
+        }
+    }
+
+    function toggleTheme() {
+        const isDark = document.body.classList.toggle('dark-mode');
+        localStorage.setItem('weddingTheme', isDark ? 'dark' : 'light');
+        const btn = document.getElementById('themeBtn');
+        if (btn) btn.textContent = isDark ? '☀️' : '🌙';
+    }
+
+    /* ══════ 4. SAVE INVITATION AS HIGH-RES IMAGE 📱 ══════ */
+    function saveInvitationCard(e) {
+        if (e) e.stopPropagation();
+
+        const c = document.createElement('canvas');
+        c.width = 1080;
+        c.height = 1620;
+        const ctx = c.getContext('2d');
+        const isDark = document.body.classList.contains('dark-mode');
+
+        // Background
+        const bgGrad = ctx.createLinearGradient(0, 0, 1080, 1620);
+        if (isDark) {
+            bgGrad.addColorStop(0, '#12070A');
+            bgGrad.addColorStop(0.5, '#220D15');
+            bgGrad.addColorStop(1, '#0F0508');
+        } else {
+            bgGrad.addColorStop(0, '#FDFBF7');
+            bgGrad.addColorStop(0.5, '#F5EDE3');
+            bgGrad.addColorStop(1, '#EFE4D6');
+        }
+        ctx.fillStyle = bgGrad;
+        ctx.fillRect(0, 0, 1080, 1620);
+
+        // Gold Filigree Borders
+        ctx.strokeStyle = '#D4AF37';
+        ctx.lineWidth = 6;
+        ctx.strokeRect(40, 40, 1000, 1540);
+
+        ctx.strokeStyle = 'rgba(212, 175, 55, 0.45)';
+        ctx.lineWidth = 2;
+        ctx.setLineDash([12, 8]);
+        ctx.strokeRect(60, 60, 960, 1500);
+        ctx.setLineDash([]);
+
+        // Corner Flourishes
+        function drawCorner(x, y, flipX, flipY) {
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.scale(flipX ? -1 : 1, flipY ? -1 : 1);
+            ctx.strokeStyle = '#D4AF37';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(0, 45);
+            ctx.quadraticCurveTo(0, 0, 45, 0);
+            ctx.stroke();
+            ctx.fillStyle = '#D4AF37';
+            ctx.beginPath();
+            ctx.arc(45, 0, 4, 0, Math.PI * 2);
+            ctx.arc(0, 45, 4, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.restore();
+        }
+        drawCorner(80, 80, false, false);
+        drawCorner(1000, 80, true, false);
+        drawCorner(80, 1540, false, true);
+        drawCorner(1000, 1540, true, true);
+
+        // Bismillah
+        ctx.textAlign = 'center';
+        ctx.font = 'bold 40px "Amiri", serif';
+        ctx.fillStyle = isDark ? '#D4AF37' : '#5B0C1D';
+        ctx.fillText('بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ', 540, 160);
+
+        // Quranic Verse
+        ctx.font = '30px "Amiri", serif';
+        ctx.fillStyle = isDark ? '#FAF0D7' : '#1A1A1A';
+        ctx.fillText('﴿ وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا ﴾', 540, 230);
+        ctx.fillText('﴿ وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ﴾', 540, 275);
+
+        // Gold Divider Line
+        ctx.beginPath();
+        ctx.moveTo(420, 315);
+        ctx.lineTo(660, 315);
+        ctx.strokeStyle = '#D4AF37';
+        ctx.lineWidth = 2.5;
+        ctx.stroke();
+
+        // Monogram
+        ctx.font = 'bold 64px "Cinzel", serif';
+        ctx.fillStyle = '#D4AF37';
+        ctx.fillText('M', 460, 440);
+        ctx.font = 'italic 50px "Great Vibes", cursive';
+        ctx.fillStyle = isDark ? '#FFF' : '#5B0C1D';
+        ctx.fillText('&', 540, 430);
+        ctx.font = 'bold 64px "Cinzel", serif';
+        ctx.fillStyle = '#D4AF37';
+        ctx.fillText('S', 620, 440);
+
+        // Crown
+        ctx.strokeStyle = '#D4AF37';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(490, 360);
+        ctx.lineTo(540, 335);
+        ctx.lineTo(590, 360);
+        ctx.stroke();
+
+        // English Names
+        ctx.font = 'bold 36px "Cinzel", serif';
+        ctx.fillStyle = '#D4AF37';
+        ctx.fillText('MOHAMED & SHIMAA', 540, 520);
+
+        // Formal Arabic Names
+        ctx.font = 'bold 34px "Cairo", sans-serif';
+        ctx.fillStyle = isDark ? '#D4AF37' : '#5B0C1D';
+        ctx.fillText('البشمهندس /', 540, 600);
+        ctx.font = 'bold 54px "Amiri", serif';
+        ctx.fillStyle = isDark ? '#FFFFFF' : '#111111';
+        ctx.fillText('محمد أحمد زيدان', 540, 665);
+
+        ctx.font = 'bold 44px "Amiri", serif';
+        ctx.fillStyle = isDark ? '#D4AF37' : '#5B0C1D';
+        ctx.fillText('&', 540, 735);
+
+        ctx.font = 'bold 34px "Cairo", sans-serif';
+        ctx.fillStyle = isDark ? '#D4AF37' : '#5B0C1D';
+        ctx.fillText('الأستاذة /', 540, 805);
+        ctx.font = 'bold 54px "Amiri", serif';
+        ctx.fillStyle = isDark ? '#FFFFFF' : '#111111';
+        ctx.fillText('شيماء محمد سلطان', 540, 870);
+
+        // Subtitle
+        ctx.font = 'bold 32px "Amiri", serif';
+        ctx.fillStyle = isDark ? '#FAF0D7' : '#333333';
+        ctx.fillText('الحمد لله الذي بنعمته تتم الصالحات', 540, 960);
+
+        // Date Badge Box
+        ctx.fillStyle = isDark ? 'rgba(212,175,55,0.12)' : 'rgba(91,12,29,0.06)';
+        ctx.strokeStyle = '#D4AF37';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.roundRect(190, 1000, 700, 80, 40);
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.font = 'bold 36px "Amiri", serif';
+        ctx.fillStyle = isDark ? '#FFF' : '#5B0C1D';
+        ctx.fillText('الجمعة ١٨ سبتمبر ٢٠٢٦ — الساعة ٧ مساءً', 540, 1052);
+
+        // Venue Box
+        ctx.fillStyle = isDark ? 'rgba(255,255,255,0.05)' : 'rgba(255,255,255,0.85)';
+        ctx.strokeStyle = 'rgba(212,175,55,0.6)';
+        ctx.beginPath();
+        ctx.roundRect(160, 1120, 760, 240, 30);
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.font = 'bold 28px "Cairo", sans-serif';
+        ctx.fillStyle = '#D4AF37';
+        ctx.fillText('📍 مكان الحفل الكريم', 540, 1175);
+
+        ctx.font = 'bold 46px "Amiri", serif';
+        ctx.fillStyle = isDark ? '#FFFFFF' : '#111111';
+        ctx.fillText('قاعة دايماً عامر', 540, 1235);
+
+        ctx.font = 'bold 28px "Cairo", sans-serif';
+        ctx.fillStyle = isDark ? '#D9C8B5' : '#383838';
+        ctx.fillText('انشاص الرمل — شارع سوق الأربعاء', 540, 1295);
+
+        // Footer
+        ctx.font = 'bold 32px "Amiri", serif';
+        ctx.fillStyle = isDark ? '#D4AF37' : '#5B0C1D';
+        ctx.fillText('حضوركم يسعدنا ويشرفنا ويزيد فرحتنا 🤍✨', 540, 1445);
+
+        // Signature URL
+        ctx.font = '22px "Cairo", sans-serif';
+        ctx.fillStyle = isDark ? '#888888' : '#777777';
+        ctx.fillText('zedan2552000.github.io/mohamed-shaimaa-wedding', 540, 1500);
+
+        const dataUrl = c.toDataURL('image/png');
+
+        // Auto download
+        const a = document.createElement('a');
+        a.href = dataUrl;
+        a.download = 'كارت_دعوة_محمد_وشيماء.png';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+
+        // Show Modal
+        const modal = document.getElementById('imgModal');
+        const img = document.getElementById('generatedCardImg');
+        if (modal && img) {
+            img.src = dataUrl;
+            modal.classList.add('active');
+        }
+    }
+
+    function closeImgModal() {
+        const modal = document.getElementById('imgModal');
+        if (modal) modal.classList.remove('active');
+    }
+
+    // Initialize Theme and Counter
+    initTheme();
+    initWishesCount();
     </script>
 
 </body>
