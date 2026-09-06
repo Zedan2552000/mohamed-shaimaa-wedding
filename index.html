@@ -1776,14 +1776,18 @@
             <div style="font-family:'Cinzel',serif; font-size:22px; font-weight:800; color:var(--burgundy); letter-spacing:2px; margin-bottom:4px;">
                 MOHAMED &amp; SHIMAA 💍
             </div>
-            <div id="driveUploadBadge" style="font-size:12px; color:var(--gold); font-weight:700; margin-bottom:8px;">
-                ☁️ جاري حفظ نسختك في ألبوم العروسين...
+            <div id="driveUploadBadge" style="font-size:13px; color:#25D366; font-weight:700; margin-bottom:8px; line-height:1.4;">
+                ✅ تم حفظ الصورة على جهازك فوراً! 🤍<br>
+                <span id="driveSubStatus" style="font-size:11px; color:var(--gold); font-weight:normal;">☁️ جاري إرسال نسختك لألبوم العروسين تلقائياً...</span>
             </div>
             <img id="snapResultImg" class="snap-img-preview" src="" alt="صورتك">
             <div style="display:flex; flex-direction:column; gap:8px;">
                 <a id="snapDownloadBtn" class="btn btn-primary" download="MOHAMED_SHIMAA_PHOTO.png" style="text-decoration:none; width:100%;">
-                    📲 حفظ الصورة في ألبومك
+                    📥 حفظ نسخة إضافية في الألبوم
                 </a>
+                <p style="font-size:11px; color:var(--text-muted, #777); margin:-2px 0 4px; text-align:center;">
+                    💡 على الآيفون: يمكنك أيضاً الضغط مطولاً على صورتك وحفظها في ألبوم الصور 📲
+                </p>
                 <button class="btn btn-secondary" onclick="retakeSnap()" style="width:100%;">
                     🔄 التقاط صورة أخرى
                 </button>
@@ -2539,18 +2543,29 @@
         const dataUrl = canvas.toDataURL('image/png', 0.95);
         document.getElementById('snapResultImg').src = dataUrl;
         document.getElementById('snapDownloadBtn').href = dataUrl;
+
+        // 🚀 1. الحفظ الفوري المباشر على جهاز المعازيم في نفس اللحظة بدون أي انتظار
+        try {
+            const autoLink = document.createElement('a');
+            autoLink.href = dataUrl;
+            autoLink.download = 'MOHAMED_SHIMAA_PHOTO.png';
+            document.body.appendChild(autoLink);
+            autoLink.click();
+            setTimeout(() => {
+                try { document.body.removeChild(autoLink); } catch(e){}
+            }, 100);
+        } catch(err) {
+            console.warn('Auto download error:', err);
+        }
+
+        // فتح شاشة المعاينة فوراً
         document.getElementById('snapPreviewModal').style.display = 'flex';
         
-        // Auto upload to Google Drive album
+        // 🚀 2. رفع الصورة في الخلفية لألبوم العروسين في صمت بدون تعطيل الضيف
         uploadPhotoToDrive(dataUrl);
     }
 
     async function uploadPhotoToDrive(dataUrl) {
-        const badge = document.getElementById('driveUploadBadge');
-        if (badge) {
-            badge.textContent = '☁️ جاري حفظ نسختك في ألبوم العروسين...';
-            badge.style.color = 'var(--gold)';
-        }
         try {
             await fetch(SHEET_URL, {
                 method: 'POST',
@@ -2562,13 +2577,17 @@
                     timestamp: new Date().toISOString()
                 })
             });
-            if (badge) {
-                badge.textContent = '✅ تم حفظ صورتك في ألبوم العروسين 🤍';
-                badge.style.color = '#25D366';
+            const sub = document.getElementById('driveSubStatus');
+            if (sub) {
+                sub.textContent = '✨ وصلت صورتك لألبوم العروسين بنجاح!';
+                sub.style.color = '#25D366';
             }
         } catch(err) {
             console.error('Drive upload error:', err);
-            if (badge) badge.textContent = '💡 يمكنك حفظ صورتك يدوياً عبر الزرار أدناه';
+            const sub = document.getElementById('driveSubStatus');
+            if (sub) {
+                sub.textContent = 'صورتك محفوظة على جهازك بالفعل 🤍';
+            }
         }
     }
 
