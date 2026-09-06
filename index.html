@@ -931,27 +931,27 @@
         /* Floating WhatsApp Button */
         .whatsapp-float-btn {
             position: fixed;
-            bottom: 24px;
-            right: 24px;
-            width: 52px;
-            height: 52px;
+            bottom: 20px;
+            left: 20px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
             border: 2px solid rgba(255, 255, 255, 0.4);
             color: #fff !important;
             cursor: pointer;
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
-            display: flex;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.45);
+            display: none;
             align-items: center;
             justify-content: center;
-            z-index: 1001;
-            transition: all 0.3s ease;
+            z-index: 90;
+            transition: transform 0.3s, box-shadow 0.3s;
             text-decoration: none;
             padding: 0;
         }
         .whatsapp-float-btn:hover {
             transform: scale(1.1);
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.65);
+            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.65);
         }
         .whatsapp-float-btn:active {
             transform: scale(0.95);
@@ -2184,6 +2184,8 @@
 
         // 2. فتح درف الظرف
         document.getElementById('envelope').classList.add('opened');
+        const waBtn = document.getElementById('whatsappFloatBtn');
+        if (waBtn) waBtn.style.display = 'flex';
 
         // 3. انفجار كونفيتي ذهبي ملكي مبهر 🎆
         launchRoyalConfetti();
