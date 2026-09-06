@@ -915,8 +915,8 @@
             <div class="wishes-counter-pill" id="wishesCounter">
                 <span class="pulse-dot"></span>
                 <span class="pill-icon">💌</span>
-                <span class="pill-num" id="wCountNum">٢٤</span>
-                <span class="pill-text">تهنئة ومباركة وصلت للعروسين</span>
+                <span class="pill-num" id="wCountNum">٠</span>
+                <span class="pill-text">تهنئة ومباركة وصلت حتى الآن</span>
             </div>
 
             <!-- Action Buttons -->
@@ -1220,14 +1220,18 @@
         }
 
         function initWishesCount() {
+            if (localStorage.getItem('wishes_reset_zero') !== 'true') {
+                localStorage.setItem('weddingWishesCount', '0');
+                localStorage.setItem('wishes_reset_zero', 'true');
+            }
             let saved = localStorage.getItem('weddingWishesCount');
-            let count = saved ? parseInt(saved, 10) : 24;
+            let count = saved ? parseInt(saved, 10) : 0;
             updateWishesDisplay(count);
         }
 
         function incrementWishesCount() {
             let saved = localStorage.getItem('weddingWishesCount');
-            let count = (saved ? parseInt(saved, 10) : 24) + 1;
+            let count = (saved ? parseInt(saved, 10) : 0) + 1;
             localStorage.setItem('weddingWishesCount', count);
             updateWishesDisplay(count);
         }
