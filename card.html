@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>كارت خطوبة — محمد زيدان ♥ الشيماء سلطان</title>
+    <meta name="description" content="كارت دعوة خطوبة البشمهندس محمد أحمد زيدان والأستاذة الشيماء محمد سلطان — الجمعة ١٨ سبتمبر ٢٠٢٦ — قاعة دايماً عامر">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@400;600;700;800;900&family=Cinzel:wght@600;700;800;900&family=Great+Vibes&family=Playfair+Display:wght@600;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+        :root {
+            --burgundy: #5B0C1D;
+            --burgundy-dark: #3E0613;
+            --burgundy-light: #7E192F;
+            --cream: #FDFBF7;
+            --cream-card: #FFFFFF;
+            --gold: #9A7726;
+            --gold-light: #D4AF37;
+            --text-dark: #111111;
+            --text-muted: #383838;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Cairo', 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, #e8dacd 0%, #f7f1e9 50%, #e5d7ca 100%);
+            color: var(--text-dark);
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 24px 14px;
+            position: relative;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Ambient Background Glow */
+        .bg-glow {
+            position: fixed;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(154,119,38,0.18) 0%, transparent 70%);
+            filter: blur(50px);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .bg-glow-1 { top: -60px; right: -60px; }
+        .bg-glow-2 { bottom: -60px; left: -60px; }
+
+        /* Card Container */
+        .card-wrapper {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 440px;
+            margin: auto;
+            animation: cardAppear 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        @keyframes cardAppear {
+            0% { opacity: 0; transform: translateY(30px) scale(0.97); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .luxury-card {
+            background: var(--cream-card);
+            border-radius: 28px;
+            padding: 34px 22px 28px;
+            box-shadow: 
+                0 15px 35px rgba(91,12,29,0.12),
+                0 30px 65px rgba(0,0,0,0.15),
+                inset 0 0 0 1px rgba(154,119,38,0.3);
+            border: 2px solid rgba(154,119,38,0.35);
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Ornate Gold Border Inner Frame */
+        .luxury-card::before {
+            content: '';
+            position: absolute;
+            inset: 8px;
+            border: 1px dashed rgba(154,119,38,0.4);
+            border-radius: 22px;
+            pointer-events: none;
+        }
+
+        /* Top Corner Flourishes */
+        .flourish-tl, .flourish-tr, .flourish-bl, .flourish-br {
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            pointer-events: none;
+            stroke: var(--gold);
+            fill: none;
+            opacity: 0.65;
+        }
+        .flourish-tl { top: 12px; left: 12px; }
+        .flourish-tr { top: 12px; right: 12px; transform: scaleX(-1); }
+        .flourish-bl { bottom: 12px; left: 12px; transform: scaleY(-1); }
+        .flourish-br { bottom: 12px; right: 12px; transform: scale(-1); }
+
+        /* Header / Bismillah */
+        .bismillah {
+            font-family: 'Amiri', serif;
+            font-size: clamp(20px, 5.2vw, 25px);
+            color: var(--burgundy);
+            font-weight: 700;
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .quran-verse {
+            font-family: 'Amiri', serif;
+            font-size: clamp(14px, 3.6vw, 16px);
+            color: var(--text-dark);
+            font-weight: 700;
+            line-height: 1.6;
+            margin-bottom: 12px;
+            padding: 0 10px;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin: 0 auto 16px;
+            width: 80%;
+        }
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            height: 1.5px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+        .divider-icon {
+            color: var(--gold);
+            font-size: 14px;
+        }
+
+        /* Royal Crest & Monogram */
+        .crest-wrapper {
+            margin: 0 auto 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .mono-letter {
+            animation: crestGlow 3s ease-in-out infinite alternate;
+        }
+        @keyframes crestGlow {
+            0% { filter: drop-shadow(0 0 2px rgba(154,119,38,0.4)); }
+            100% { filter: drop-shadow(0 0 8px rgba(212,175,55,0.85)); }
+        }
+
+        .wedding-rings {
+            animation: ringPulse 2.8s ease-in-out infinite;
+        }
+        @keyframes ringPulse {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px #D4AF37); }
+            50% { transform: scale(1.08); filter: drop-shadow(0 0 8px #FFD700); }
+        }
+
+        /* Names */
+        .names-en {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(17px, 4.4vw, 21px);
+            letter-spacing: 3px;
+            color: var(--gold);
+            font-weight: 800;
+            margin-bottom: 12px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.08);
+        }
+
+        .names-formal {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            margin-bottom: 14px;
+        }
+        .name-line {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .name-title {
+            font-size: clamp(14px, 3.6vw, 17px);
+            color: var(--burgundy);
+            font-weight: 800;
+        }
+        .name-full {
+            font-family: 'Amiri', serif;
+            font-size: clamp(23px, 6.2vw, 29px);
+            color: #0c0c0c;
+            font-weight: 800;
+            line-height: 1.3;
+        }
+        .names-amp {
+            font-family: 'Amiri', serif;
+            font-size: 26px;
+            color: var(--burgundy);
+            font-weight: 800;
+            margin: -4px 0;
+        }
+
+        .subtitle {
+            font-family: 'Amiri', serif;
+            font-size: clamp(16px, 4vw, 19px);
+            color: var(--text-dark);
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        /* Date Badge */
+        .date-badge {
+            display: inline-block;
+            font-family: 'Amiri', serif;
+            font-size: clamp(17px, 4.6vw, 22px);
+            color: var(--burgundy);
+            font-weight: 800;
+            padding: 6px 20px;
+            background: rgba(91,12,29,0.06);
+            border: 1.5px solid rgba(154,119,38,0.5);
+            border-radius: 30px;
+            margin-bottom: 16px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.03);
+        }
+
+        /* Venue Box */
+        .venue-card {
+            background: linear-gradient(135deg, rgba(91,12,29,0.04) 0%, rgba(154,119,38,0.06) 100%);
+            border: 1.5px solid rgba(154,119,38,0.45);
+            border-radius: 20px;
+            padding: 16px 14px;
+            margin: 0 auto 16px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+        }
+        .venue-title-badge {
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--burgundy);
+            margin-bottom: 4px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .venue-name {
+            font-family: 'Amiri', serif;
+            font-size: clamp(21px, 5.5vw, 25px);
+            color: #0c0c0c;
+            font-weight: 800;
+            line-height: 1.35;
+            margin-bottom: 3px;
+        }
+        .venue-addr {
+            font-size: 14px;
+            color: #2e2e2e;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .qr-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .qr-img {
+            width: 125px;
+            height: 125px;
+            border-radius: 14px;
+            border: 2px solid var(--gold);
+            padding: 6px;
+            background: #ffffff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        .qr-img:hover { transform: scale(1.05); }
+        .qr-hint {
+            font-size: 12px;
+            font-weight: 600;
+            color: #444;
+            margin-top: 6px;
+        }
+
+        /* Song Ticker Bar */
+        .song-ticker-bar {
+            width: 100%;
+            margin: 0 auto 16px;
+            background: linear-gradient(135deg, rgba(91,12,29,0.07) 0%, rgba(154,119,38,0.12) 100%);
+            border: 1.5px solid rgba(154,119,38,0.5);
+            border-radius: 25px;
+            padding: 9px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(91,12,29,0.05);
+        }
+        .ticker-note {
+            font-size: 17px;
+            animation: bounceNote 1.5s ease-in-out infinite;
+        }
+        @keyframes bounceNote {
+            0%, 100% { transform: translateY(0) rotate(0); }
+            50% { transform: translateY(-4px) rotate(12deg); }
+        }
+        .ticker-text {
+            font-family: 'Amiri', serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--burgundy);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        /* Countdown */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: clamp(8px, 2.4vw, 14px);
+            direction: ltr;
+            margin-bottom: 18px;
+        }
+        .cd-box {
+            text-align: center;
+        }
+        .cd-num {
+            font-size: clamp(20px, 5.5vw, 26px);
+            font-weight: 800;
+            color: var(--burgundy);
+            background: rgba(91,12,29,0.06);
+            border: 1px solid rgba(154,119,38,0.3);
+            border-radius: 12px;
+            width: clamp(44px, 11vw, 54px);
+            height: clamp(44px, 11vw, 54px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+        }
+        .cd-lbl {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 4px;
+            font-weight: 700;
+        }
+
+        /* Actions */
+        .card-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .btn {
+            border: none;
+            padding: 12px 18px;
+            font-size: clamp(14px, 3.8vw, 16px);
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--burgundy), var(--burgundy-light));
+            color: #fff;
+            box-shadow: 0 6px 18px rgba(91,12,29,0.25);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 9px 24px rgba(91,12,29,0.35);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: #fff !important;
+            box-shadow: 0 5px 16px rgba(37,211,102,0.3);
+        }
+        .btn-whatsapp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(37,211,102,0.42);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--burgundy);
+            border: 1.5px solid var(--burgundy);
+        }
+        .btn-secondary:hover {
+            background: rgba(91,12,29,0.06);
+            transform: translateY(-1px);
+        }
+
+        .btn-full-envelope {
+            background: linear-gradient(135deg, #FAF0D7 0%, #EAD5A6 100%);
+            color: var(--burgundy-dark);
+            border: 1.5px solid var(--gold);
+            font-weight: 800;
+            box-shadow: 0 4px 14px rgba(154,119,38,0.2);
+        }
+        .btn-full-envelope:hover {
+            background: linear-gradient(135deg, #FFF6E0 0%, #F5E1B5 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 7px 20px rgba(154,119,38,0.3);
+        }
+
+        /* Floating Audio Toggle Button */
+        .audio-toggle-btn {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--burgundy), var(--burgundy-light));
+            border: 2px solid var(--gold-light);
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(91,12,29,0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 99;
+            transition: all 0.3s ease;
+        }
+        .audio-toggle-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(91,12,29,0.5);
+        }
+        .audio-toggle-btn.playing {
+            animation: pulseGlow 2s infinite;
+        }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 10px rgba(212,175,55,0.5); }
+            50% { box-shadow: 0 0 22px rgba(212,175,55,0.9); }
+        }
+
+        /* Floating Rose Petals */
+        .petals-container {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 5;
+        }
+        .petal {
+            position: absolute;
+            background: radial-gradient(circle at 30% 30%, #C43B58, #6B1124);
+            border-radius: 50% 0 50% 50%;
+            opacity: 0;
+            animation: petalFall linear infinite;
+        }
+        @keyframes petalFall {
+            0% { transform: translateY(-30px) rotate(0deg) scale(0.8); opacity: 0.85; }
+            100% { transform: translateY(105vh) rotate(540deg) scale(1.1); opacity: 0; }
+        }
+
+        /* Wishes / Guestbook Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.65);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal-box {
+            background: var(--cream-card);
+            border-radius: 24px;
+            padding: 30px 22px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+            border: 2px solid var(--gold);
+            text-align: center;
+            animation: popIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        @keyframes popIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .modal-box h3 {
+            font-family: 'Amiri', serif;
+            font-size: 24px;
+            color: var(--burgundy);
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .modal-box .sub {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 18px;
+            font-weight: 600;
+        }
+        .form-group {
+            text-align: right;
+            margin-bottom: 14px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1.5px solid #d4c4b5;
+            border-radius: 12px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 14px;
+            color: var(--text-dark);
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--burgundy);
+        }
+        .form-group textarea {
+            height: 90px;
+            resize: vertical;
+        }
+        .form-success-box {
+            display: none;
+        }
+        .form-success-box.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    <div class="petals-container" id="petals"></div>
+
+    <div class="card-wrapper">
+        <div class="luxury-card">
+
+            <!-- Corner SVG Flourishes -->
+            <svg class="flourish-tl" viewBox="0 0 32 32"><path d="M2,30 Q2,2 30,2 M2,22 Q2,2 22,2 M2,14 Q2,2 14,2"/></svg>
+            <svg class="flourish-tr" viewBox="0 0 32 32"><path d="M2,30 Q2,2 30,2 M2,22 Q2,2 22,2 M2,14 Q2,2 14,2"/></svg>
+            <svg class="flourish-bl" viewBox="0 0 32 32"><path d="M2,30 Q2,2 30,2 M2,22 Q2,2 22,2 M2,14 Q2,2 14,2"/></svg>
+            <svg class="flourish-br" viewBox="0 0 32 32"><path d="M2,30 Q2,2 30,2 M2,22 Q2,2 22,2 M2,14 Q2,2 14,2"/></svg>
+
+            <!-- Bismillah & Quranic Verse -->
+            <div class="bismillah">بسم الله الرحمن الرحيم</div>
+            <div class="quran-verse">
+                ﴿ وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ﴾
+            </div>
+
+            <div class="divider">
+                <span class="divider-icon">✦</span>
+            </div>
+
+            <!-- Royal Crest & Monogram -->
+            <div class="crest-wrapper">
+                <svg width="130" height="100" viewBox="0 0 140 110" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="crestGoldCard" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#FAF0D7"/>
+                            <stop offset="35%" stop-color="#D4AF37"/>
+                            <stop offset="70%" stop-color="#AA8232"/>
+                            <stop offset="100%" stop-color="#E5C158"/>
+                        </linearGradient>
+                    </defs>
+
+                    <!-- Tiara / Crown -->
+                    <g stroke="url(#crestGoldCard)" fill="none" stroke-width="1.3" stroke-linecap="round">
+                        <path d="M55,20 Q70,8 85,20" stroke-width="1.5"/>
+                        <path d="M58,20 L60,12 L70,16 L80,12 L82,20" fill="url(#crestGoldCard)" opacity="0.3"/>
+                        <circle cx="70" cy="11" r="2.2" fill="url(#crestGoldCard)"/>
+                        <circle cx="60" cy="12" r="1.5" fill="url(#crestGoldCard)"/>
+                        <circle cx="80" cy="12" r="1.5" fill="url(#crestGoldCard)"/>
+                    </g>
+
+                    <!-- Laurel Wreath -->
+                    <g stroke="url(#crestGoldCard)" fill="none" stroke-width="1.2">
+                        <path d="M35,68 C22,50 24,32 45,22" stroke-linecap="round"/>
+                        <path d="M28,52 Q22,48 26,44 Q32,48 28,52 Z" fill="url(#crestGoldCard)" opacity="0.75"/>
+                        <path d="M25,38 Q18,35 23,30 Q28,34 25,38 Z" fill="url(#crestGoldCard)" opacity="0.75"/>
+                        <path d="M36,26 Q32,20 38,18 Q41,24 36,26 Z" fill="url(#crestGoldCard)" opacity="0.75"/>
+                        <circle cx="21" cy="45" r="2.2" fill="#701B2E"/>
+                        <circle cx="31" cy="22" r="2" fill="#701B2E"/>
+
+                        <path d="M105,68 C118,50 116,32 95,22" stroke-linecap="round"/>
+                        <path d="M112,52 Q118,48 114,44 Q108,48 112,52 Z" fill="url(#crestGoldCard)" opacity="0.75"/>
+                        <path d="M115,38 Q122,35 117,30 Q112,34 115,38 Z" fill="url(#crestGoldCard)" opacity="0.75"/>
+                        <path d="M104,26 Q108,20 102,18 Q99,24 104,26 Z" fill="url(#crestGoldCard)" opacity="0.75"/>
+                        <circle cx="119" cy="45" r="2.2" fill="#701B2E"/>
+                        <circle cx="109" cy="22" r="2" fill="#701B2E"/>
+                    </g>
+
+                    <!-- Intertwined Monogram: M & S -->
+                    <text class="mono-letter" x="55" y="58" font-family="'Cinzel', serif" font-size="28" font-weight="800" fill="url(#crestGoldCard)" text-anchor="middle">M</text>
+                    <text class="mono-letter" x="70" y="53" font-family="'Great Vibes', cursive" font-size="22" font-weight="700" fill="#701B2E" text-anchor="middle">&amp;</text>
+                    <text class="mono-letter" x="85" y="58" font-family="'Cinzel', serif" font-size="28" font-weight="800" fill="url(#crestGoldCard)" text-anchor="middle">S</text>
+
+                    <!-- Interlocking Rings -->
+                    <g class="wedding-rings" transform="translate(0, 16)">
+                        <circle cx="63" cy="68" r="9" fill="none" stroke="url(#crestGoldCard)" stroke-width="1.8"/>
+                        <circle cx="77" cy="65" r="9" fill="none" stroke="url(#crestGoldCard)" stroke-width="1.8"/>
+                        <polygon points="77,52 81,56 77,59 73,56" fill="#701B2E" stroke="url(#crestGoldCard)" stroke-width="0.8"/>
+                        <circle cx="77" cy="51" r="1.3" fill="#FAF0D7"/>
+                    </g>
+                </svg>
+            </div>
+
+            <!-- English Names -->
+            <div class="names-en">MOHAMED &amp; SHAIMAA</div>
+
+            <!-- Formal Arabic Names -->
+            <div class="names-formal">
+                <div class="name-line">
+                    <span class="name-title">البشمهندس /</span>
+                    <span class="name-full">محمد أحمد زيدان</span>
+                </div>
+                <div class="names-amp">&</div>
+                <div class="name-line">
+                    <span class="name-title">الأستاذة /</span>
+                    <span class="name-full">شيماء محمد سلطان</span>
+                </div>
+            </div>
+
+            <div class="subtitle">الحمد لله الذي بنعمته تتم الصالحات</div>
+
+            <!-- Date Badge -->
+            <div class="date-badge">الجمعة ١٨ سبتمبر ٢٠٢٦ — الساعة ٧ مساءً</div>
+
+            <!-- Venue Details Card -->
+            <div class="venue-card">
+                <div class="venue-title-badge">📍 مكان الحفل</div>
+                <div class="venue-name">قاعة دايماً عامر</div>
+                <div class="venue-addr">انشاص الرمل — شارع سوق الأربعاء</div>
+
+                <div class="qr-section">
+                    <a href="https://maps.app.goo.gl/FD2jVMNsoFCjQUMs8?g_st=iw" target="_blank">
+                        <img class="qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=130x130&data=https%3A%2F%2Fmaps.app.goo.gl%2FFD2jVMNsoFCjQUMs8%3Fg_st%3Diw&color=70-27-46" alt="QR الموقع">
+                    </a>
+                    <div class="qr-hint">(امسح الكود أو اضغط عليه لفتح الخريطة)</div>
+                </div>
+
+                <a class="btn btn-secondary" href="https://maps.app.goo.gl/FD2jVMNsoFCjQUMs8?g_st=iw" target="_blank" style="width:100%; border-radius:20px; font-size:14px;">
+                    🚗 فتح الموقع على Google Maps
+                </a>
+            </div>
+
+            <!-- Romantic Song Ticker -->
+            <div class="song-ticker-bar" id="songTicker">
+                <span class="ticker-note">🎵</span>
+                <span class="ticker-text" id="tickerText">يا ليالي ده حبيبي آية في الجمال.. 🤍✨</span>
+            </div>
+
+            <!-- Countdown Timer -->
+            <div class="countdown">
+                <div class="cd-box"><div class="cd-num" id="cd-days">00</div><div class="cd-lbl">يوم</div></div>
+                <div class="cd-box"><div class="cd-num" id="cd-hours">00</div><div class="cd-lbl">ساعة</div></div>
+                <div class="cd-box"><div class="cd-num" id="cd-mins">00</div><div class="cd-lbl">دقيقة</div></div>
+                <div class="cd-box"><div class="cd-num" id="cd-secs">00</div><div class="cd-lbl">ثانية</div></div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="card-actions">
+                <button class="btn btn-primary" onclick="openWishesModal()">✍️ سجّل تهنئتك للعروسين</button>
+                <button class="btn btn-whatsapp" onclick="shareWhatsApp()">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                    مشاركة الدعوة عبر WhatsApp
+                </button>
+                <a class="btn btn-secondary" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D8%AE%D8%B7%D9%88%D8%A8%D8%A9+%D9%85%D8%AD%D9%85%D8%AF+%D9%88%D8%B4%D9%8A%D9%85%D8%A7%D8%A1&dates=20260918T160000Z/20260918T200000Z&details=%D8%AE%D8%B7%D9%88%D8%A8%D8%A9+%D8%A7%D9%84%D8%A8%D8%B4%D9%85%D9%87%D9%86%D8%AF%D8%B3+%D9%85%D8%AD%D9%85%D8%AF+%D8%B2%D9%8A%D8%AF%D8%A7%D9%86+%D9%88%D8%A7%D9%84%D8%A3%D8%B3%D8%AA%D8%A7%D8%B0%D8%A9+%D8%B4%D9%8A%D9%85%D8%A7%D8%A1+%D8%B3%D9%84%D8%B7%D8%A7%D9%86&location=%D9%82%D8%A7%D8%B9%D8%A9+%D8%AF%D8%A7%D9%8A%D9%85%D8%A7%D9%8B+%D8%B9%D8%A7%D9%85%D8%B1+-+%D8%A7%D9%86%D8%B4%D8%A7%D8%B5+%D8%A7%D9%84%D8%B1%D9%85%D9%84" target="_blank">
+                    📅 أضف لموعد التقويم
+                </a>
+                <a class="btn btn-full-envelope" href="index.html">
+                    💌 فتح التجربة الملكية بالظرف والشمع
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Wishes / Guestbook Modal -->
+    <div class="modal-overlay" id="wishesModal" onclick="closeWishesModal()">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <div id="wFormSection">
+                <h3>✍️ دفتر التهاني</h3>
+                <div class="sub">سجّل كلمتك للعروسين — هتوصلهم مباشرة 🤍</div>
+
+                <div class="form-group">
+                    <label>اسمك الكريم</label>
+                    <input type="text" id="wNameInput" placeholder="مثال: أحمد محمد" autocomplete="name">
+                </div>
+                <div class="form-group">
+                    <label>تهنئتك المباركة</label>
+                    <textarea id="wMsgInput" placeholder="اكتب تهنئتك ودعواتك الطيبة هنا..."></textarea>
+                </div>
+
+                <button class="btn btn-primary" style="width:100%;" onclick="sendWish()">إرسال التهنئة 💌</button>
+                <br><br>
+                <button class="btn btn-secondary" style="width:100%;" onclick="closeWishesModal()">إغلاق</button>
+            </div>
+
+            <div class="form-success-box" id="wSuccessSection">
+                <div style="font-size:42px; margin-bottom:10px;">✅</div>
+                <h3 style="color:var(--burgundy); font-size:22px;">تم إرسال تهنئتك بنجاح!</h3>
+                <p style="font-size:14px; color:#333; margin:8px 0 18px; line-height:1.6;">
+                    شكراً لكلماتك ومحبتك الطيبة 🤍<br>
+                    ربنا يبارك في عمرك ويسعدك
+                </p>
+                <button class="btn btn-secondary" style="width:100%;" onclick="closeWishesModal()">إغلاق</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Audio Toggle -->
+    <button class="audio-toggle-btn" id="audioToggle" onclick="toggleMusic()" title="تشغيل / إيقاف الأغنية">🎵</button>
+
+    <!-- Audio Element -->
+    <audio id="cardAudio" loop preload="auto">
+        <source src="ya_habibna.mp3" type="audio/mpeg">
+        <source src="https://dndnha.cam/upload_file/2/3/audio_6a875d4e8ffed.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const SHEET_WEBHOOK = 'https://script.google.com/macros/s/AKfycbz91iHkVlz5J3TK0WW7VZfw27cKvXI_cFwW0-S__A__TpqVbzpwBbZddAgifOFh7D1V3A/exec';
+
+        const audio = document.getElementById('cardAudio');
+        const audioBtn = document.getElementById('audioToggle');
+
+        function toggleMusic() {
+            if (audio.paused) {
+                audio.play().then(() => {
+                    audioBtn.textContent = '🔊';
+                    audioBtn.classList.add('playing');
+                }).catch(e => console.log('Audio play error:', e));
+            } else {
+                audio.pause();
+                audioBtn.textContent = '🎵';
+                audioBtn.classList.remove('playing');
+            }
+        }
+
+        // Try playing audio on first user touch
+        window.addEventListener('click', function onFirstClick() {
+            if (audio.paused) {
+                audio.play().then(() => {
+                    audioBtn.textContent = '🔊';
+                    audioBtn.classList.add('playing');
+                }).catch(() => {});
+            }
+            window.removeEventListener('click', onFirstClick);
+        }, { once: true });
+
+        /* Countdown to Friday 18 Sept 2026, 19:00 Cairo */
+        const WEDDING_DATE = new Date(2026, 8, 18, 19, 0, 0); // Month is 0-indexed (8 = Sept)
+
+        function updateCountdown() {
+            const now = new Date();
+            const diff = WEDDING_DATE - now;
+
+            if (diff <= 0) {
+                document.getElementById('cd-days').textContent = '00';
+                document.getElementById('cd-hours').textContent = '00';
+                document.getElementById('cd-mins').textContent = '00';
+                document.getElementById('cd-secs').textContent = '00';
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
+            document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
+            document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        /* Song Ticker Lines */
+        const LYRIC_LINES = [
+            "يا ليالي ده حبيبي آية في الجمال.. 🤍✨",
+            "يا حبيبنا ده اليوم اللي اتمنيناه ونور دنيتنا 💍✨",
+            "ألف مبروك لأجمل عروسين.. عقبال الليلة الكبيرة 🌹",
+            "فرحتنا بيكم الليلة تسوى الدنيا وما فيها 🤍👑",
+            "يا هلا بيكم في ليلتنا.. حضوركم تاج على راسنا 🕊️"
+        ];
+        let lyricIdx = 0;
+        setInterval(() => {
+            const tickerEl = document.getElementById('tickerText');
+            if (!tickerEl) return;
+            tickerEl.style.opacity = '0';
+            tickerEl.style.transform = 'translateY(8px)';
+            setTimeout(() => {
+                lyricIdx = (lyricIdx + 1) % LYRIC_LINES.length;
+                tickerEl.textContent = LYRIC_LINES[lyricIdx];
+                tickerEl.style.opacity = '1';
+                tickerEl.style.transform = 'translateY(0)';
+            }, 400);
+        }, 5000);
+
+        /* WhatsApp Share */
+        function shareWhatsApp() {
+            const shareText = `💍 دعوة خطوبة البشمهندس محمد أحمد زيدان والأستاذة الشيماء محمد سلطان 💍\n\nنرحب بكم ونتشرف بحضوركم لتشاركونا فرحتنا في قاعة دايماً عامر (انشاص الرمل) يوم الجمعة ١٨ سبتمبر ٢٠٢٦ الساعة ٧ مساءً 🌹\n\nلمشاهدة كارت الدعوة والتفاصيل واللوكيشن:\n${window.location.origin + window.location.pathname.replace('card.html', '')}`;
+            const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
+            window.open(url, '_blank');
+        }
+
+        /* Wishes Modal Logic */
+        function openWishesModal() {
+            document.getElementById('wishesModal').classList.add('active');
+            document.getElementById('wFormSection').style.display = 'block';
+            document.getElementById('wSuccessSection').classList.remove('show');
+        }
+
+        function closeWishesModal() {
+            document.getElementById('wishesModal').classList.remove('active');
+        }
+
+        function sendWish() {
+            const name = document.getElementById('wNameInput').value.trim();
+            const message = document.getElementById('wMsgInput').value.trim();
+
+            if (!name || !message) {
+                alert('من فضلك اكتب اسمك وتهنئتك المباركة 🤍');
+                return;
+            }
+
+            const sendBtn = event.target;
+            const originalText = sendBtn.textContent;
+            sendBtn.textContent = 'جاري الإرسال... ⏳';
+            sendBtn.disabled = true;
+
+            const payload = {
+                name: name,
+                message: message,
+                source: 'quick_card',
+                timestamp: new Date().toISOString()
+            };
+
+            fetch(SHEET_WEBHOOK, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            }).then(() => {
+                document.getElementById('wFormSection').style.display = 'none';
+                document.getElementById('wSuccessSection').classList.add('show');
+                document.getElementById('wNameInput').value = '';
+                document.getElementById('wMsgInput').value = '';
+                sendBtn.textContent = originalText;
+                sendBtn.disabled = false;
+            }).catch(err => {
+                console.error('Submission error:', err);
+                // Fallback gracefully
+                document.getElementById('wFormSection').style.display = 'none';
+                document.getElementById('wSuccessSection').classList.add('show');
+                sendBtn.textContent = originalText;
+                sendBtn.disabled = false;
+            });
+        }
+
+        /* Floating Petals Generation */
+        function spawnPetals() {
+            const container = document.getElementById('petals');
+            for (let i = 0; i < 16; i++) {
+                const petal = document.createElement('div');
+                petal.className = 'petal';
+                const size = Math.random() * 12 + 10;
+                petal.style.width = `${size}px`;
+                petal.style.height = `${size * 1.3}px`;
+                petal.style.left = `${Math.random() * 100}vw`;
+                petal.style.animationDuration = `${Math.random() * 6 + 7}s`;
+                petal.style.animationDelay = `${Math.random() * 5}s`;
+                container.appendChild(petal);
+            }
+        }
+        spawnPetals();
+    </script>
+</body>
+</html>

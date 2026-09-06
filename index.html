@@ -15,15 +15,15 @@
         *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
         :root {
-            --burgundy: #701B2E;
-            --burgundy-light: #8B2942;
+            --burgundy: #5B0C1D;
+            --burgundy-light: #7E192F;
             --cream: #FDFBF7;
             --cream-dark: #F5EDE3;
             --ribbon: #F2EAE4;
-            --gold: #C5A880;
-            --gold-light: #D4B896;
-            --text-dark: #2C3E50;
-            --text-muted: #7F8C8D;
+            --gold: #9A7726;
+            --gold-light: #B8923F;
+            --text-dark: #1A1A1A;
+            --text-muted: #383838;
         }
 
         html { scroll-behavior: smooth; }
@@ -412,27 +412,30 @@
         /* ═══════ CARD CONTENT ═══════ */
         .bismillah {
             font-family: 'Amiri', serif;
-            font-size: clamp(14px, 3.5vw, 18px);
-            color: var(--gold);
-            margin-bottom: 10px;
+            font-size: clamp(16px, 4vw, 20px);
+            font-weight: 700;
+            color: var(--burgundy);
+            margin-bottom: 8px;
             opacity: 0; transform: translateY(15px);
             transition: all 0.8s ease 1s;
+            text-shadow: 0 1px 1px rgba(255,255,255,0.8);
         }
 
         .quran-verse {
             font-family: 'Amiri', serif;
-            font-size: clamp(15px, 4vw, 20px);
-            color: var(--burgundy);
-            line-height: 1.7;
-            margin-bottom: 18px;
-            max-width: 300px;
+            font-size: clamp(16px, 4.2vw, 21px);
+            font-weight: 700;
+            color: #222222;
+            line-height: 1.75;
+            margin-bottom: 16px;
+            max-width: 320px;
             opacity: 0; transform: translateY(15px);
             transition: all 0.8s ease 1.15s;
         }
 
         .divider {
-            width: 60px;
-            height: 2px;
+            width: 75px;
+            height: 2.5px;
             background: linear-gradient(90deg, transparent, var(--gold), transparent);
             margin-bottom: 15px;
             opacity: 0;
@@ -441,14 +444,14 @@
 
         .names-en {
             font-family: 'Cinzel', serif;
-            font-size: clamp(16px, 4.5vw, 24px);
-            color: var(--gold);
+            font-size: clamp(18px, 5vw, 26px);
+            color: var(--burgundy);
             direction: ltr;
             margin-bottom: 8px;
             letter-spacing: 4px;
-            font-weight: 700;
+            font-weight: 800;
             text-transform: uppercase;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.06);
+            text-shadow: 0 1px 2px rgba(154,119,38,0.25);
             opacity: 0; transform: translateY(15px);
             transition: all 0.8s ease 1.35s;
         }
@@ -461,48 +464,162 @@
 
         .name-line {
             font-family: 'Amiri', serif;
-            font-size: clamp(14px, 3.8vw, 18px);
-            color: var(--text-dark);
+            font-size: clamp(16px, 4.2vw, 21px);
+            color: #111111;
             line-height: 1.6;
         }
 
         .name-line .title {
-            font-size: clamp(12px, 3vw, 14px);
-            color: var(--text-muted);
-            font-weight: 400;
+            font-size: clamp(14px, 3.5vw, 17px);
+            color: #383838;
+            font-weight: 700;
         }
 
         .name-line .full-name {
-            font-weight: 700;
+            font-weight: 800;
             color: var(--burgundy);
+            font-size: clamp(18px, 4.8vw, 23px);
+            display: inline-block;
         }
 
         .names-and {
             font-family: 'Great Vibes', cursive;
-            font-size: clamp(22px, 5vw, 30px);
+            font-size: clamp(26px, 6vw, 34px);
+            font-weight: 700;
             color: var(--gold);
             direction: ltr;
-            margin: 2px 0;
+            margin: 1px 0;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.08);
         }
 
         .subtitle {
-            font-size: clamp(13px, 3.5vw, 16px);
-            font-weight: 600;
-            color: var(--text-dark);
-            margin-bottom: 3px;
+            font-size: clamp(14px, 3.8vw, 17px);
+            font-weight: 700;
+            color: #2A2A2A;
+            margin-bottom: 6px;
             opacity: 0; transform: translateY(15px);
             transition: all 0.8s ease 1.55s;
         }
 
         .date-text {
             font-family: 'Amiri', serif;
-            font-size: clamp(16px, 4.5vw, 22px);
+            font-size: clamp(17px, 4.6vw, 22px);
             color: var(--burgundy);
-            font-weight: 700;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+            padding: 5px 18px;
+            background: rgba(91,12,29,0.05);
+            border: 1.5px solid rgba(154,119,38,0.45);
+            border-radius: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
             opacity: 0; transform: translateY(15px);
             transition: all 0.8s ease 1.65s;
+        }
+
+        /* ═══════ MONOGRAM SEQUENTIAL ANIMATION (M -> S -> M&S) ═══════ */
+        .envelope.opened .mono-m {
+            animation: animLetterM 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 0.8s forwards;
+        }
+        .envelope.opened .mono-s {
+            animation: animLetterS 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 1.6s forwards;
+        }
+        .envelope.opened .mono-amp {
+            animation: animLetterAmp 1s cubic-bezier(0.34, 1.56, 0.64, 1) 2.4s forwards;
+        }
+        .envelope.opened .wedding-rings {
+            animation: ringPulse 2.8s ease-in-out 3.2s infinite;
+        }
+
+        .mono-m, .mono-s, .mono-amp {
+            opacity: 0;
+            transform-box: fill-box;
+            transform-origin: center;
+        }
+
+        @keyframes animLetterM {
+            0% { opacity: 0; transform: translateX(-35px) scale(0.5); filter: blur(4px); }
+            65% { opacity: 1; transform: translateX(4px) scale(1.18); filter: drop-shadow(0 0 10px #D4AF37); }
+            100% { opacity: 1; transform: translateX(0) scale(1); filter: drop-shadow(0 0 3px #9A7726); }
+        }
+
+        @keyframes animLetterS {
+            0% { opacity: 0; transform: translateX(35px) scale(0.5); filter: blur(4px); }
+            65% { opacity: 1; transform: translateX(-4px) scale(1.18); filter: drop-shadow(0 0 10px #D4AF37); }
+            100% { opacity: 1; transform: translateX(0) scale(1); filter: drop-shadow(0 0 3px #9A7726); }
+        }
+
+        @keyframes animLetterAmp {
+            0% { opacity: 0; transform: scale(0) rotate(-60deg); }
+            65% { opacity: 1; transform: scale(1.3) rotate(8deg); }
+            100% { opacity: 1; transform: scale(1) rotate(0deg); }
+        }
+
+        @keyframes ringPulse {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px #D4AF37); }
+            50% { transform: scale(1.08); filter: drop-shadow(0 0 8px #FFD700); }
+        }
+
+        /* ═══════ DYNAMIC SONG VIBES TICKER (شريط كلمات وأجواء الأغنية) ═══════ */
+        .song-ticker-bar {
+            width: 100%;
+            max-width: 310px;
+            margin: 0 auto 16px;
+            background: linear-gradient(135deg, rgba(91,12,29,0.08) 0%, rgba(154,119,38,0.12) 100%);
+            border: 1.5px solid rgba(154,119,38,0.5);
+            border-radius: 20px;
+            padding: 8px 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(91,12,29,0.06);
+            opacity: 0; transform: translateY(15px);
+            transition: all 0.8s ease 1.7s;
+        }
+
+        .song-ticker-bar .ticker-icon {
+            font-size: 16px;
+            animation: bounceNote 1.5s ease-in-out infinite;
+        }
+
+        .song-ticker-bar .ticker-text {
+            font-family: 'Amiri', serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--burgundy);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        @keyframes bounceNote {
+            0%, 100% { transform: translateY(0) rotate(0); }
+            50% { transform: translateY(-4px) rotate(12deg); }
+        }
+
+        /* Switch Card Badge */
+        .btn-switch-card {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--burgundy);
+            background: rgba(255,255,255,0.92);
+            border: 1px solid var(--gold);
+            padding: 5px 14px;
+            border-radius: 20px;
+            text-decoration: none;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        .btn-switch-card:hover {
+            background: var(--burgundy);
+            color: #fff;
+            transform: translateY(-2px);
         }
 
         /* Countdown */
@@ -598,6 +715,7 @@
         .envelope.opened .date-text,
         .envelope.opened .venue,
         .envelope.opened .avatars,
+        .envelope.opened .song-ticker-bar,
         .envelope.opened .countdown,
         .envelope.opened .card-actions {
             opacity: 1 !important;
@@ -1064,13 +1182,13 @@
                                 <circle cx="109" cy="22" r="2" fill="#701B2E"/>
                             </g>
 
-                            <!-- Intertwined Royal Monogram: M & S -->
-                            <text x="55" y="58" font-family="'Cinzel', 'Playfair Display', serif" font-size="28" font-weight="700" fill="url(#crestGold)" text-anchor="middle">M</text>
-                            <text x="70" y="53" font-family="'Great Vibes', cursive" font-size="20" fill="#701B2E" text-anchor="middle">&amp;</text>
-                            <text x="85" y="58" font-family="'Cinzel', 'Playfair Display', serif" font-size="28" font-weight="700" fill="url(#crestGold)" text-anchor="middle">S</text>
+                            <!-- Intertwined Royal Monogram: M & S (Animated) -->
+                            <text class="mono-letter mono-m" x="55" y="58" font-family="'Cinzel', 'Playfair Display', serif" font-size="28" font-weight="800" fill="url(#crestGold)" text-anchor="middle">M</text>
+                            <text class="mono-letter mono-amp" x="70" y="53" font-family="'Great Vibes', cursive" font-size="22" font-weight="700" fill="#701B2E" text-anchor="middle">&amp;</text>
+                            <text class="mono-letter mono-s" x="85" y="58" font-family="'Cinzel', 'Playfair Display', serif" font-size="28" font-weight="800" fill="url(#crestGold)" text-anchor="middle">S</text>
 
                             <!-- Interlocking Wedding Rings with Diamond -->
-                            <g transform="translate(0, 16)">
+                            <g class="wedding-rings" transform="translate(0, 16)">
                                 <circle cx="63" cy="68" r="9" fill="none" stroke="url(#crestGold)" stroke-width="1.8"/>
                                 <circle cx="77" cy="65" r="9" fill="none" stroke="url(#crestGold)" stroke-width="1.8"/>
                                 <polygon points="77,52 81,56 77,59 73,56" fill="#701B2E" stroke="url(#crestGold)" stroke-width="0.8"/>
@@ -1098,12 +1216,12 @@
 
                     <!-- VENUE & LOCATION -->
                     <div class="venue" style="margin-bottom:18px; width:100%;">
-                        <div style="background:rgba(112,27,46,0.04); border:1px solid rgba(197,168,128,0.3); border-radius:15px; padding:15px 12px; margin:0 auto; max-width:290px;">
-                            <div style="font-size:13px; color:var(--burgundy); font-weight:700; margin-bottom:5px;">📍 مكان الحفل</div>
-                            <div style="font-family:'Amiri',serif; font-size:clamp(16px,4vw,19px); color:var(--text-dark); font-weight:700; line-height:1.5;">
-                                قاعة ديماً عامل
+                        <div style="background:rgba(112,27,46,0.05); border:1.5px solid rgba(154,119,38,0.45); border-radius:16px; padding:15px 12px; margin:0 auto; max-width:295px; box-shadow:0 3px 12px rgba(0,0,0,0.03);">
+                            <div style="font-size:14px; color:var(--burgundy); font-weight:800; margin-bottom:4px;">📍 مكان الحفل</div>
+                            <div style="font-family:'Amiri',serif; font-size:clamp(19px,4.8vw,23px); color:#111111; font-weight:800; line-height:1.4;">
+                                قاعة دايماً عامر
                             </div>
-                            <div style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">
+                            <div style="font-size:13px; color:#383838; font-weight:700; margin-bottom:12px;">
                                 انشاص الرمل — شارع سوق الأربعاء
                             </div>
 
@@ -1114,16 +1232,21 @@
                                          alt="QR Code الموقع" width="115" height="115" 
                                          style="border-radius:12px; border:2px solid var(--gold); padding:5px; background:#fff; box-shadow:0 4px 10px rgba(0,0,0,0.06); display:block; margin:0 auto;">
                                 </a>
-                                <div style="font-size:11px; color:var(--text-muted); margin-top:5px;">(امسح الكود أو اضغط عليه لفتح الخريطة)</div>
+                                <div style="font-size:12px; font-weight:600; color:#444; margin-top:5px;">(امسح الكود أو اضغط عليه لفتح الخريطة)</div>
                             </div>
 
                             <!-- Direct Maps Link Button -->
-                            <a class="btn btn-secondary" href="https://maps.app.goo.gl/FD2jVMNsoFCjQUMs8?g_st=iw" target="_blank" onclick="event.stopPropagation()" style="font-size:12px; padding:7px 14px; width:100%; border-radius:20px;">
+                            <a class="btn btn-secondary" href="https://maps.app.goo.gl/FD2jVMNsoFCjQUMs8?g_st=iw" target="_blank" onclick="event.stopPropagation()" style="font-size:13px; font-weight:700; padding:8px 14px; width:100%; border-radius:20px;">
                                 🚗 فتح الموقع على Google Maps
                             </a>
                         </div>
                     </div>
 
+                    <!-- DYNAMIC SONG VIBES TICKER -->
+                    <div class="song-ticker-bar" id="songTicker">
+                        <span class="ticker-icon">🎵</span>
+                        <span class="ticker-text" id="tickerText">يا ليالي ده حبيبي آية في الجمال.. 🤍✨</span>
+                    </div>
 
                     <div class="countdown" id="countdown">
                         <div class="cd-unit"><div class="cd-num" id="cd-days">00</div><div class="cd-label">يوم</div></div>
@@ -1138,7 +1261,8 @@
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
                             مشاركة الدعوة عبر WhatsApp
                         </button>
-                        <a class="btn btn-secondary" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D8%AE%D8%B7%D9%88%D8%A8%D8%A9+%D9%85%D8%AD%D9%85%D8%AF+%D9%88%D8%B4%D9%8A%D9%85%D8%A7%D8%A1&dates=20260918T160000Z/20260918T200000Z&details=%D8%AE%D8%B7%D9%88%D8%A8%D8%A9+%D8%A7%D9%84%D8%A8%D8%B4%D9%85%D9%87%D9%86%D8%AF%D8%B3+%D9%85%D8%AD%D9%85%D8%AF+%D8%B2%D9%8A%D8%AF%D8%A7%D9%86+%D9%88%D8%A7%D9%84%D8%A3%D8%B3%D8%AA%D8%A7%D8%B0%D8%A9+%D8%B4%D9%8A%D9%85%D8%A7%D8%A1+%D8%B3%D9%84%D8%B7%D8%A7%D9%86&location=%D9%82%D8%A7%D8%B9%D8%A9+%D8%AF%D9%8A%D9%85%D8%A7%D9%8B+%D8%B9%D8%A7%D9%85%D9%84+-+%D8%A7%D9%86%D8%B4%D8%A7%D8%B5+%D8%A7%D9%84%D8%B1%D9%85%D9%84" target="_blank" onclick="event.stopPropagation()">📅 أضف للتقويم</a>
+                        <a class="btn btn-secondary" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D8%AE%D8%B7%D9%88%D8%A8%D8%A9+%D9%85%D8%AD%D9%85%D8%AF+%D9%88%D8%B4%D9%8A%D9%85%D8%A7%D8%A1&dates=20260918T160000Z/20260918T200000Z&details=%D8%AE%D8%B7%D9%88%D8%A8%D8%A9+%D8%A7%D9%84%D8%A8%D8%B4%D9%85%D9%87%D9%86%D8%AF%D8%B3+%D9%85%D8%AD%D9%85%D8%AF+%D8%B2%D9%8A%D8%AF%D8%A7%D9%86+%D9%88%D8%A7%D9%84%D8%A3%D8%B3%D8%AA%D8%A7%D8%B0%D8%A9+%D8%B4%D9%8A%D9%85%D8%A7%D8%A1+%D8%B3%D9%84%D8%B7%D8%A7%D9%86&location=%D9%82%D8%A7%D8%B9%D8%A9+%D8%AF%D8%A7%D9%8A%D9%85%D8%A7%D9%8B+%D8%B9%D8%A7%D9%85%D8%B1+-+%D8%A7%D9%86%D8%B4%D8%A7%D8%B5+%D8%A7%D9%84%D8%B1%D9%85%D9%84" target="_blank" onclick="event.stopPropagation()">📅 أضف للتقويم</a>
+                        <a href="card.html" class="btn-switch-card" onclick="event.stopPropagation()">⚡ فتح الدعوة المختصرة (نسخة سريعة)</a>
                     </div>
                 </div>
 
@@ -1331,14 +1455,40 @@
 
         setTimeout(startPetals, 800);
         startCountdown();
+        startSongTicker();
     }
 
     /* ══════ 3. زرار الشير للواتساب (Share on WhatsApp) 📲 ══════ */
     function shareWhatsApp(e) {
         if (e) e.stopPropagation();
         const url = window.location.href;
-        const msg = `بارك الله لهما وبارك عليهما وجمع بينهما في خير 🤍💍\n\nيسعدنا ويشرفنا دعوتكم لحضور حفل خطوبة:\nالبشمهندس / محمد أحمد زيدان\n&\nالأستاذة / شيماء محمد سلطان\n\n📅 الجمعة ١٨ سبتمبر ٢٠٢٦ — الساعة ٧ مساءً\n📍 قاعة ديماً عامل — انشاص الرمل\n\n👇 بطاقة الدعوة الإلكترونية الخاصة بكم:\n${url}`;
+        const msg = `بارك الله لهما وبارك عليهما وجمع بينهما في خير 🤍💍\n\nيسعدنا ويشرفنا دعوتكم لحضور حفل خطوبة:\nالبشمهندس / محمد أحمد زيدان\n&\nالأستاذة / شيماء محمد سلطان\n\n📅 الجمعة ١٨ سبتمبر ٢٠٢٦ — الساعة ٧ مساءً\n📍 قاعة دايماً عامر — انشاص الرمل\n\n👇 بطاقة الدعوة الإلكترونية الخاصة بكم:\n${url}`;
         window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    /* ══════ SONG TICKER RUNNER ══════ */
+    const SONG_HIGHLIGHTS = [
+        "يا ليالي ده حبيبي آية في الجمال.. 🤍✨",
+        "نسخة واحدة لما ظهر غطى على الكل 💍",
+        "مسا التماسي يا واخد عقلي وناسي 🎉",
+        "جميل جميل ولو تقيل أحب تُقلك 🌹",
+        "وقعت خلاص يا سيد الناس ونفسي أقولك.. آه يا حبيبنا 🤍",
+        "بارك الله لهما وبارك عليهما وجمع بينهما في خير 💍✨"
+    ];
+    let tickerIdx = 0;
+    function startSongTicker() {
+        const el = document.getElementById('tickerText');
+        if (!el) return;
+        setInterval(() => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(5px)';
+            setTimeout(() => {
+                tickerIdx = (tickerIdx + 1) % SONG_HIGHLIGHTS.length;
+                el.textContent = SONG_HIGHLIGHTS[tickerIdx];
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            }, 500);
+        }, 4000);
     }
 
     /* ══════ COUNTDOWN ══════ */
