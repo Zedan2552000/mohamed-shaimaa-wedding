@@ -4,7 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>كارت خطوبة — محمد زيدان ♥ الشيماء سلطان</title>
-    <meta name="description" content="كارت دعوة خطوبة البشمهندس محمد أحمد زيدان والأستاذة الشيماء محمد سلطان — الجمعة ١٨ سبتمبر ٢٠٢٦ — قاعة دايماً عامر">
+    <meta name="description" content="الحمد لله الذي بنعمته تتم الصالحات — تمت خطوبة البشمهندس محمد أحمد زيدان والأستاذة الشيماء محمد سلطان — ١٨ سبتمبر ٢٠٢٦">
+    
+    <!-- Open Graph / WhatsApp Rich Preview Tags -->
+    <meta property="og:title" content="دعوة خطوبة محمد زيدان وشيماء سلطان">
+    <meta property="og:description" content="نتشرف بحضوركم لتشاركونا فرحتنا يوم الجمعة ١٨ سبتمبر ٢٠٢٦ 💍🤍">
+    <meta property="og:image" content="https://zedan2552000.github.io/mohamed-shaimaa-wedding/og-preview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zedan2552000.github.io/mohamed-shaimaa-wedding/card.html">
+    
+    <!-- Twitter Card Data -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="دعوة خطوبة محمد زيدان وشيماء سلطان">
+    <meta name="twitter:description" content="نتشرف بحضوركم لتشاركونا فرحتنا يوم الجمعة ١٨ سبتمبر ٢٠٢٦ 💍🤍">
+    <meta name="twitter:image" content="https://zedan2552000.github.io/mohamed-shaimaa-wedding/og-preview.png">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@400;600;700;800;900&family=Cinzel:wght@600;700;800;900&family=Great+Vibes&family=Playfair+Display:wght@600;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -337,6 +353,11 @@
         .flourish-bl { bottom: 12px; left: 12px; transform: scaleY(-1); }
         .flourish-br { bottom: 12px; right: 12px; transform: scale(-1); }
 
+        @keyframes slideUpIn {
+            0% { opacity: 0; transform: translateY(15px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
         /* Header / Bismillah */
         .bismillah {
             font-family: 'Amiri', serif;
@@ -345,6 +366,8 @@
             font-weight: 700;
             margin-bottom: 6px;
             letter-spacing: 0.5px;
+            opacity: 0;
+            animation: slideUpIn 0.8s ease 0.6s forwards;
         }
 
         .quran-verse {
@@ -355,6 +378,8 @@
             line-height: 1.6;
             margin-bottom: 12px;
             padding: 0 10px;
+            opacity: 0;
+            animation: slideUpIn 0.8s ease 1.2s forwards;
         }
 
         .divider {
@@ -364,6 +389,8 @@
             gap: 12px;
             margin: 0 auto 16px;
             width: 80%;
+            opacity: 0;
+            animation: slideUpIn 0.8s ease 1.6s forwards;
         }
         .divider::before, .divider::after {
             content: '';
@@ -382,6 +409,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            opacity: 0;
+            animation: slideUpIn 0.8s ease 2s forwards;
         }
 
         .mono-letter {
@@ -409,6 +438,8 @@
             font-weight: 800;
             margin-bottom: 12px;
             text-shadow: 0 1px 2px rgba(0,0,0,0.08);
+            opacity: 0;
+            animation: slideUpIn 0.8s ease 4.2s forwards;
         }
 
         .names-formal {
@@ -424,6 +455,14 @@
             justify-content: center;
             gap: 6px;
             flex-wrap: wrap;
+        }
+        .name-line:first-child {
+            opacity: 0;
+            animation: slideUpIn 0.8s ease 4.8s forwards;
+        }
+        .name-line:last-child {
+            opacity: 0;
+            animation: slideUpIn 0.8s ease 5.6s forwards;
         }
         .name-title {
             font-size: clamp(14px, 3.6vw, 17px);
@@ -443,6 +482,8 @@
             color: var(--burgundy);
             font-weight: 800;
             margin: -4px 0;
+            opacity: 0;
+            animation: slideUpIn 0.6s ease 5.2s forwards;
         }
 
         .subtitle {
@@ -451,6 +492,8 @@
             color: var(--text-dark);
             font-weight: 700;
             margin-bottom: 12px;
+            opacity: 0;
+            animation: slideUpIn 0.8s ease 6.2s forwards;
         }
 
         /* Date Badge */
@@ -466,6 +509,8 @@
             border-radius: 30px;
             margin-bottom: 16px;
             box-shadow: 0 3px 10px rgba(0,0,0,0.03);
+            opacity: 0;
+            animation: slideUpIn 0.8s ease 6.8s forwards;
         }
 
         /* Venue Box */
@@ -476,6 +521,8 @@
             padding: 16px 14px;
             margin: 0 auto 16px;
             box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+            opacity: 0;
+            animation: slideUpIn 0.8s ease 7.6s forwards;
         }
         .venue-title-badge {
             font-size: 13px;
@@ -537,6 +584,8 @@
             justify-content: center;
             gap: 10px;
             box-shadow: 0 4px 15px rgba(91,12,29,0.05);
+            opacity: 0;
+            animation: slideUpIn 0.8s ease 8.2s forwards;
         }
         .ticker-note {
             font-size: 17px;
@@ -564,6 +613,8 @@
             gap: clamp(8px, 2.4vw, 14px);
             direction: ltr;
             margin-bottom: 18px;
+            opacity: 0;
+            animation: slideUpIn 0.8s ease 8.2s forwards;
         }
         .cd-box {
             text-align: center;
@@ -595,6 +646,8 @@
             flex-direction: column;
             gap: 10px;
             width: 100%;
+            opacity: 0;
+            animation: slideUpIn 0.8s ease 8.2s forwards;
         }
 
         .btn {
@@ -912,7 +965,7 @@
             </div>
 
             <!-- WISHES COUNTER PILL -->
-            <div class="wishes-counter-pill" id="wishesCounter">
+            <div class="wishes-counter-pill" id="wishesCounter" style="opacity:0; animation: slideUpIn 0.8s ease 8.2s forwards;">
                 <span class="pulse-dot"></span>
                 <span class="pill-icon">💌</span>
                 <span class="pill-num" id="wCountNum">٠</span>
