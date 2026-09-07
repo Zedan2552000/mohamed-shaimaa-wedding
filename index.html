@@ -524,24 +524,8 @@
         }
 
         .flap-left .flap-inner {
-            border-right: 2px solid rgba(212,175,55,0.85);
-            box-shadow: 4px 0 20px rgba(0,0,0,0.1);
-            clip-path: polygon(
-                0 0, 100% 0,
-                92% 4%, 100% 8%,
-                92% 12%, 100% 16%,
-                92% 20%, 100% 24%,
-                92% 28%, 100% 32%,
-                92% 36%, 100% 40%,
-                92% 44%, 100% 48%,
-                92% 52%, 100% 56%,
-                92% 60%, 100% 64%,
-                92% 68%, 100% 72%,
-                92% 76%, 100% 80%,
-                92% 84%, 100% 88%,
-                92% 92%, 100% 96%,
-                100% 100%, 0 100%
-            );
+            border-right: 2px solid rgba(212,175,55,0.9);
+            box-shadow: 4px 0 20px rgba(0,0,0,0.15);
         }
 
         .flap-right {
@@ -550,24 +534,8 @@
         }
 
         .flap-right .flap-inner {
-            border-left: 2px solid rgba(212,175,55,0.85);
-            box-shadow: -4px 0 20px rgba(0,0,0,0.1);
-            clip-path: polygon(
-                100% 0, 0 0,
-                8% 4%, 0 8%,
-                8% 12%, 0 16%,
-                8% 20%, 0 24%,
-                8% 28%, 0 32%,
-                8% 36%, 0 40%,
-                8% 44%, 0 48%,
-                8% 52%, 0 56%,
-                8% 60%, 0 64%,
-                8% 68%, 0 72%,
-                8% 76%, 0 80%,
-                8% 84%, 0 88%,
-                8% 92%, 0 96%,
-                0 100%, 100% 100%
-            );
+            border-left: 2px solid rgba(212,175,55,0.9);
+            box-shadow: -4px 0 20px rgba(0,0,0,0.15);
         }
 
         .envelope.opened .flap-left  { transform: rotateY(-145deg); }
@@ -693,6 +661,9 @@
         }
 
         .seal-circle {
+            border-radius: 50% !important;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.65), 0 0 20px rgba(212,175,55,0.45);
             width: 98px;
             height: 98px;
             position: relative;
@@ -1909,6 +1880,181 @@
             color: #000;
         }
     
+        
+        /* ═══════ REALISTIC GOLD SHIMMER & LUXURY CALLIGRAPHY ═══════ */
+        .gold-shimmer-calligraphy {
+            background: linear-gradient(120deg, #9A7726 0%, #D4AF37 25%, #FFF5D0 50%, #D4AF37 75%, #9A7726 100%);
+            background-size: 250% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: goldFoilShine 4s ease-in-out infinite;
+            display: inline-block;
+        }
+        @keyframes goldFoilShine {
+            0% { background-position: 100% 0; }
+            50% { background-position: 0% 0; }
+            100% { background-position: 100% 0; }
+        }
+
+        /* ═══════ LUXURY COVER UPGRADE ═══════ */
+        #cover {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at 50% 45%, #230810 0%, #120308 60%, #060103 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s ease;
+            padding: 16px;
+            overflow: hidden;
+        }
+
+        .cover-card-container {
+            position: relative;
+            z-index: 2;
+            width: min(370px, 92vw);
+            height: min(630px, 90dvh);
+            background: #FAF7F2 url('cover-bg.jpg') center/cover no-repeat;
+            border-radius: 22px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.75), 0 0 40px rgba(212,175,55,0.4);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 20px 25px;
+            text-align: center;
+            animation: royalEnvelopeFloat 6s ease-in-out infinite;
+            border: 2.5px solid rgba(212,175,55,0.7);
+        }
+
+        .cover-card-arch {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cover-seal-badge {
+            overflow: hidden;
+            border-radius: 50%;
+            border: 1.5px solid rgba(212,175,55,0.6);
+            width: 80px;
+            height: 80px;
+            margin-bottom: 12px;
+            filter: drop-shadow(0 6px 16px rgba(0,0,0,0.6)) drop-shadow(0 0 12px rgba(212,175,55,0.45));
+            animation: sealHeartbeat 2.2s ease-in-out infinite;
+        }
+
+        .cover-seal-img {
+            transform: scale(1.6) !important;
+            transform: scale(1.6) !important;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .cover-bismillah {
+            font-family: 'Amiri', serif;
+            font-size: 15.5px;
+            color: #D4AF37;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.7);
+        }
+
+        .cover-event-title {
+            font-family: 'Cairo', sans-serif;
+            font-size: 14px;
+            color: #FFF5D0;
+            opacity: 0.95;
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .cover-couple-names {
+            font-family: 'Amiri', serif;
+            font-size: clamp(28px, 7.5vw, 36px);
+            font-weight: 700;
+            color: #FFFFFF;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8), 0 0 18px rgba(212,175,55,0.6);
+            margin-bottom: 6px;
+            line-height: 1.2;
+        }
+
+        .cover-date-hint {
+            font-family: 'Cairo', sans-serif;
+            font-size: 13px;
+            color: #E5C158;
+            margin-bottom: 22px;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .luxury-pulse-btn {
+            background: linear-gradient(135deg, #8E1730 0%, #4E0817 50%, #2D030C 100%) !important;
+            border: 2px solid #D4AF37 !important;
+            box-shadow: 0 8px 25px rgba(142,23,48,0.5), 0 0 20px rgba(212,175,55,0.45) !important;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            padding: 13px 40px;
+            border-radius: 30px;
+            color: #FFFFFF;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .luxury-pulse-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 60%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.45), transparent);
+            animation: pillShineSweep 2.8s infinite;
+        }
+
+        /* ═══════ PHOTOREALISTIC FLAP ARTWORK ═══════ */
+                .flap-botanical-art {
+            position: absolute;
+            inset: 0;
+            background-image: url('rose-garland.jpg');
+            background-size: 200% 100%;
+            background-repeat: no-repeat;
+            mix-blend-mode: multiply;
+            pointer-events: none;
+            z-index: 3;
+            opacity: 0.98;
+            filter: contrast(1.05) drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+        }
+        .flap-art-left {
+            background-position: left center;
+        }
+        .flap-art-right {
+            background-position: right center;
+        }
+
+        .real-wax-seal-img {
+            transform: scale(1.15);
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.65));
+            user-select: none;
+        }
+        .wax-sheen-overlay {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle at var(--glare-x, 35%) var(--glare-y, 35%), rgba(255,255,255,0.45) 0%, rgba(255,255,255,0) 65%);
+            pointer-events: none;
+            mix-blend-mode: overlay;
+        }
+
         /* ═══════ HYPER-REALISTIC PHYSICS ELEMENTS ═══════ */
         .wax-chunk {
             position: absolute;
@@ -1934,21 +2080,28 @@
     <!-- ═══════════════════════════════════
          COVER SCREEN
          ═══════════════════════════════════ -->
+        <!-- ═══════════════════════════════════
+         COVER SCREEN (ROYAL LUXURY UPGRADE)
+         ═══════════════════════════════════ -->
     <div id="cover">
-        <div class="cover-ornament">
-            <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="30" cy="30" r="28" stroke="#C5A880" stroke-width="1.5" opacity="0.5"/>
-                <circle cx="30" cy="30" r="22" stroke="#C5A880" stroke-width="0.8" opacity="0.3"/>
-                <path d="M30 8 L32 28 L30 30 L28 28 Z" fill="#C5A880" opacity="0.6"/>
-                <path d="M30 52 L28 32 L30 30 L32 32 Z" fill="#C5A880" opacity="0.6"/>
-                <path d="M8 30 L28 28 L30 30 L28 32 Z" fill="#C5A880" opacity="0.6"/>
-                <path d="M52 30 L32 32 L30 30 L32 28 Z" fill="#C5A880" opacity="0.6"/>
-                <circle cx="30" cy="30" r="4" fill="#C5A880" opacity="0.4"/>
-            </svg>
+        <!-- Floating Golden Particles on Cover -->
+        <canvas id="coverCanvas" style="position:absolute; inset:0; pointer-events:none; z-index:1;"></canvas>
+
+        <div class="cover-card-container">
+            <div class="cover-card-arch">
+                <div class="cover-seal-badge">
+                    <img src="wax-seal.jpg" alt="ختم ملكي" class="cover-seal-img">
+                </div>
+                <div class="cover-bismillah">بِسْمِ اللَّـهِ الرَّحْمَـٰنِ الرَّحِيمِ</div>
+                <div class="guest-name gold-shimmer-calligraphy" id="guestGreeting">أهلاً وسهلاً</div>
+                <div class="cover-event-title">دعوة خاصة لحضور حفل خطوبة</div>
+                <div class="cover-couple-names">محمد &amp; الشيماء</div>
+                <div class="cover-date-hint">الجمعة ١٨ سبتمبر ٢٠٢٦</div>
+                <button class="open-btn luxury-pulse-btn" onclick="openCover()">
+                    <span>افتح الدعوة 💌</span>
+                </button>
+            </div>
         </div>
-        <div class="guest-name" id="guestGreeting">أهلاً وسهلاً</div>
-        <div class="cover-subtitle">لديك دعوة خاصة</div>
-        <button class="open-btn" onclick="openCover()">افتح الدعوة 💌</button>
     </div>
 
     <!-- ═══════════════════════════════════
@@ -1967,6 +2120,7 @@
                 <div class="flap flap-left">
                     <div class="flap-inner">
                         <div class="foil-sweep-ray"></div>
+                        <div class="flap-botanical-art flap-art-left"></div>
                         <div class="vine-deco">
                             <svg viewBox="0 0 180 560" xmlns="http://www.w3.org/2000/svg">
                                 <defs>
@@ -2042,52 +2196,6 @@
                                         <path d="M0,0 Q6,-14 10,-28" stroke="url(#goldFiligreeL)" stroke-width="0.8" fill="none" opacity="0.8"/>
                                     </g>
 
-                                    <!-- LUXURY MULTI-LAYER VELVET ROSE 1 (Bottom) -->
-                                    <g transform="translate(35, 460)">
-                                        <!-- Outer Glow -->
-                                        <circle cx="0" cy="0" r="24" fill="rgba(212,175,55,0.2)" filter="url(#goldShineL)"/>
-                                        <!-- Outer Petals Layer -->
-                                        <path d="M-18,-8 C-10,-22 10,-22 18,-8 C26,4 12,22 -6,22 C-20,18 -26,4 -18,-8 Z" fill="url(#roseGlowL)"/>
-                                        <!-- Intermediate Petals Layer -->
-                                        <path d="M-14,-4 C-6,-16 8,-16 14,-4 C18,6 8,16 -2,16 C-12,14 -16,6 -14,-4 Z" fill="#9E1934"/>
-                                        <!-- Inner Heart Petals -->
-                                        <path d="M-8,-2 C-3,-10 5,-10 10,-2 C12,4 6,10 0,10 C-6,8 -9,4 -8,-2 Z" fill="#660A1C"/>
-                                        <!-- Center Golden Dust & Diamonds -->
-                                        <circle cx="0" cy="0" r="4.5" fill="url(#goldFiligreeL)"/>
-                                        <circle cx="-1.5" cy="-1.5" r="1.8" fill="#FFFCE8"/>
-                                    </g>
-
-                                    <!-- LUXURY MULTI-LAYER VELVET ROSE 2 (Middle Blossom) -->
-                                    <g transform="translate(46, 250)">
-                                        <circle cx="0" cy="0" r="28" fill="rgba(212,175,55,0.25)" filter="url(#goldShineL)"/>
-                                        <!-- Outer Petals Layer -->
-                                        <path d="M-22,-10 C-12,-28 12,-28 22,-10 C32,6 16,28 -6,28 C-24,22 -32,6 -22,-10 Z" fill="url(#roseGlowL)"/>
-                                        <!-- Intermediate Petals Layer -->
-                                        <path d="M-16,-6 C-8,-18 10,-18 18,-6 C22,6 10,18 -2,18 C-14,16 -18,6 -16,-6 Z" fill="#9E1934"/>
-                                        <!-- Inner Petals -->
-                                        <path d="M-10,-3 C-4,-12 6,-12 12,-3 C14,5 7,12 0,12 C-7,10 -11,5 -10,-3 Z" fill="#660A1C"/>
-                                        <!-- Golden Stamen Center -->
-                                        <circle cx="0" cy="0" r="5" fill="url(#goldFiligreeL)"/>
-                                        <circle cx="-1.8" cy="-1.8" r="2" fill="#FFFCE8"/>
-                                    </g>
-
-                                    <!-- LUXURY MULTI-LAYER VELVET ROSE 3 (Upper Blossom) -->
-                                    <g transform="translate(36, 100)">
-                                        <circle cx="0" cy="0" r="22" fill="rgba(212,175,55,0.2)" filter="url(#goldShineL)"/>
-                                        <path d="M-17,-7 C-9,-20 9,-20 17,-7 C24,4 11,20 -5,20 C-19,16 -24,4 -17,-7 Z" fill="url(#roseGlowL)"/>
-                                        <path d="M-12,-4 C-5,-14 7,-14 13,-4 C16,5 7,14 -1,14 C-10,12 -14,5 -12,-4 Z" fill="#9E1934"/>
-                                        <path d="M-7,-2 C-2,-8 4,-8 8,-2 C10,3 5,8 0,8 C-5,7 -8,3 -7,-2 Z" fill="#660A1C"/>
-                                        <circle cx="0" cy="0" r="4" fill="url(#goldFiligreeL)"/>
-                                        <circle cx="-1" cy="-1" r="1.5" fill="#FFFCE8"/>
-                                    </g>
-
-                                    <!-- Rosebuds & Golden Berries -->
-                                    <circle cx="30" cy="380" r="8" fill="url(#roseGlowL)"/>
-                                    <circle cx="48" cy="180" r="7" fill="url(#roseGlowL)"/>
-                                    <circle cx="26" cy="40" r="7.5" fill="url(#roseGlowL)"/>
-                                    <circle cx="34" cy="376" r="3" fill="url(#goldFiligreeL)"/>
-                                    <circle cx="51" cy="177" r="2.5" fill="url(#goldFiligreeL)"/>
-
                                     <!-- Twinkling Diamond Star Glints (Animated Jewels) -->
                                     <g class="twinkle-star" transform="translate(68, 250)">
                                         <polygon points="0,-7 2,-2 7,0 2,2 0,7 -2,2 -7,0 -2,-2" fill="#FFFBE6"/>
@@ -2115,6 +2223,7 @@
                 <div class="flap flap-right">
                     <div class="flap-inner">
                         <div class="foil-sweep-ray"></div>
+                        <div class="flap-botanical-art flap-art-right"></div>
                         <div class="vine-deco">
                             <svg viewBox="0 0 180 560" xmlns="http://www.w3.org/2000/svg">
                                 <defs>
@@ -2189,43 +2298,6 @@
                                         <path d="M0,0 Q-6,-14 -10,-28" stroke="url(#goldFiligreeR)" stroke-width="0.8" fill="none" opacity="0.8"/>
                                     </g>
 
-                                    <!-- LUXURY MULTI-LAYER VELVET ROSE 1 (Bottom Right) -->
-                                    <g transform="translate(145, 460)">
-                                        <circle cx="0" cy="0" r="24" fill="rgba(212,175,55,0.2)" filter="url(#goldShineR)"/>
-                                        <path d="M18,-8 C10,-22 -10,-22 -18,-8 C-26,4 -12,22 6,22 C20,18 26,4 18,-8 Z" fill="url(#roseGlowR)"/>
-                                        <path d="M14,-4 C6,-16 -8,-16 -14,-4 C-18,6 -8,16 2,16 C12,14 16,6 14,-4 Z" fill="#9E1934"/>
-                                        <path d="M8,-2 C3,-10 -5,-10 -10,-2 C-12,4 -6,10 0,10 C6,8 9,4 8,-2 Z" fill="#660A1C"/>
-                                        <circle cx="0" cy="0" r="4.5" fill="url(#goldFiligreeR)"/>
-                                        <circle cx="1.5" cy="-1.5" r="1.8" fill="#FFFCE8"/>
-                                    </g>
-
-                                    <!-- LUXURY MULTI-LAYER VELVET ROSE 2 (Middle Right Blossom) -->
-                                    <g transform="translate(134, 250)">
-                                        <circle cx="0" cy="0" r="28" fill="rgba(212,175,55,0.25)" filter="url(#goldShineR)"/>
-                                        <path d="M22,-10 C12,-28 -12,-28 -22,-10 C-32,6 -16,28 6,28 C24,22 32,6 22,-10 Z" fill="url(#roseGlowR)"/>
-                                        <path d="M16,-6 C8,-18 -10,-18 -18,-6 C-22,6 -10,18 2,18 C14,16 18,6 16,-6 Z" fill="#9E1934"/>
-                                        <path d="M10,-3 C4,-12 -6,-12 -12,-3 C-14,5 -7,12 0,12 C7,10 11,5 10,-3 Z" fill="#660A1C"/>
-                                        <circle cx="0" cy="0" r="5" fill="url(#goldFiligreeR)"/>
-                                        <circle cx="1.8" cy="-1.8" r="2" fill="#FFFCE8"/>
-                                    </g>
-
-                                    <!-- LUXURY MULTI-LAYER VELVET ROSE 3 (Upper Right Blossom) -->
-                                    <g transform="translate(144, 100)">
-                                        <circle cx="0" cy="0" r="22" fill="rgba(212,175,55,0.2)" filter="url(#goldShineR)"/>
-                                        <path d="M17,-7 C9,-20 -9,-20 -17,-7 C-24,4 -11,20 5,20 C19,16 24,4 17,-7 Z" fill="url(#roseGlowR)"/>
-                                        <path d="M12,-4 C5,-14 -7,-14 -13,-4 C-16,5 -7,14 1,14 C10,12 14,5 12,-4 Z" fill="#9E1934"/>
-                                        <path d="M7,-2 C2,-8 -4,-8 -8,-2 C-10,3 -5,8 0,8 C5,7 8,3 7,-2 Z" fill="#660A1C"/>
-                                        <circle cx="0" cy="0" r="4" fill="url(#goldFiligreeR)"/>
-                                        <circle cx="1" cy="-1" r="1.5" fill="#FFFCE8"/>
-                                    </g>
-
-                                    <!-- Rosebuds & Golden Berries -->
-                                    <circle cx="150" cy="380" r="8" fill="url(#roseGlowR)"/>
-                                    <circle cx="132" cy="180" r="7" fill="url(#roseGlowR)"/>
-                                    <circle cx="154" cy="40" r="7.5" fill="url(#roseGlowR)"/>
-                                    <circle cx="146" cy="376" r="3" fill="url(#goldFiligreeR)"/>
-                                    <circle cx="129" cy="177" r="2.5" fill="url(#goldFiligreeR)"/>
-
                                     <!-- Twinkling Diamond Star Glints -->
                                     <g class="twinkle-star" transform="translate(112, 250)">
                                         <polygon points="0,-7 2,-2 7,0 2,2 0,7 -2,2 -7,0 -2,-2" fill="#FFFBE6"/>
@@ -2265,46 +2337,8 @@
                     <div class="seal-ripple delay"></div>
 
                     <div class="seal-circle">
-                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <radialGradient id="waxBase" cx="35%" cy="30%" r="65%">
-                                    <stop offset="0%" stop-color="#C73F5A"/>
-                                    <stop offset="35%" stop-color="#7A182D"/>
-                                    <stop offset="75%" stop-color="#4A0C19"/>
-                                    <stop offset="100%" stop-color="#26040C"/>
-                                </radialGradient>
-                                <radialGradient id="waxRim" cx="30%" cy="25%" r="70%">
-                                    <stop offset="0%" stop-color="#D94B67"/>
-                                    <stop offset="40%" stop-color="#7A182D"/>
-                                    <stop offset="100%" stop-color="#380813"/>
-                                </radialGradient>
-                                <linearGradient id="sealGold" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#FFFDF5"/>
-                                    <stop offset="35%" stop-color="#F2D57E"/>
-                                    <stop offset="70%" stop-color="#D4AF37"/>
-                                    <stop offset="100%" stop-color="#805C12"/>
-                                </linearGradient>
-                            </defs>
-
-                            <!-- Organic Melted Wax Outer Rim -->
-                            <path d="M50,4 C64,3 75,7 83,15 C92,23 97,35 96,48 C97,62 90,75 81,84 C72,93 59,97 47,95 C33,96 21,90 13,81 C4,71 2,58 4,45 C3,32 10,20 19,12 C28,5 39,4 50,4 Z" 
-                                  fill="url(#waxBase)" stroke="#1F030A" stroke-width="0.8"/>
-                            
-                            <path d="M52,8 C65,7 75,12 81,18 C88,26 91,36 91,48 C92,59 86,71 78,79 C70,87 58,90 48,89 C37,90 27,85 20,77 C12,68 10,57 12,46 C11,34 17,24 25,17 C33,10 43,9 52,8 Z" 
-                                  fill="url(#waxRim)" opacity="0.95"/>
-
-                            <!-- Recessed Inner Pool -->
-                            <circle cx="50" cy="50" r="32" fill="#420815" stroke="#1F030A" stroke-width="1.2"/>
-                            <!-- Inner embossed gold lace ring -->
-                            <circle cx="50" cy="50" r="29" fill="none" stroke="url(#sealGold)" stroke-width="1" opacity="0.85" stroke-dasharray="3,1.8"/>
-
-                            <!-- Embossed 3D Golden Heart with Heartbeat Motion -->
-                            <path class="seal-heart-motion" d="M50,65 C50,65 33,52 33,40 C33,33 38,28 44,28 C48,28 50,31 50,31 C50,31 52,28 56,28 C62,28 67,33 67,40 C67,52 50,65 50,65 Z" 
-                                  fill="url(#sealGold)" filter="drop-shadow(0 2px 5px rgba(0,0,0,0.7))"/>
-                            
-                            <!-- Glossy highlight on the wax -->
-                            <ellipse cx="36" cy="24" rx="9" ry="4.5" transform="rotate(-30,36,24)" fill="white" opacity="0.38"/>
-                        </svg>
+                        <img src="wax-seal.jpg" alt="ختم شمع ملكي" class="real-wax-seal-img">
+                        <div class="wax-sheen-overlay"></div>
                     </div>
                     <div class="seal-pill">✨ اضغط لكسر الختم وفتح الدعوة 💍</div>
                 </div>
@@ -2379,12 +2413,12 @@
                     <div class="names-formal">
                         <div class="name-line">
                             <span class="title">البشمهندس /</span>
-                            <span class="full-name">محمد أحمد زيدان</span>
+                            <span class="full-name gold-shimmer-calligraphy">محمد أحمد زيدان</span>
                         </div>
                         <div class="names-and">&</div>
                         <div class="name-line">
                             <span class="title">الأستاذة /</span>
-                            <span class="full-name">الشيماء محمد سلطان</span>
+                            <span class="full-name gold-shimmer-calligraphy">الشيماء محمد سلطان</span>
                         </div>
                     </div>
 
@@ -2878,46 +2912,85 @@
             });
         }
 
+                // 3. Heart Morphing Dynamics
+        let heartCycle = 0;
+        let isHeartMorph = false;
         let isVisible = true;
 
-        function animateStardust() {
+                function animateStardust() {
             if (!isVisible) return;
             ctx.clearRect(0, 0, width, height);
+
+            heartCycle++;
+            // Every ~8 seconds, morph into heart for 3.5 seconds
+            const cycleMod = heartCycle % 500;
+            isHeartMorph = (cycleMod > 280 && cycleMod < 480);
+
+            const centerX = width / 2;
+            const centerY = height / 2;
+            const heartSize = Math.min(width * 0.35, 140);
+            const heartPoints = [];
 
             // Draw Golden Stardust
             for (let i = 0; i < particles.length; i++) {
                 const p = particles[i];
                 p.pulse += p.pulseSpeed;
-                p.alpha = Math.max(0.05, p.baseAlpha + Math.sin(p.pulse) * 0.35);
-                p.x += p.vx + Math.sin(p.pulse * 0.7) * 0.25;
-                p.y += p.vy;
 
-                if (p.y < -10) { p.y = height + 10; p.x = Math.random() * width; }
-                if (p.x < -10) p.x = width + 10;
-                if (p.x > width + 10) p.x = -10;
+                if (isHeartMorph && i < 28) {
+                    // Parametric Heart Equation
+                    const t = (i / 28) * Math.PI * 2;
+                    const hx = 16 * Math.pow(Math.sin(t), 3);
+                    const hy = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
+                    const tx = centerX + (hx / 16) * heartSize;
+                    const ty = centerY + (hy / 16) * heartSize;
+
+                    // Smooth attraction towards heart constellation
+                    p.x += (tx - p.x) * 0.07;
+                    p.y += (ty - p.y) * 0.07;
+                    p.alpha = 0.75 + Math.sin(p.pulse * 2) * 0.25;
+                    heartPoints.push({x: p.x, y: p.y});
+                } else {
+                    p.alpha = Math.max(0.05, p.baseAlpha + Math.sin(p.pulse) * 0.35);
+                    p.x += p.vx + Math.sin(p.pulse * 0.7) * 0.25;
+                    p.y += p.vy;
+
+                    if (p.y < -10) { p.y = height + 10; p.x = Math.random() * width; }
+                    if (p.x < -10) p.x = width + 10;
+                    if (p.x > width + 10) p.x = -10;
+                }
 
                 ctx.beginPath();
-                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.arc(p.x, p.y, p.r * (isHeartMorph && i < 28 ? 1.3 : 1), 0, Math.PI * 2);
                 ctx.fillStyle = `rgba(${p.color}, ${p.alpha})`;
-                if (p.sparkle) {
-                    ctx.shadowBlur = 8;
-                    ctx.shadowColor = `rgba(${p.color}, 0.8)`;
-                } else {
-                    ctx.shadowBlur = 0;
-                }
+                ctx.shadowBlur = p.sparkle || (isHeartMorph && i < 28) ? 8 : 0;
+                ctx.shadowColor = '#FFE890';
                 ctx.fill();
+                ctx.shadowBlur = 0;
 
-                if (p.sparkle && p.alpha > 0.5) {
-                    ctx.strokeStyle = `rgba(255, 255, 255, ${(p.alpha - 0.35) * 0.8})`;
-                    ctx.lineWidth = 0.6;
-                    const ray = p.r * 2.6;
+                // Sparkle cross glint
+                if (p.sparkle || (isHeartMorph && i < 28 && Math.sin(p.pulse) > 0.7)) {
+                    ctx.strokeStyle = `rgba(255, 255, 240, ${p.alpha * 0.8})`;
+                    ctx.lineWidth = 0.7;
                     ctx.beginPath();
-                    ctx.moveTo(p.x - ray, p.y);
-                    ctx.lineTo(p.x + ray, p.y);
-                    ctx.moveTo(p.x, p.y - ray);
-                    ctx.lineTo(p.x, p.y + ray);
+                    ctx.moveTo(p.x - p.r * 2.5, p.y);
+                    ctx.lineTo(p.x + p.r * 2.5, p.y);
+                    ctx.moveTo(p.x, p.y - p.r * 2.5);
+                    ctx.lineTo(p.x, p.y + p.r * 2.5);
                     ctx.stroke();
                 }
+            }
+
+            // Draw glowing golden filaments connecting the heart constellation
+            if (isHeartMorph && heartPoints.length > 2) {
+                ctx.strokeStyle = 'rgba(212, 175, 55, 0.25)';
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(heartPoints[0].x, heartPoints[0].y);
+                for (let k = 1; k < heartPoints.length; k++) {
+                    ctx.lineTo(heartPoints[k].x, heartPoints[k].y);
+                }
+                ctx.closePath();
+                ctx.stroke();
             }
 
             // Draw Tumbling Velvet Rose Petals
@@ -2975,45 +3048,72 @@
 
     /* ══════ COVER ══════ */
     
-    /* ══════ GYROSCOPE & MOUSE 3D PARALLAX ══════ */
+    
+    /* ══════ GYROSCOPE & MOUSE 3D PARALLAX (SILKY LERP) ══════ */
+    let currentTiltX = 0, currentTiltY = 0;
+    let targetTiltX = 0, targetTiltY = 0;
+    let parallaxAnimFrame = null;
+
     function setupParallax() {
         const wrapper = document.querySelector('.envelope-wrapper');
         if (!wrapper) return;
 
+        // Desktop Mouse Tracking
         document.addEventListener('mousemove', (e) => {
             if(envelopeOpened) return;
-            const x = (e.clientX / window.innerWidth - 0.5) * 16;
-            const y = (e.clientY / window.innerHeight - 0.5) * -16;
-            wrapper.style.transform = `perspective(1200px) rotateX(${y}deg) rotateY(${x}deg)`;
+            targetTiltX = (e.clientX / window.innerWidth - 0.5) * 16;
+            targetTiltY = (e.clientY / window.innerHeight - 0.5) * -16;
         });
 
+        // Mobile Gyroscope Tracking
         window.addEventListener('deviceorientation', (e) => {
             if(envelopeOpened || !e.beta || !e.gamma) return;
-            let x = Math.max(-20, Math.min(20, e.gamma)); 
-            let y = Math.max(-20, Math.min(20, e.beta - 45));
-            wrapper.style.transform = `perspective(1200px) rotateX(${-y}deg) rotateY(${x}deg)`;
+            targetTiltX = Math.max(-18, Math.min(18, e.gamma * 0.55));
+            targetTiltY = Math.max(-18, Math.min(18, (e.beta - 45) * -0.55));
         });
+
+        // Smooth Lerp Animation Loop
+        function parallaxLoop() {
+            if (!envelopeOpened) {
+                currentTiltX += (targetTiltX - currentTiltX) * 0.08;
+                currentTiltY += (targetTiltY - currentTiltY) * 0.08;
+                wrapper.style.transform = `perspective(1200px) rotateX(${currentTiltY.toFixed(2)}deg) rotateY(${currentTiltX.toFixed(2)}deg)`;
+                
+                // Dynamic Specular Light Sweep
+                const gx = 50 + currentTiltX * 2.5;
+                const gy = 50 - currentTiltY * 2.5;
+                wrapper.style.setProperty('--glare-x', `${gx}%`);
+                wrapper.style.setProperty('--glare-y', `${gy}%`);
+            }
+            parallaxAnimFrame = requestAnimationFrame(parallaxLoop);
+        }
+        parallaxLoop();
     }
 
-    /* ══════ REALISTIC WAX SHATTER ══════ */
+    /* ══════ REALISTIC WAX SHATTER & HAPTICS ══════ */
     function shatterWaxSeal() {
+        // Haptic feedback on mobile devices
+        if ('vibrate' in navigator) {
+            try { navigator.vibrate([25, 40, 35, 30, 70]); } catch(e) {}
+        }
+
         const seal = document.querySelector('.seal-circle');
         if(!seal) return;
         const rect = seal.getBoundingClientRect();
         const centerX = rect.left + rect.width/2;
         const centerY = rect.top + rect.height/2;
         
-        for(let i=0; i<8; i++) {
+        for(let i=0; i<10; i++) {
             let chunk = document.createElement('div');
             chunk.className = 'wax-chunk';
             document.body.appendChild(chunk);
             chunk.style.left = centerX + 'px';
             chunk.style.top = centerY + 'px';
             
-            let angle = (Math.PI * 2 / 8) * i + (Math.random()*0.5);
-            let dist = 60 + Math.random() * 80;
+            let angle = (Math.PI * 2 / 10) * i + (Math.random()*0.4);
+            let dist = 70 + Math.random() * 90;
             let tx = Math.cos(angle) * dist;
-            let ty = Math.sin(angle) * dist - 40;
+            let ty = Math.sin(angle) * dist - 35;
             let rot = (Math.random() - 0.5) * 720;
             
             requestAnimationFrame(() => {
@@ -3024,7 +3124,59 @@
         }
     }
 
-    function openCover() {
+    // Cover Golden Particles Engine
+    function initCoverParticles() {
+        const c = document.getElementById('coverCanvas');
+        if (!c) return;
+        const ctx = c.getContext('2d');
+        let w = c.width = window.innerWidth;
+        let h = c.height = window.innerHeight;
+        
+        window.addEventListener('resize', () => {
+            w = c.width = window.innerWidth;
+            h = c.height = window.innerHeight;
+        });
+
+        const particles = Array.from({length: 35}, () => ({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            r: Math.random() * 1.8 + 0.6,
+            alpha: Math.random() * 0.7 + 0.3,
+            vy: -Math.random() * 0.5 - 0.2,
+            vx: (Math.random() - 0.5) * 0.3
+        }));
+
+        function drawCoverParticles() {
+            if (document.getElementById('cover').classList.contains('hidden')) return;
+            ctx.clearRect(0, 0, w, h);
+            particles.forEach(p => {
+                p.y += p.vy;
+                p.x += p.vx;
+                if (p.y < -10) p.y = h + 10;
+                if (p.x < 0) p.x = w;
+                if (p.x > w) p.x = 0;
+
+                ctx.fillStyle = `rgba(242, 213, 126, ${p.alpha})`;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fill();
+            });
+            requestAnimationFrame(drawCoverParticles);
+        }
+        drawCoverParticles();
+    }
+    document.addEventListener('DOMContentLoaded', initCoverParticles);
+    if (document.readyState !== 'loading') initCoverParticles();
+
+
+        function openCover() {
+        if ('vibrate' in navigator) { try { navigator.vibrate(15); } catch(e){} }
+        
+        // Request iOS Gyroscope Permission if needed
+        if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
+            DeviceOrientationEvent.requestPermission().catch(() => {});
+        }
+
         document.getElementById('cover').classList.add('hidden');
         document.getElementById('envelope-scene').classList.add('visible');
         if (typeof initEnvelopeStardust === 'function') initEnvelopeStardust();
