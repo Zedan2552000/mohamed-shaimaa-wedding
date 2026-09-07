@@ -1011,12 +1011,12 @@
            ═══════════════════════════════════════ */
         .song-search-input-wrap {
             position: relative;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
         .song-search-input-wrap input {
             width: 100%;
-            padding: 12px 40px 12px 14px;
-            border: 1.5px solid rgba(112,27,46,0.15);
+            padding: 11px 36px 11px 14px;
+            border: 1.5px solid rgba(112,27,46,0.18);
             border-radius: 12px;
             font-family: 'Cairo', sans-serif;
             font-size: 14px;
@@ -1036,46 +1036,94 @@
             font-size: 16px;
             pointer-events: none;
         }
-        .song-search-spinner {
-            display: none;
+        .song-search-clear {
             position: absolute;
             right: 12px;
             top: 50%;
             transform: translateY(-50%);
-            width: 18px; height: 18px;
-            border: 2px solid rgba(112,27,46,0.2);
-            border-top-color: var(--burgundy);
-            border-radius: 50%;
-            animation: spin 0.6s linear infinite;
+            font-size: 14px;
+            color: #999;
+            cursor: pointer;
+            display: none;
         }
-        @keyframes spin { to { transform: translateY(-50%) rotate(360deg); } }
-        .song-search-spinner.active { display: block; }
+        .song-search-clear.visible { display: block; }
+
+        /* Category Filter Pills */
+        .song-category-pills {
+            display: flex;
+            gap: 6px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            margin-bottom: 10px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .song-category-pills::-webkit-scrollbar { display: none; }
+        .cat-pill {
+            flex-shrink: 0;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 12px;
+            background: rgba(112,27,46,0.06);
+            border: 1px solid rgba(112,27,46,0.18);
+            color: var(--burgundy);
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .cat-pill:hover {
+            background: rgba(112,27,46,0.12);
+        }
+        .cat-pill.active {
+            background: var(--burgundy);
+            color: #fff;
+            font-weight: 700;
+            border-color: var(--burgundy);
+            box-shadow: 0 2px 8px rgba(112,27,46,0.25);
+        }
+
+        .song-count-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            text-align: right;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
         .song-results {
-            max-height: 280px;
+            max-height: 250px;
             overflow-y: auto;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
+            border: 1px solid rgba(112,27,46,0.1);
+            border-radius: 12px;
+            padding: 4px;
         }
         .song-result-item {
             display: flex;
             align-items: center;
             gap: 10px;
             padding: 8px 10px;
-            border-radius: 12px;
+            border-radius: 10px;
             cursor: pointer;
-            transition: background 0.2s, transform 0.15s;
+            transition: background 0.15s, transform 0.1s;
             text-align: right;
+            border-bottom: 1px solid rgba(0,0,0,0.03);
         }
+        .song-result-item:last-child { border-bottom: none; }
         .song-result-item:hover { background: rgba(112,27,46,0.06); }
-        .song-result-item:active { transform: scale(0.98); }
-        .song-result-item.selected {
-            background: rgba(112,27,46,0.12);
-            border: 1.5px solid var(--burgundy);
-        }
-        .song-result-item img {
-            width: 50px; height: 50px;
+        .song-result-item:active { transform: scale(0.99); }
+        .song-badge-emoji {
+            width: 38px;
+            height: 38px;
             border-radius: 8px;
-            object-fit: cover;
+            background: rgba(112,27,46,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
             flex-shrink: 0;
         }
         .song-result-info {
@@ -1083,7 +1131,7 @@
             min-width: 0;
         }
         .song-result-info .song-title {
-            font-weight: 600;
+            font-weight: 700;
             font-size: 13px;
             color: var(--text-dark);
             white-space: nowrap;
@@ -1091,49 +1139,52 @@
             text-overflow: ellipsis;
         }
         .song-result-info .song-artist {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--text-muted);
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
-        .song-preview-btn {
-            width: 32px; height: 32px;
-            border-radius: 50%;
-            border: none;
+        .song-choose-btn {
+            padding: 4px 10px;
+            border-radius: 8px;
+            border: 1px solid var(--burgundy);
+            background: transparent;
+            color: var(--burgundy);
+            font-size: 12px;
+            font-weight: 600;
+            flex-shrink: 0;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .song-result-item:hover .song-choose-btn {
             background: var(--burgundy);
             color: #fff;
-            font-size: 14px;
-            cursor: pointer;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.2s;
         }
-        .song-preview-btn:hover { transform: scale(1.1); }
+
         .song-empty-state {
             padding: 20px 10px;
             text-align: center;
             color: var(--text-muted);
             font-size: 13px;
         }
+
+        /* Selected Song Card */
         .song-selected-card {
             display: none;
             align-items: center;
             gap: 10px;
-            padding: 10px 12px;
+            padding: 10px 14px;
             border-radius: 12px;
             background: rgba(112,27,46,0.08);
             border: 1.5px solid var(--burgundy);
             margin-bottom: 12px;
             text-align: right;
+            animation: fadeIn 0.3s ease;
         }
         .song-selected-card.visible { display: flex; }
-        .song-selected-card img {
-            width: 50px; height: 50px;
-            border-radius: 8px;
-            object-fit: cover;
+        .song-selected-card .selected-badge {
+            font-size: 22px;
             flex-shrink: 0;
         }
         .song-selected-card .song-result-info { flex: 1; }
@@ -1144,7 +1195,32 @@
             cursor: pointer;
             color: var(--burgundy);
             flex-shrink: 0;
+            padding: 4px;
         }
+
+        /* Custom Song Toggle & Box */
+        .custom-song-toggle {
+            text-align: center;
+            font-size: 12px;
+            color: var(--burgundy);
+            cursor: pointer;
+            padding: 8px 4px;
+            margin-bottom: 8px;
+            text-decoration: underline;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+        .custom-song-toggle:hover { opacity: 0.8; }
+        .custom-song-box {
+            display: none;
+            background: rgba(112,27,46,0.04);
+            border: 1.5px dashed rgba(112,27,46,0.25);
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 12px;
+            text-align: right;
+        }
+        .custom-song-box.visible { display: block; }
 
         /* Dark mode overrides for song request */
         body.dark-mode .song-search-input-wrap input {
@@ -1152,12 +1228,41 @@
             color: #fff !important;
             border-color: rgba(212,175,55,0.4) !important;
         }
+        body.dark-mode .cat-pill {
+            background: rgba(212,175,55,0.1);
+            border-color: rgba(212,175,55,0.3);
+            color: #FAF0D7;
+        }
+        body.dark-mode .cat-pill.active {
+            background: var(--gold);
+            color: #1C0B12;
+            border-color: var(--gold);
+        }
+        body.dark-mode .song-results {
+            border-color: rgba(212,175,55,0.2);
+        }
         body.dark-mode .song-result-item:hover { background: rgba(212,175,55,0.1); }
-        body.dark-mode .song-result-item.selected { background: rgba(212,175,55,0.15); border-color: var(--gold); }
+        body.dark-mode .song-badge-emoji { background: rgba(212,175,55,0.12); }
         body.dark-mode .song-result-info .song-title { color: #FAF0D7; }
         body.dark-mode .song-result-info .song-artist { color: #D9C8B5; }
-        body.dark-mode .song-selected-card { background: rgba(212,175,55,0.1); border-color: var(--gold); }
-        body.dark-mode .song-empty-state { color: #D9C8B5; }
+        body.dark-mode .song-choose-btn {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+        body.dark-mode .song-result-item:hover .song-choose-btn {
+            background: var(--gold);
+            color: #1C0B12;
+        }
+        body.dark-mode .song-selected-card {
+            background: rgba(212,175,55,0.12);
+            border-color: var(--gold);
+        }
+        body.dark-mode .song-selected-card .remove-song { color: var(--gold); }
+        body.dark-mode .custom-song-toggle { color: var(--gold); }
+        body.dark-mode .custom-song-box {
+            background: rgba(212,175,55,0.05);
+            border-color: rgba(212,175,55,0.3);
+        }
 
         /* ═══════════════════════════════════════
            WISHES / GUESTBOOK OVERLAY
@@ -1169,7 +1274,7 @@
             background: rgba(0,0,0,0.6);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            z-index: 100;
+            z-index: 2000;
             justify-content: center;
             align-items: center;
             padding: 20px;
@@ -2133,30 +2238,66 @@
             <!-- FORM -->
             <div id="songRequestForm">
                 <h3>🎶 اطلب أغنية للحفلة</h3>
-                <div class="sub">ابحث عن أغنية تحبها تتشغل في الحفلة — والعروسين هيسمعوها 🤍</div>
+                <div class="sub">اختر أو ابحث عن الأغنية اللي تحبها — والعروسين هيسمعوها 🤍</div>
 
-                <!-- Search Input -->
-                <div class="song-search-input-wrap">
-                    <span class="search-icon">🔍</span>
-                    <input type="text" id="songSearchInput" placeholder="اكتب اسم الأغنية أو المطرب..." autocomplete="off" oninput="debounceSongSearch()">
-                    <div class="song-search-spinner" id="songSearchSpinner"></div>
-                </div>
-
-                <!-- Search Results -->
-                <div class="song-results" id="songResults">
-                    <div class="song-empty-state" id="songEmptyState">
-                        🎵 ابحث عن أي أغنية عربي أو أجنبي وهتظهر هنا
-                    </div>
-                </div>
-
-                <!-- Selected Song Card -->
+                <!-- Selected Song Card (appears when chosen) -->
                 <div class="song-selected-card" id="songSelectedCard">
-                    <img id="selectedSongArt" src="" alt="">
+                    <div class="selected-badge" id="selectedSongBadge">🎵</div>
                     <div class="song-result-info">
                         <div class="song-title" id="selectedSongTitle"></div>
                         <div class="song-artist" id="selectedSongArtist"></div>
                     </div>
-                    <button class="remove-song" onclick="clearSelectedSong()" title="إزالة">✕</button>
+                    <button class="remove-song" onclick="clearSelectedSong()" title="تغيير الأغنية">✕</button>
+                </div>
+
+                <!-- Song Picker Container (visible when no song is selected yet) -->
+                <div id="songPickerSection">
+                    <!-- Search Input -->
+                    <div class="song-search-input-wrap">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="songSearchInput" placeholder="اكتب اسم الأغنية أو المطرب..." autocomplete="off" oninput="onSongSearchInput(this.value)">
+                        <span class="song-search-clear" id="songSearchClear" onclick="clearSongSearch()">✕</span>
+                    </div>
+
+                    <!-- Category Filter Pills -->
+                    <div class="song-category-pills">
+                        <button type="button" class="cat-pill active" onclick="filterSongCategory('all', this)">✨ الكل</button>
+                        <button type="button" class="cat-pill" onclick="filterSongCategory('dance', this)">💃 رقص وفرفشة</button>
+                        <button type="button" class="cat-pill" onclick="filterSongCategory('slow', this)">🤍 سلو ورومانسي</button>
+                        <button type="button" class="cat-pill" onclick="filterSongCategory('shaabi', this)">🔥 مهرجانات وتريند</button>
+                        <button type="button" class="cat-pill" onclick="filterSongCategory('classic', this)">👑 كلاسيك وطرب</button>
+                    </div>
+
+                    <!-- Results Count Label -->
+                    <div class="song-count-label">
+                        <span id="songCountText">أشهر أغاني الأفراح:</span>
+                        <span style="font-size:10px; color:var(--burgundy); font-weight:600;">اضغط على أي أغنية لاختيارها 👆</span>
+                    </div>
+
+                    <!-- Search / Catalog Results -->
+                    <div class="song-results" id="songResults">
+                        <!-- Populated by JS -->
+                    </div>
+
+                    <!-- Toggle Custom Song Entry -->
+                    <div class="custom-song-toggle" id="customSongToggleBtn" onclick="toggleCustomSongBox()">
+                        ✍️ مش لاقي أغنيتك في القائمة؟ اضغط هنا لكتابتها بنفسك
+                    </div>
+
+                    <!-- Custom Song Box -->
+                    <div class="custom-song-box" id="customSongBox">
+                        <div class="form-group" style="margin-bottom:8px;">
+                            <label style="font-size:12px;">اسم الأغنية المطلوبة</label>
+                            <input type="text" id="customSongTitle" placeholder="مثال: يا حبيبنا / أغنية معينة">
+                        </div>
+                        <div class="form-group" style="margin-bottom:8px;">
+                            <label style="font-size:12px;">اسم المطرب أو الفنان</label>
+                            <input type="text" id="customSongArtist" placeholder="مثال: حكيم / تامر حسني">
+                        </div>
+                        <button type="button" class="btn btn-secondary" style="width:100%; font-size:12px; padding:6px;" onclick="selectCustomSong()">
+                            ✅ اعتماد هذه الأغنية
+                        </button>
+                    </div>
                 </div>
 
                 <!-- Guest Name -->
@@ -2167,7 +2308,7 @@
 
                 <!-- Optional Message -->
                 <div class="form-group">
-                    <label>رسالة (اختياري)</label>
+                    <label>رسالة أو إهداء (اختياري)</label>
                     <input type="text" id="songMessage" placeholder="مثلاً: شغّلوها لما العروسين يدخلوا 🤍">
                 </div>
 
@@ -2181,7 +2322,7 @@
                 <div class="check">🎶</div>
                 <p>
                     <strong>تم إرسال طلب الأغنية بنجاح!</strong><br>
-                    شكراً ليك — العروسين هيسمعوها إن شاء الله 🤍🎵
+                    شكراً لذوقك واختيارك — العروسين هيسمعوها إن شاء الله 🤍🎵
                 </p>
                 <br>
                 <button class="btn btn-primary" style="width:100%;" onclick="resetSongRequestForm()">اطلب أغنية تانية 🎶</button>
@@ -2508,130 +2649,278 @@
         }
     }
 
-    /* ══════ SONG REQUEST SYSTEM (Google Apps Script Proxy Search) 🎶 ══════ */
-    let songSearchTimer = null;
+    /* ══════ SONG REQUEST SYSTEM (Instant Catalog + Real-time Search) 🎶 ══════ */
+    const WEDDING_SONGS_CATALOG = [
+        // 💃 رقص وفرفشة وشعبي
+        { t: 'يا حبيبنا', a: 'حكيم & حودة بندق', c: 'dance', b: '💃' },
+        { t: 'إيه اليوم الحلو ده', a: 'أحمد سعد', c: 'dance', b: '💃' },
+        { t: 'وسع وسع', a: 'أحمد سعد', c: 'dance', b: '💃' },
+        { t: 'حلاوة روح', a: 'حكيم', c: 'dance', b: '💃' },
+        { t: 'الليلة عيد', a: 'حكيم', c: 'dance', b: '💃' },
+        { t: 'افرحوا يا عرايس', a: 'حكيم', c: 'dance', b: '💃' },
+        { t: 'عيش بشوقك', a: 'تامر حسني', c: 'dance', b: '💃' },
+        { t: 'حلو المكان', a: 'تامر حسني', c: 'dance', b: '💃' },
+        { t: 'اختراع', a: 'تامر حسني & محمود العسيلي', c: 'dance', b: '💃' },
+        { t: 'هرمون السعادة', a: 'تامر حسني', c: 'dance', b: '💃' },
+        { t: 'كل سنة وانت طيب', a: 'تامر حسني', c: 'dance', b: '💃' },
+        { t: 'هدلعني', a: 'تامر حسني', c: 'dance', b: '💃' },
+        { t: 'يا أنا يا لأ', a: 'عمرو دياب', c: 'dance', b: '💃' },
+        { t: 'الليلة', a: 'عمرو دياب', c: 'dance', b: '💃' },
+        { t: 'يتعلموا', a: 'عمرو دياب', c: 'dance', b: '💃' },
+        { t: 'ده لو اتساب', a: 'عمرو دياب', c: 'dance', b: '💃' },
+        { t: 'أماكن السهر', a: 'عمرو دياب', c: 'dance', b: '💃' },
+        { t: 'مبروك علينا', a: 'رامي صبري', c: 'dance', b: '💃' },
+        { t: 'خطيرة', a: 'رامي صبري', c: 'dance', b: '💃' },
+        { t: 'حياتي مش تمام', a: 'رامي صبري', c: 'dance', b: '💃' },
+        { t: 'تعالى أدلعك', a: 'بهاء سلطان', c: 'dance', b: '💃' },
+        { t: 'قوم أقف', a: 'بهاء سلطان & تامر حسني', c: 'dance', b: '💃' },
+        { t: 'زهرة (فيها حاجة حلوة)', a: 'محمود العسيلي', c: 'dance', b: '💃' },
+        { t: 'دوم دوم', a: 'محمود العسيلي', c: 'dance', b: '💃' },
+        { t: 'في حتة تانية', a: 'محمود العسيلي', c: 'dance', b: '💃' },
+        { t: 'بونبوناية', a: 'محمود الليثي', c: 'dance', b: '💃' },
+        { t: 'عم يا صياد', a: 'محمود الليثي', c: 'dance', b: '💃' },
+        { t: 'زلزال', a: 'محمود الليثي', c: 'dance', b: '💃' },
+        { t: 'سوق الصحاب', a: 'رضا البحراوي', c: 'dance', b: '💃' },
+        { t: 'سيبوني في حالي', a: 'رضا البحراوي', c: 'dance', b: '💃' },
+        { t: 'الغزالة رايقة', a: 'كريم محمود عبد العزيز', c: 'dance', b: '💃' },
+        { t: 'لون عيونك', a: 'نانسي عجرم', c: 'dance', b: '💃' },
+        { t: 'آه ونص', a: 'نانسي عجرم', c: 'dance', b: '💃' },
+        { t: 'يا طبطب', a: 'نانسي عجرم', c: 'dance', b: '💃' },
+        { t: 'ماتيجي هنا', a: 'نانسي عجرم', c: 'dance', b: '💃' },
+        { t: 'حبك سفاح', a: 'نانسي عجرم', c: 'dance', b: '💃' },
+        { t: 'أحلى حاجة فيكي', a: 'محمد حماقي', c: 'dance', b: '💃' },
+        { t: 'يا ستار', a: 'محمد حماقي', c: 'dance', b: '💃' },
+        { t: 'جمالها استثنائي', a: 'محمد حماقي', c: 'dance', b: '💃' },
+        { t: 'أم الدنيا', a: 'محمد حماقي', c: 'dance', b: '💃' },
+        { t: 'أديني بدوب', a: 'محمد حماقي', c: 'dance', b: '💃' },
+
+        // 🤍 سلو ورومانسيات العروسين
+        { t: 'طلي بالأبيض', a: 'ماجدة الرومي', c: 'slow', b: '🤍' },
+        { t: 'ع بالي حبيبي', a: 'إليسا', c: 'slow', b: '🤍' },
+        { t: 'كلي ملكك', a: 'شيرين عبد الوهاب', c: 'slow', b: '🤍' },
+        { t: 'من أول دقيقة', a: 'إليسا & سعد لمجرد', c: 'slow', b: '🤍' },
+        { t: 'يا نور عيني', a: 'تامر حسني', c: 'slow', b: '🤍' },
+        { t: 'حلم بعيد', a: 'محمود العسيلي', c: 'slow', b: '🤍' },
+        { t: 'فرحة', a: 'محمود العسيلي', c: 'slow', b: '🤍' },
+        { t: 'معاك قلبي', a: 'عمرو دياب', c: 'slow', b: '🤍' },
+        { t: 'على بالي', a: 'شيرين عبد الوهاب', c: 'slow', b: '🤍' },
+        { t: 'مشاعر', a: 'شيرين عبد الوهاب', c: 'slow', b: '🤍' },
+        { t: 'حبه جنة', a: 'شيرين عبد الوهاب', c: 'slow', b: '🤍' },
+        { t: 'أسعد واحدة', a: 'إليسا', c: 'slow', b: '🤍' },
+        { t: 'ما بلاش', a: 'محمد حماقي', c: 'slow', b: '🤍' },
+        { t: 'أنت السعادة', a: 'عمرو دياب', c: 'slow', b: '🤍' },
+        { t: 'مبروك', a: 'رامي عياش', c: 'slow', b: '🤍' },
+        { t: 'بعترفلك', a: 'عمرو دياب', c: 'slow', b: '🤍' },
+        { t: 'قصاد عيني', a: 'عمرو دياب', c: 'slow', b: '🤍' },
+        { t: 'الله على حبك إنت', a: 'إيهاب توفيق', c: 'slow', b: '🤍' },
+        { t: 'حبيبي يا', a: 'محمد فؤاد', c: 'slow', b: '🤍' },
+        { t: 'هنساك', a: 'محمد فؤاد', c: 'slow', b: '🤍' },
+
+        // 🔥 مهرجانات وتريند
+        { t: 'بنت الجيران', a: 'حسن شاكوش & عمر كمال', c: 'shaabi', b: '🔥' },
+        { t: 'عود البطل', a: 'حسن شاكوش & عمر كمال', c: 'shaabi', b: '🔥' },
+        { t: 'سطلانة', a: 'عبد الباسط حمودة & حمدي بتشان', c: 'shaabi', b: '🔥' },
+        { t: 'مخصماك', a: 'نوال عبد الشافي', c: 'shaabi', b: '🔥' },
+        { t: 'خطر (ياللي سيرتي تعباك)', a: 'حودة بندق & مسلم', c: 'shaabi', b: '🔥' },
+        { t: 'مسا التماسي', a: 'حودة بندق', c: 'shaabi', b: '🔥' },
+        { t: 'براحة يا شيخة', a: 'بهاء سلطان', c: 'shaabi', b: '🔥' },
+        { t: 'اختياراتي', a: 'أحمد سعد', c: 'shaabi', b: '🔥' },
+        { t: 'لغبطيطا', a: 'حسن شاكوش & عمر كمال', c: 'shaabi', b: '🔥' },
+        { t: 'أنتي معلمة', a: 'عمر كمال & حسن شاكوش', c: 'shaabi', b: '🔥' },
+        { t: 'سالكة', a: 'حسن شاكوش & ويجز', c: 'shaabi', b: '🔥' },
+        { t: 'البخت', a: 'ويجز', c: 'shaabi', b: '🔥' },
+        { t: 'أميرات ديزني', a: 'ويجز', c: 'shaabi', b: '🔥' },
+        { t: 'يا أصفر', a: 'مسلم & عبد الباسط حمودة', c: 'shaabi', b: '🔥' },
+        { t: 'كله طار في المطار', a: 'حودة بندق & محمد شاهين', c: 'shaabi', b: '🔥' },
+
+        // 👑 كلاسيكيات وطرب وزفة
+        { t: 'قمرين', a: 'عمرو دياب', c: 'classic', b: '👑' },
+        { t: 'حبيبي يا نور العين', a: 'عمرو دياب', c: 'classic', b: '👑' },
+        { t: 'شوقنا', a: 'عمرو دياب', c: 'classic', b: '👑' },
+        { t: 'ميال', a: 'عمرو دياب', c: 'classic', b: '👑' },
+        { t: 'كامننا', a: 'محمد فؤاد', c: 'classic', b: '👑' },
+        { t: 'السود عيونه', a: 'مصطفى قمر', c: 'classic', b: '👑' },
+        { t: 'منايا', a: 'مصطفى قمر', c: 'classic', b: '👑' },
+        { t: 'سحراني', a: 'إيهاب توفيق', c: 'classic', b: '👑' },
+        { t: 'داني', a: 'إيهاب توفيق', c: 'classic', b: '👑' },
+        { t: 'الله عليك يا سيدي', a: 'إيهاب توفيق', c: 'classic', b: '👑' },
+        { t: 'الليلة يا سمرة', a: 'محمد منير', c: 'classic', b: '👑' },
+        { t: 'سو يا سو', a: 'محمد منير', c: 'classic', b: '👑' },
+        { t: 'دقوا المزاهر', a: 'فريد الأطرش (زفة)', c: 'classic', b: '👑' },
+        { t: 'زغرودة حلوة رنت في بيتنا', a: 'أغاني أفراح مصرية', c: 'classic', b: '👑' },
+        { t: 'سواح', a: 'عبد الحليم حافظ', c: 'classic', b: '👑' },
+        { t: 'جانا الهوى', a: 'عبد الحليم حافظ', c: 'classic', b: '👑' },
+        { t: 'أهواك', a: 'عبد الحليم حافظ', c: 'classic', b: '👑' },
+        { t: 'سهر الليالي', a: 'فيروز', c: 'classic', b: '👑' }
+    ];
+
+    let currentSongCategory = 'all';
     let selectedSong = null;
-    let songPreviewAudio = null;
+
+    function normArabic(s) {
+        return (s || '').toLowerCase()
+            .replace(/[أإآ]/g, 'ا')
+            .replace(/ة/g, 'ه')
+            .replace(/ى/g, 'ي')
+            .replace(/[\u064B-\u065F]/g, '')
+            .trim();
+    }
 
     function showSongRequest(e) {
         if (e) e.stopPropagation();
         document.getElementById('songRequestOverlay').classList.add('visible');
+        initSongCatalog();
     }
 
     function hideSongRequest() {
         document.getElementById('songRequestOverlay').classList.remove('visible');
-        stopSongPreview();
     }
 
-    function debounceSongSearch() {
-        clearTimeout(songSearchTimer);
-        const query = document.getElementById('songSearchInput').value.trim();
-        if (query.length < 2) {
-            document.getElementById('songResults').innerHTML = '<div class="song-empty-state" id="songEmptyState">🎵 ابحث عن أي أغنية عربي أو أجنبي وهتظهر هنا</div>';
+    function initSongCatalog() {
+        if (!selectedSong) {
+            filterSongCategory(currentSongCategory);
+        }
+    }
+
+    function filterSongCategory(cat, btn) {
+        currentSongCategory = cat;
+        if (btn) {
+            document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
+            btn.classList.add('active');
+        }
+        document.getElementById('songSearchInput').value = '';
+        document.getElementById('songSearchClear').classList.remove('visible');
+        
+        let list = WEDDING_SONGS_CATALOG;
+        if (cat !== 'all') {
+            list = WEDDING_SONGS_CATALOG.filter(s => s.c === cat);
+        }
+        document.getElementById('songCountText').textContent = `الأغاني المتاحة (${list.length}):`;
+        renderSongCatalog(list);
+    }
+
+    function onSongSearchInput(val) {
+        const clearBtn = document.getElementById('songSearchClear');
+        const q = normArabic(val);
+        if (q) {
+            clearBtn.classList.add('visible');
+        } else {
+            clearBtn.classList.remove('visible');
+            filterSongCategory(currentSongCategory);
             return;
         }
-        document.getElementById('songSearchSpinner').classList.add('active');
-        songSearchTimer = setTimeout(() => searchSongs(query), 400);
+
+        const matches = WEDDING_SONGS_CATALOG.filter(s => {
+            return normArabic(s.t).includes(q) || normArabic(s.a).includes(q);
+        });
+
+        document.getElementById('songCountText').textContent = `نتائج البحث (${matches.length}):`;
+        renderSongCatalog(matches, val);
     }
 
-    function searchSongs(query) {
-        // Proxy search via Google Apps Script → iTunes API (server-side, no CORS)
-        const searchUrl = SHEET_URL + '?q=' + encodeURIComponent(query);
-        fetch(searchUrl)
-            .then(r => r.json())
-            .then(data => {
-                document.getElementById('songSearchSpinner').classList.remove('active');
-                renderSongResults(data.results || []);
-            })
-            .catch(() => {
-                document.getElementById('songSearchSpinner').classList.remove('active');
-                document.getElementById('songResults').innerHTML = '<div class="song-empty-state">⚠️ حدث خطأ في البحث — جرّب تاني</div>';
-            });
+    function clearSongSearch() {
+        document.getElementById('songSearchInput').value = '';
+        document.getElementById('songSearchClear').classList.remove('visible');
+        filterSongCategory(currentSongCategory);
+        document.getElementById('songSearchInput').focus();
     }
 
-    function renderSongResults(results) {
+    function renderSongCatalog(list, searchVal) {
         const container = document.getElementById('songResults');
-        if (results.length === 0) {
-            container.innerHTML = '<div class="song-empty-state">😕 مفيش نتائج — جرّب اسم تاني</div>';
+        if (!list || list.length === 0) {
+            const rawQ = searchVal || document.getElementById('songSearchInput').value;
+            container.innerHTML = `
+                <div class="song-empty-state">
+                    لم نجد أغنية باسم "<b>${escSong(rawQ)}</b>" في القائمة 🤔<br><br>
+                    <button type="button" class="btn btn-primary" style="font-size:12px; padding:6px 14px; width:auto;" onclick="openCustomSongWith('${escSong(rawQ)}')">
+                        ✍️ اضغط هنا واطلبها بنفسك للعروسين
+                    </button>
+                </div>
+            `;
             return;
         }
 
-        container.innerHTML = results.map((track, i) => `
-            <div class="song-result-item" onclick="selectSong(${i})" data-index="${i}">
-                <img src="${track.artwork || ''}" alt="" loading="lazy">
+        container.innerHTML = list.map((song, i) => `
+            <div class="song-result-item" onclick="chooseSong(${i})">
+                <div class="song-badge-emoji">${song.b || '🎵'}</div>
                 <div class="song-result-info">
-                    <div class="song-title">${escSong(track.title || 'Unknown')}</div>
-                    <div class="song-artist">${escSong(track.artist || 'Unknown')}</div>
+                    <div class="song-title">${escSong(song.t)}</div>
+                    <div class="song-artist">${escSong(song.a)}</div>
                 </div>
-                ${track.previewUrl ? `<button class="song-preview-btn" onclick="event.stopPropagation(); toggleSongPreview('${track.previewUrl}', this)" title="معاينة">▶</button>` : ''}
+                <button type="button" class="song-choose-btn">اختيار ✨</button>
             </div>
         `).join('');
 
-        // Store results for selection
-        container._results = results;
+        container._currentList = list;
     }
 
-    function escSong(str) {
-        const d = document.createElement('div');
-        d.textContent = str;
-        return d.innerHTML;
-    }
-
-    function selectSong(index) {
+    function chooseSong(index) {
         const container = document.getElementById('songResults');
-        const track = container._results[index];
-        if (!track) return;
+        const song = container._currentList && container._currentList[index];
+        if (!song) return;
+        selectSong(song.t, song.a, song.b);
+    }
 
-        stopSongPreview();
-
+    function selectSong(title, artist, badge) {
         selectedSong = {
-            title: track.title || 'Unknown',
-            artist: track.artist || 'Unknown',
-            album: track.album || '',
-            artwork: track.artwork || '',
-            previewUrl: track.previewUrl || ''
+            title: title,
+            artist: artist,
+            badge: badge || '🎵'
         };
 
-        // Show selected card
-        document.getElementById('selectedSongTitle').textContent = selectedSong.title;
-        document.getElementById('selectedSongArtist').textContent = selectedSong.artist;
-        document.getElementById('selectedSongArt').src = selectedSong.artwork;
+        document.getElementById('selectedSongTitle').textContent = title;
+        document.getElementById('selectedSongArtist').textContent = artist;
+        document.getElementById('selectedSongBadge').textContent = badge || '🎵';
         document.getElementById('songSelectedCard').classList.add('visible');
+        document.getElementById('songPickerSection').style.display = 'none';
 
-        // Hide search results & clear input
-        container.innerHTML = '';
-        document.getElementById('songSearchInput').value = '';
+        // Auto-focus name input
+        setTimeout(() => {
+            const nameInput = document.getElementById('songRequesterName');
+            if (nameInput && !nameInput.value) nameInput.focus();
+        }, 150);
     }
 
     function clearSelectedSong() {
         selectedSong = null;
         document.getElementById('songSelectedCard').classList.remove('visible');
-        document.getElementById('songResults').innerHTML = '<div class="song-empty-state">🎵 ابحث عن أي أغنية عربي أو أجنبي وهتظهر هنا</div>';
+        document.getElementById('songPickerSection').style.display = 'block';
+        document.getElementById('customSongBox').classList.remove('visible');
     }
 
-    function toggleSongPreview(url, btn) {
-        if (songPreviewAudio && !songPreviewAudio.paused) {
-            songPreviewAudio.pause();
-            songPreviewAudio = null;
-            // Reset all buttons
-            document.querySelectorAll('.song-preview-btn').forEach(b => b.textContent = '▶');
+    function toggleCustomSongBox() {
+        const box = document.getElementById('customSongBox');
+        box.classList.toggle('visible');
+        if (box.classList.contains('visible')) {
+            const currentSearch = document.getElementById('songSearchInput').value.trim();
+            if (currentSearch && !document.getElementById('customSongTitle').value) {
+                document.getElementById('customSongTitle').value = currentSearch;
+            }
+            document.getElementById('customSongTitle').focus();
+        }
+    }
+
+    function openCustomSongWith(title) {
+        const box = document.getElementById('customSongBox');
+        box.classList.add('visible');
+        document.getElementById('customSongTitle').value = title || '';
+        document.getElementById('customSongArtist').focus();
+    }
+
+    function selectCustomSong() {
+        const t = document.getElementById('customSongTitle').value.trim();
+        const a = document.getElementById('customSongArtist').value.trim();
+        if (!t) {
+            alert('من فضلك اكتب اسم الأغنية 🤍');
             return;
         }
-
-        stopSongPreview();
-        songPreviewAudio = new Audio(url);
-        songPreviewAudio.volume = 0.5;
-        btn.textContent = '⏸';
-        songPreviewAudio.play().catch(() => {});
-        songPreviewAudio.onended = () => { btn.textContent = '▶'; songPreviewAudio = null; };
+        selectSong(t, a || 'اختيار خاص من المعازيم', '🎶');
     }
 
-    function stopSongPreview() {
-        if (songPreviewAudio) {
-            songPreviewAudio.pause();
-            songPreviewAudio = null;
-        }
-        document.querySelectorAll('.song-preview-btn').forEach(b => b.textContent = '▶');
+    function escSong(str) {
+        const d = document.createElement('div');
+        d.textContent = str || '';
+        return d.innerHTML;
     }
 
     function submitSongRequest() {
@@ -2641,7 +2930,7 @@
             return;
         }
         if (!selectedSong) {
-            alert('من فضلك ابحث واختار أغنية أولاً 🎵');
+            alert('من فضلك اختر أو اكتب الأغنية أولاً 🎵');
             return;
         }
 
@@ -2650,15 +2939,17 @@
         sendBtn.textContent = 'جاري الإرسال... ⏳';
         sendBtn.disabled = true;
 
+        const extraMsg = document.getElementById('songMessage').value.trim();
+        const fullMessage = `🎶 طلب أغنية: ${selectedSong.title} (${selectedSong.artist})` + (extraMsg ? ` | إهداء: ${extraMsg}` : '');
+
         const payload = {
             action: 'song_request',
             name: name,
             songTitle: selectedSong.title,
             songArtist: selectedSong.artist,
-            songAlbum: selectedSong.album,
-            songArtwork: selectedSong.artwork,
-            songPreviewUrl: selectedSong.previewUrl,
-            message: document.getElementById('songMessage').value.trim(),
+            songBadge: selectedSong.badge,
+            message: fullMessage,
+            userNote: extraMsg,
             source: 'main_invite',
             timestamp: new Date().toISOString()
         };
@@ -2674,6 +2965,8 @@
             }).catch(() => {
                 showSongSuccess(sendBtn, originalText);
             });
+        } else {
+            showSongSuccess(sendBtn, originalText);
         }
     }
 
@@ -2682,7 +2975,6 @@
         document.getElementById('songRequestSuccess').style.display = 'block';
         btn.textContent = originalText;
         btn.disabled = false;
-        stopSongPreview();
     }
 
     function resetSongRequestForm() {
@@ -2691,7 +2983,10 @@
         document.getElementById('songRequesterName').value = '';
         document.getElementById('songSearchInput').value = '';
         document.getElementById('songMessage').value = '';
+        document.getElementById('customSongTitle').value = '';
+        document.getElementById('customSongArtist').value = '';
         clearSelectedSong();
+        filterSongCategory('all');
     }
 
     /* ══════ SONG TICKER RUNNER (SYNCHRONIZED WITH AUDIO) ══════ */
