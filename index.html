@@ -2508,11 +2508,10 @@
         }
     }
 
-    /* ══════ SONG REQUEST SYSTEM (iTunes JSONP Search) 🎶 ══════ */
+    /* ══════ SONG REQUEST SYSTEM (Google Apps Script Proxy Search) 🎶 ══════ */
     let songSearchTimer = null;
     let selectedSong = null;
     let songPreviewAudio = null;
-    let jsonpCounter = 0;
 
     function showSongRequest(e) {
         if (e) e.stopPropagation();
@@ -2536,25 +2535,18 @@
     }
 
     function searchSongs(query) {
-        // Use iTunes Search API with JSONP
-        const callbackName = '_itunesCb' + (++jsonpCounter);
-        const script = document.createElement('script');
-
-        window[callbackName] = function(data) {
-            document.getElementById('songSearchSpinner').classList.remove('active');
-            renderSongResults(data.results || []);
-            // Cleanup
-            delete window[callbackName];
-            try { document.head.removeChild(script); } catch(e){}
-        };
-
-        script.src = `https://itunes.apple.com/search?term=${encodeURIComponent(query)}&media=music&limit=10&callback=${callbackName}`;
-        script.onerror = function() {
-            document.getElementById('songSearchSpinner').classList.remove('active');
-            document.getElementById('songResults').innerHTML = '<div class="song-empty-state">⚠️ حدث خطأ في البحث — جرّب تاني</div>';
-            delete window[callbackName];
-        };
-        document.head.appendChild(script);
+        // Proxy search via Google Apps Script → iTunes API (server-side, no CORS)
+        const searchUrl = SHEET_URL + '?q=' + encodeURIComponent(query);
+        fetch(searchUrl)
+            .then(r => r.json())
+            .then(data => {
+                document.getElementById('songSearchSpinner').classList.remove('active');
+                renderSongResults(data.results || []);
+            })
+            .catch(() => {
+                document.getElementById('songSearchSpinner').classList.remove('active');
+                document.getElementById('songResults').innerHTML = '<div class="song-empty-state">⚠️ حدث خطأ في البحث — جرّب تاني</div>';
+            });
     }
 
     function renderSongResults(results) {
@@ -2566,10 +2558,10 @@
 
         container.innerHTML = results.map((track, i) => `
             <div class="song-result-item" onclick="selectSong(${i})" data-index="${i}">
-                <img src="${track.artworkUrl60 || track.artworkUrl100 || ''}" alt="" loading="lazy">
+                <img src="${track.artwork || ''}" alt="" loading="lazy">
                 <div class="song-result-info">
-                    <div class="song-title">${escSong(track.trackName || track.collectionName || 'Unknown')}</div>
-                    <div class="song-artist">${escSong(track.artistName || 'Unknown')}</div>
+                    <div class="song-title">${escSong(track.title || 'Unknown')}</div>
+                    <div class="song-artist">${escSong(track.artist || 'Unknown')}</div>
                 </div>
                 ${track.previewUrl ? `<button class="song-preview-btn" onclick="event.stopPropagation(); toggleSongPreview('${track.previewUrl}', this)" title="معاينة">▶</button>` : ''}
             </div>
@@ -2593,12 +2585,11 @@
         stopSongPreview();
 
         selectedSong = {
-            title: track.trackName || track.collectionName || 'Unknown',
-            artist: track.artistName || 'Unknown',
-            album: track.collectionName || '',
-            artwork: track.artworkUrl100 || track.artworkUrl60 || '',
-            previewUrl: track.previewUrl || '',
-            itunesUrl: track.trackViewUrl || ''
+            title: track.title || 'Unknown',
+            artist: track.artist || 'Unknown',
+            album: track.album || '',
+            artwork: track.artwork || '',
+            previewUrl: track.previewUrl || ''
         };
 
         // Show selected card
