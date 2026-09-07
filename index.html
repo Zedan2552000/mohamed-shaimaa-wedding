@@ -1151,7 +1151,7 @@
         .countdown {
             display: flex;
             gap: clamp(8px, 2vw, 14px);
-            direction: ltr;
+            direction: rtl;
             margin-bottom: 15px;
             opacity: 0; transform: translateY(15px);
             transition: all 0.4s ease 0.58s;
@@ -3432,6 +3432,9 @@
         if (typeof startSongTicker === 'function') {
             try { startSongTicker(); } catch(e) {}
         }
+        if (typeof startCountdown === 'function') {
+            try { startCountdown(); } catch(e) {}
+        }
     }
 
     // Direct event listener binding for all clickable elements
@@ -3842,21 +3845,35 @@
         const target = new Date('2026-09-18T19:00:00+03:00').getTime();
 
         function update() {
-            const diff = target - Date.now();
+            const now = Date.now();
+            const diff = target - now;
             if (diff <= 0) {
                 ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id => {
-                    document.getElementById(id).textContent = '🎉';
+                    const el = document.getElementById(id);
+                    if (el) el.textContent = '🎉';
                 });
                 return;
             }
-            document.getElementById('cd-days').textContent = Math.floor(diff / 86400000);
-            document.getElementById('cd-hours').textContent = String(Math.floor((diff % 86400000) / 3600000)).padStart(2,'0');
-            document.getElementById('cd-mins').textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2,'0');
-            document.getElementById('cd-secs').textContent = String(Math.floor((diff % 60000) / 1000)).padStart(2,'0');
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+            const elDays = document.getElementById('cd-days');
+            const elHours = document.getElementById('cd-hours');
+            const elMins = document.getElementById('cd-mins');
+            const elSecs = document.getElementById('cd-secs');
+
+            if (elDays) elDays.textContent = String(days).padStart(2, '0');
+            if (elHours) elHours.textContent = String(hours).padStart(2, '0');
+            if (elMins) elMins.textContent = String(mins).padStart(2, '0');
+            if (elSecs) elSecs.textContent = String(secs).padStart(2, '0');
         }
 
         update();
-        setInterval(update, 1000);
+        if (!window.countdownTimerInterval) {
+            window.countdownTimerInterval = setInterval(update, 1000);
+        }
     }
 
     /* ══════ WISHES OVERLAY & VOICE GUESTBOOK ══════ */
@@ -4976,9 +4993,10 @@
         uploadPhotoToDrive(dataUrl);
     }
 
-    // Initialize Theme and Counter
+    // Initialize Theme, Countdown, and Counter
     initTheme();
     initWishesCount();
+    startCountdown();
     </script>
 
 </body>
