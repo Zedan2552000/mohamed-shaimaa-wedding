@@ -20,6 +20,10 @@
     <meta name="twitter:title" content="دعوة خطوبة محمد زيدان والشيماء سلطان">
     <meta name="twitter:description" content="نتشرف بحضوركم لتشاركونا فرحتنا يوم الجمعة ١٨ سبتمبر ٢٠٢٦ 💍🤍">
     <meta name="twitter:image" content="https://zedan2552000.github.io/mohamed-shaimaa-wedding/og-preview.png">
+        <!-- Cache Busting Tags -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;600;700;800&family=Cinzel:wght@500;600;700;800;900&family=Great+Vibes&family=Playfair+Display:wght@600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -43,101 +47,301 @@
             --text-muted: #383838;
         }
 
-        /* ═══════ ROYAL MIDNIGHT DARK MODE ═══════ */
+        
+        /* ═══════ VENUE COMPONENT (LIGHT & BASE) ═══════ */
+        .venue-box {
+            background: rgba(112,27,46,0.05);
+            border: 1.5px solid rgba(154,119,38,0.45);
+            border-radius: 16px;
+            padding: 15px 12px;
+            margin: 0 auto;
+            max-width: 295px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.03);
+            transition: background 0.3s, border-color 0.3s;
+        }
+        .venue-badge {
+            font-size: 14px;
+            color: var(--burgundy);
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+        .venue-hall-name {
+            font-family: 'Amiri', serif;
+            font-size: clamp(19px, 4.8vw, 23px);
+            color: #111111;
+            font-weight: 800;
+            line-height: 1.4;
+        }
+        .venue-address {
+            font-size: 13px;
+            color: #383838;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .venue-qr-img {
+            border-radius: 12px;
+            border: 2px solid var(--gold);
+            padding: 5px;
+            background: #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+            display: block;
+            margin: 0 auto;
+        }
+        .venue-qr-hint {
+            font-size: 12px;
+            font-weight: 600;
+            color: #666666;
+            margin-top: 5px;
+        }
+        .venue-maps-btn {
+            font-size: 13px;
+            font-weight: 700;
+            padding: 8px 14px;
+            width: 100%;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ═══════════════════════════════════════════════════════
+           ROYAL MIDNIGHT VELVET & 24K GOLD DARK MODE (ULTRA LUXURY)
+           ═══════════════════════════════════════════════════════ */
         body.dark-mode {
-            --burgundy: #D4AF37;
+            --burgundy: #E5C158;
             --burgundy-light: #FFD700;
-            --cream: #14070B;
-            --cream-dark: #0D0305;
-            --ribbon: #240C12;
-            --gold: #E5C158;
+            --cream: #0B0205;
+            --cream-dark: #050102;
+            --ribbon: #1E0812;
+            --gold: #F5D061;
             --gold-light: #FFF0C2;
-            --text-dark: #FAF0D7;
-            --text-muted: #D9C8B5;
-            background: linear-gradient(135deg, #0A0204 0%, #1A0B10 50%, #0F0407 100%) !important;
-            color: #FAF0D7 !important;
+            --text-dark: #FFFFFF;
+            --text-muted: #E0D2C0;
+            background: radial-gradient(circle at 50% 30%, #16040C 0%, #080104 80%, #030001 100%) !important;
+            color: #FFFFFF !important;
         }
 
         body.dark-mode #cover {
-            background: linear-gradient(135deg, #16070B 0%, #0D0305 100%) !important;
+            background: radial-gradient(circle at center, #19050F 0%, #0A0206 100%) !important;
         }
 
+        /* Luxury Obsidian & Velvet Card */
         body.dark-mode .card {
-            background: linear-gradient(180deg, #1C0B12 0%, #2A0E18 40%, #18090F 100%) !important;
-            border-color: rgba(212,175,55,0.45);
-            box-shadow: 0 0 35px rgba(212,175,55,0.15);
+            background: linear-gradient(175deg, #0F0307 0%, #1A050F 35%, #12030A 70%, #080104 100%) !important;
+            border: 1.5px solid rgba(229, 193, 88, 0.45) !important;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9), 0 0 35px rgba(229, 193, 88, 0.16) !important;
         }
 
+        /* Religious Verse & Header */
         body.dark-mode .bismillah {
-            color: #D4AF37 !important;
-            text-shadow: 0 0 10px rgba(212,175,55,0.4);
+            color: #FFD700 !important;
+            text-shadow: 0 0 14px rgba(255, 215, 0, 0.55), 0 1px 2px rgba(0,0,0,0.8) !important;
         }
 
         body.dark-mode .quran-verse {
-            color: #FAF0D7 !important;
+            color: #F7EEDB !important;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.9) !important;
         }
 
-        body.dark-mode .full-name {
+        body.dark-mode .divider {
+            background: linear-gradient(90deg, transparent, #FFD700, transparent) !important;
+            box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Monogram & English Names */
+        body.dark-mode .names-en {
+            color: #E5C158 !important;
+            text-shadow: 0 0 10px rgba(229, 193, 88, 0.5) !important;
+        }
+
+        /* Groom & Bride Titles & Names - CRYSTAL CLEAR CONTRAST */
+        body.dark-mode .name-line .title {
+            color: #E8DCC8 !important;
+            font-weight: 700 !important;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.9) !important;
+        }
+
+        body.dark-mode .name-line .full-name {
             color: #FFFFFF !important;
-            text-shadow: 0 0 8px rgba(255,255,255,0.3);
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.65), 0 2px 4px rgba(0,0,0,0.9) !important;
         }
 
+        body.dark-mode .names-and {
+            color: #FFD700 !important;
+            text-shadow: 0 0 12px rgba(255, 215, 0, 0.7) !important;
+        }
+
+        /* Subtitle */
         body.dark-mode .subtitle {
-            color: #D9C8B5 !important;
+            color: #FFDF78 !important;
+            font-weight: 700 !important;
+            text-shadow: 0 0 10px rgba(255, 223, 120, 0.4), 0 1px 3px rgba(0,0,0,0.8) !important;
         }
 
+        /* Date Pill */
         body.dark-mode .date-text {
-            background: rgba(212,175,55,0.12) !important;
-            border-color: rgba(212,175,55,0.5) !important;
-            color: #FFF !important;
-        }
-
-        body.dark-mode .venue > div {
-            background: rgba(255,255,255,0.06) !important;
-            border-color: rgba(212,175,55,0.45) !important;
-        }
-
-        body.dark-mode .venue-name {
+            background: linear-gradient(135deg, rgba(229, 193, 88, 0.2) 0%, rgba(142, 23, 48, 0.35) 100%) !important;
+            border: 1.5px solid rgba(255, 215, 0, 0.65) !important;
             color: #FFFFFF !important;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5), inset 0 0 12px rgba(229, 193, 88, 0.2) !important;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.9) !important;
         }
 
+        /* Venue Box - HIGH CONTRAST & LUXURIOUS */
+        body.dark-mode .venue-box,
+        body.dark-mode .venue > div {
+            background: linear-gradient(145deg, rgba(28, 8, 16, 0.95) 0%, rgba(14, 3, 8, 0.98) 100%) !important;
+            border: 1.5px solid rgba(229, 193, 88, 0.55) !important;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7), inset 0 0 15px rgba(229, 193, 88, 0.08) !important;
+        }
+
+        body.dark-mode .venue-badge {
+            color: #FFDF78 !important;
+            text-shadow: 0 0 8px rgba(255, 223, 120, 0.5) !important;
+        }
+
+        body.dark-mode .venue-hall-name {
+            color: #FFFFFF !important;
+            text-shadow: 0 0 12px rgba(255, 255, 255, 0.4), 0 2px 5px rgba(0,0,0,0.9) !important;
+        }
+
+        body.dark-mode .venue-address {
+            color: #E2D4C2 !important;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.9) !important;
+        }
+
+        body.dark-mode .venue-qr-img {
+            background: #FFFFFF !important;
+            border: 2px solid #FFD700 !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.6) !important;
+        }
+
+        body.dark-mode .venue-qr-hint {
+            color: #E5C158 !important;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+        }
+
+        body.dark-mode .venue-maps-btn {
+            background: linear-gradient(135deg, #8E1730 0%, #5B0C1D 100%) !important;
+            border: 1.5px solid #FFD700 !important;
+            color: #FFFFFF !important;
+            box-shadow: 0 4px 15px rgba(142, 23, 48, 0.5) !important;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.8) !important;
+        }
+
+        /* Song Ticker Bar */
         body.dark-mode .song-ticker-bar {
-            background: linear-gradient(135deg, rgba(212,175,55,0.15) 0%, rgba(142,27,52,0.2) 100%) !important;
-            border-color: rgba(212,175,55,0.6) !important;
+            background: linear-gradient(135deg, rgba(142, 23, 48, 0.35) 0%, rgba(229, 193, 88, 0.2) 100%) !important;
+            border: 1.5px solid rgba(229, 193, 88, 0.65) !important;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6) !important;
         }
 
         body.dark-mode .song-ticker-bar .ticker-text {
-            color: #FAF0D7 !important;
+            color: #FFFFFF !important;
+            text-shadow: 0 0 10px rgba(229, 193, 88, 0.45) !important;
         }
 
+        /* Countdown Timer */
         body.dark-mode .cd-num {
             color: #FFD700 !important;
-            background: rgba(255,255,255,0.07) !important;
-            border: 1px solid rgba(212,175,55,0.35);
+            background: rgba(255, 255, 255, 0.08) !important;
+            border: 1px solid rgba(229, 193, 88, 0.45) !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5) !important;
         }
 
         body.dark-mode .cd-label {
-            color: #D9C8B5 !important;
+            color: #E0D2C0 !important;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.8) !important;
         }
 
+        /* Action Buttons - LUXURY ROYAL CRIMSON & 24K GOLD */
+        body.dark-mode .btn-primary {
+            background: linear-gradient(135deg, #8E1730 0%, #5B0C1D 100%) !important;
+            color: #FFFFFF !important;
+            border: 1.5px solid #FFD700 !important;
+            box-shadow: 0 5px 20px rgba(142, 23, 48, 0.5), 0 0 15px rgba(255, 215, 0, 0.25) !important;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.8) !important;
+        }
+        body.dark-mode .btn-primary:hover {
+            box-shadow: 0 8px 25px rgba(142, 23, 48, 0.7), 0 0 20px rgba(255, 215, 0, 0.4) !important;
+            transform: translateY(-2px);
+        }
+
+        body.dark-mode .btn-secondary {
+            background: rgba(229, 193, 88, 0.1) !important;
+            color: #FFDF78 !important;
+            border: 1.5px solid rgba(229, 193, 88, 0.7) !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
+        }
+        body.dark-mode .btn-secondary:hover {
+            background: rgba(229, 193, 88, 0.2) !important;
+        }
+
+        body.dark-mode .btn-filter {
+            background: linear-gradient(135deg, rgba(229, 193, 88, 0.2) 0%, rgba(91, 12, 29, 0.45) 100%) !important;
+            color: #FFFFFF !important;
+            border: 1.5px solid #E5C158 !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4) !important;
+        }
+
+        body.dark-mode .btn-save-image {
+            background: linear-gradient(135deg, #2A0A15 0%, #14040A 100%) !important;
+            color: #FFDF78 !important;
+            border: 1.5px solid rgba(229, 193, 88, 0.65) !important;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.4) !important;
+        }
+
+        body.dark-mode .btn-tiktok {
+            background: linear-gradient(135deg, #0B0B0B 0%, #161616 100%) !important;
+            color: #FFFFFF !important;
+            border: 1.5px solid rgba(254, 44, 85, 0.85) !important;
+            box-shadow: 0 4px 18px rgba(254, 44, 85, 0.45), 0 0 15px rgba(37, 244, 238, 0.3) !important;
+        }
+
+        /* Overlays & Modals (Wishes & Songs) */
         body.dark-mode .overlay-card {
-            background: #1C0B12 !important;
-            border: 2px solid var(--gold);
-            color: #FAF0D7 !important;
+            background: linear-gradient(175deg, #120308 0%, #1D0612 50%, #0E0207 100%) !important;
+            border: 2px solid #E5C158 !important;
+            box-shadow: 0 12px 45px rgba(0, 0, 0, 0.95), 0 0 25px rgba(229, 193, 88, 0.2) !important;
+            color: #FFFFFF !important;
+        }
+
+        body.dark-mode .overlay-card h3 {
+            color: #FFDF78 !important;
+            text-shadow: 0 0 10px rgba(255, 223, 120, 0.4) !important;
+        }
+
+        body.dark-mode .overlay-card .sub {
+            color: #DDD0BE !important;
         }
 
         body.dark-mode .form-group label {
-            color: #FAF0D7 !important;
+            color: #E8DCC8 !important;
+            font-weight: 700;
         }
 
         body.dark-mode .form-group input,
         body.dark-mode .form-group textarea {
-            background: rgba(255,255,255,0.08) !important;
+            background: rgba(255, 255, 255, 0.08) !important;
             color: #FFFFFF !important;
-            border-color: rgba(212,175,55,0.4) !important;
+            border-color: rgba(229, 193, 88, 0.5) !important;
         }
 
-        /* ═══════ WISHES COUNTER PILL ═══════ */
+        body.dark-mode .wishes-counter-pill {
+            background: linear-gradient(135deg, rgba(229, 193, 88, 0.18) 0%, rgba(91, 12, 29, 0.35) 100%) !important;
+            border: 1.5px solid rgba(229, 193, 88, 0.65) !important;
+            color: #FFDF78 !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+        }
+
+        body.dark-mode .theme-toggle-btn {
+            background: linear-gradient(135deg, #240813 0%, #100308 100%) !important;
+            color: #FFD700 !important;
+            border: 1.5px solid #FFD700 !important;
+            box-shadow: 0 0 18px rgba(255, 215, 0, 0.4) !important;
+        }
+
         .wishes-counter-pill {
             display: inline-flex;
             align-items: center;
@@ -686,9 +890,17 @@
         }
 
         .envelope.opened .seal {
-            transform: translate(-50%, -50%) scale(0) rotate(180deg);
-            opacity: 0;
-            pointer-events: none;
+            transform: translate(-50%, -50%) scale(0) rotate(180deg) !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+            visibility: hidden !important;
+            transition: all 0.3s ease !important;
+        }
+        .envelope.opened .ribbon-container {
+            opacity: 0 !important;
+            pointer-events: none !important;
+            visibility: hidden !important;
+            transition: opacity 0.3s ease !important;
         }
 
         /* ═══════ CARD (inside envelope) ═══════ */
@@ -705,7 +917,7 @@
             text-align: center;
             opacity: 0;
             transform: scale(0.92);
-            transition: all 1s ease 0.6s;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
             overflow-y: auto;
             overflow-x: hidden;
             -webkit-overflow-scrolling: touch;
@@ -733,7 +945,7 @@
             color: var(--burgundy);
             margin-bottom: 8px;
             opacity: 0; transform: translateY(15px);
-            transition: all 0.8s ease 0.6s;
+            transition: all 0.4s ease 0.12s;
             text-shadow: 0 1px 1px rgba(255,255,255,0.8);
         }
 
@@ -746,7 +958,7 @@
             margin-bottom: 16px;
             max-width: 320px;
             opacity: 0; transform: translateY(15px);
-            transition: all 0.8s ease 1.2s;
+            transition: all 0.4s ease 0.18s;
         }
 
         .divider {
@@ -755,7 +967,7 @@
             background: linear-gradient(90deg, transparent, var(--gold), transparent);
             margin-bottom: 15px;
             opacity: 0;
-            transition: all 0.8s ease 1.6s;
+            transition: all 0.4s ease 0.22s;
         }
 
         .names-en {
@@ -769,7 +981,7 @@
             text-transform: uppercase;
             text-shadow: 0 1px 2px rgba(154,119,38,0.25);
             opacity: 0; transform: translateY(15px);
-            transition: all 0.8s ease 4.2s;
+            transition: all 0.4s ease 0.28s;
         }
 
         .names-formal {
@@ -785,12 +997,12 @@
 
         .name-line:first-child {
             opacity: 0; transform: translateY(15px);
-            transition: all 0.8s ease 4.8s;
+            transition: all 0.4s ease 0.32s;
         }
 
         .name-line:last-child {
             opacity: 0; transform: translateY(15px);
-            transition: all 0.8s ease 5.6s;
+            transition: all 0.4s ease 0.38s;
         }
 
         .name-line .title {
@@ -815,7 +1027,7 @@
             margin: 1px 0;
             text-shadow: 0 1px 2px rgba(0,0,0,0.08);
             opacity: 0; transform: scale(0.5);
-            transition: all 0.6s ease 5.2s;
+            transition: all 0.4s ease 0.35s;
         }
 
         .subtitle {
@@ -824,7 +1036,7 @@
             color: #2A2A2A;
             margin-bottom: 6px;
             opacity: 0; transform: translateY(15px);
-            transition: all 0.8s ease 6.2s;
+            transition: all 0.4s ease 0.42s;
         }
 
         .date-text {
@@ -840,21 +1052,21 @@
             border-radius: 25px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.04);
             opacity: 0; transform: translateY(15px);
-            transition: all 0.8s ease 6.8s;
+            transition: all 0.4s ease 0.46s;
         }
 
         /* ═══════ MONOGRAM SEQUENTIAL ANIMATION (M -> S -> M&S) ═══════ */
         .envelope.opened .mono-m {
-            animation: animLetterM 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 2s forwards;
+            animation: animLetterM 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s forwards;
         }
         .envelope.opened .mono-s {
-            animation: animLetterS 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 2.6s forwards;
+            animation: animLetterS 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.22s forwards;
         }
         .envelope.opened .mono-amp {
-            animation: animLetterAmp 1s cubic-bezier(0.34, 1.56, 0.64, 1) 3.2s forwards;
+            animation: animLetterAmp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.28s forwards;
         }
         .envelope.opened .wedding-rings {
-            animation: ringPulse 2.8s ease-in-out 3.6s infinite;
+            animation: ringPulse 2.8s ease-in-out 0.4s infinite;
         }
 
         .mono-m, .mono-s, .mono-amp {
@@ -901,7 +1113,7 @@
             gap: 8px;
             box-shadow: 0 4px 15px rgba(91,12,29,0.06);
             opacity: 0; transform: translateY(15px);
-            transition: all 0.8s ease 8.2s;
+            transition: all 0.4s ease 0.54s;
         }
 
         .song-ticker-bar .ticker-icon {
@@ -932,7 +1144,7 @@
             direction: ltr;
             margin-bottom: 15px;
             opacity: 0; transform: translateY(15px);
-            transition: all 0.8s ease 8.2s;
+            transition: all 0.4s ease 0.58s;
         }
 
         .cd-unit { text-align: center; }
@@ -965,7 +1177,7 @@
             width: 100%;
             max-width: 260px;
             opacity: 0; transform: translateY(15px);
-            transition: all 0.8s ease 8.2s;
+            transition: all 0.4s ease 0.62s;
         }
 
         .btn {
@@ -1067,12 +1279,12 @@
 
         .venue {
             opacity: 0; transform: translateY(15px);
-            transition: all 0.8s ease 7.6s;
+            transition: all 0.4s ease 0.5s;
         }
 
         .wishes-counter-pill {
             opacity: 0; transform: translateY(15px);
-            transition: all 0.8s ease 8.2s;
+            transition: all 0.4s ease 0.66s;
         }
 
 
@@ -2377,12 +2589,12 @@
 
                     <!-- VENUE & LOCATION -->
                     <div class="venue" style="margin-bottom:18px; width:100%;">
-                        <div style="background:rgba(112,27,46,0.05); border:1.5px solid rgba(154,119,38,0.45); border-radius:16px; padding:15px 12px; margin:0 auto; max-width:295px; box-shadow:0 3px 12px rgba(0,0,0,0.03);">
-                            <div style="font-size:14px; color:var(--burgundy); font-weight:800; margin-bottom:4px;">📍 مكان الحفل</div>
-                            <div style="font-family:'Amiri',serif; font-size:clamp(19px,4.8vw,23px); color:#111111; font-weight:800; line-height:1.4;">
+                        <div class="venue-box">
+                            <div class="venue-badge">📍 مكان الحفل</div>
+                            <div class="venue-hall-name">
                                 قاعة دايماً عامر
                             </div>
-                            <div style="font-size:13px; color:#383838; font-weight:700; margin-bottom:12px;">
+                            <div class="venue-address">
                                 انشاص الرمل — شارع سوق الأربعاء
                             </div>
 
@@ -2391,13 +2603,13 @@
                                 <a href="https://maps.app.goo.gl/FD2jVMNsoFCjQUMs8?g_st=iw" target="_blank" style="text-decoration:none; display:inline-block;" onclick="event.stopPropagation()">
                                     <img src="https://api.qrserver.com/v1/create-qr-code/?size=130x130&data=https%3A%2F%2Fmaps.app.goo.gl%2FFD2jVMNsoFCjQUMs8%3Fg_st%3Diw&color=70-27-46" 
                                          alt="QR Code الموقع" width="115" height="115" 
-                                         style="border-radius:12px; border:2px solid var(--gold); padding:5px; background:#fff; box-shadow:0 4px 10px rgba(0,0,0,0.06); display:block; margin:0 auto;">
+                                         class="venue-qr-img">
                                 </a>
-                                <div style="font-size:12px; font-weight:600; color:#444; margin-top:5px;">(امسح الكود أو اضغط عليه لفتح الخريطة)</div>
+                                <div class="venue-qr-hint">(امسح الكود أو اضغط عليه لفتح الخريطة)</div>
                             </div>
 
                             <!-- Direct Maps Link Button -->
-                            <a class="btn btn-secondary" href="https://maps.app.goo.gl/FD2jVMNsoFCjQUMs8?g_st=iw" target="_blank" onclick="event.stopPropagation()" style="font-size:13px; font-weight:700; padding:8px 14px; width:100%; border-radius:20px;">
+                            <a class="btn btn-secondary venue-maps-btn" href="https://maps.app.goo.gl/FD2jVMNsoFCjQUMs8?g_st=iw" target="_blank" onclick="event.stopPropagation()">
                                 🚗 فتح الموقع على Google Maps
                             </a>
                         </div>
@@ -3142,6 +3354,33 @@
         // 1. Open Class Added Immediately (Guarantees card is revealed)
         const env = document.getElementById('envelope');
         if (env) env.classList.add('opened');
+
+        // Instant seal & ribbon destruction
+        const sealEl = document.querySelector('.seal');
+        if (sealEl) {
+            sealEl.style.opacity = '0';
+            sealEl.style.pointerEvents = 'none';
+            sealEl.style.transform = 'translate(-50%, -50%) scale(0)';
+            setTimeout(() => { sealEl.style.display = 'none'; }, 250);
+        }
+        const ribbonEl = document.querySelector('.ribbon-container');
+        if (ribbonEl) {
+            ribbonEl.style.opacity = '0';
+            ribbonEl.style.pointerEvents = 'none';
+            setTimeout(() => { ribbonEl.style.display = 'none'; }, 250);
+        }
+        const cardEl = document.querySelector('.card');
+        if (cardEl) {
+            cardEl.style.opacity = '1';
+            cardEl.style.transform = 'scale(1)';
+            cardEl.style.zIndex = '50';
+        }
+        document.querySelectorAll('.card > *').forEach((el, idx) => {
+            setTimeout(() => {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0) scale(1)';
+            }, idx * 25);
+        });
 
         const wrapper = document.querySelector('.envelope-wrapper');
         if (wrapper) wrapper.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg)';
