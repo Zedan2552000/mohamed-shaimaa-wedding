@@ -1147,26 +1147,117 @@
             50% { transform: translateY(-4px) rotate(12deg); }
         }
 
-        /* Countdown */
+        /* Countdown & Dual Countdown Wrap */
         .countdown {
             display: flex;
-            gap: clamp(8px, 2vw, 14px);
+            justify-content: center;
+            gap: clamp(6px, 2vw, 12px);
             direction: rtl;
-            margin-bottom: 15px;
-            opacity: 0; transform: translateY(15px);
+            margin-bottom: 6px;
+        }
+
+        .dual-countdown-wrap {
+            width: 100%;
+            max-width: 320px;
+            margin: 0 auto 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            opacity: 0;
+            transform: translateY(15px);
             transition: all 0.4s ease 0.58s;
+        }
+        .envelope.opened .dual-countdown-wrap {
+            opacity: 1 !important;
+            transform: translateY(0) scale(1) !important;
+        }
+
+        .dual-cd-card {
+            background: rgba(112, 27, 46, 0.05);
+            border: 1.5px solid rgba(154, 119, 38, 0.48);
+            border-radius: 16px;
+            padding: 10px 10px 8px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+        }
+        body.dark-mode .dual-cd-card {
+            background: linear-gradient(145deg, #16161A 0%, #0C0C0E 100%) !important;
+            border: 1.5px solid rgba(212, 175, 55, 0.65) !important;
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.7), inset 0 0 14px rgba(212, 175, 55, 0.08) !important;
+        }
+
+        .dual-cd-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 6px;
+            margin-bottom: 6px;
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--burgundy);
+        }
+        body.dark-mode .dual-cd-head {
+            color: #FFD700 !important;
+        }
+        .dual-cd-date {
+            font-size: 10.5px;
+            font-weight: 700;
+            color: var(--text-muted);
+        }
+        body.dark-mode .dual-cd-date {
+            color: #D4D4D8 !important;
+        }
+
+        .dual-cd-total {
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--burgundy);
+            background: rgba(154, 119, 38, 0.12);
+            border: 1px solid rgba(154, 119, 38, 0.35);
+            border-radius: 999px;
+            padding: 3px 10px;
+            margin-bottom: 8px;
+            display: inline-block;
+            font-variant-numeric: tabular-nums;
+        }
+        body.dark-mode .dual-cd-total {
+            color: #FFF2B2 !important;
+            background: rgba(212, 175, 55, 0.14) !important;
+            border-color: rgba(212, 175, 55, 0.5) !important;
+        }
+
+        .btn-motion-countdown {
+            background: linear-gradient(135deg, #F5D77F 0%, #D4AF37 55%, #9A7726 100%) !important;
+            color: #1A080C !important;
+            border: 1.5px solid #FFF2B2 !important;
+            font-weight: 800 !important;
+            font-size: 12.5px !important;
+            padding: 9px 14px !important;
+            border-radius: 14px !important;
+            box-shadow: 0 5px 18px rgba(212, 175, 55, 0.35) !important;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            width: 100%;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .btn-motion-countdown:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255, 215, 0, 0.5) !important;
         }
 
         .cd-unit { text-align: center; }
 
         .cd-num {
-            font-size: clamp(20px, 5vw, 28px);
+            font-size: clamp(17px, 4.4vw, 22px);
             font-weight: 800;
             color: var(--burgundy);
             background: rgba(112,27,46,0.06);
             border-radius: 10px;
-            width: clamp(40px, 10vw, 52px);
-            height: clamp(40px, 10vw, 52px);
+            width: clamp(38px, 9.5vw, 48px);
+            height: clamp(38px, 9.5vw, 48px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -2631,11 +2722,44 @@
                         <span class="ticker-text" id="tickerText">يا ليالي ده حبيبي آية في الجمال.. 🤍✨</span>
                     </div>
 
-                    <div class="countdown" id="countdown">
-                        <div class="cd-unit"><div class="cd-num" id="cd-days">00</div><div class="cd-label">يوم</div></div>
-                        <div class="cd-unit"><div class="cd-num" id="cd-hours">00</div><div class="cd-label">ساعة</div></div>
-                        <div class="cd-unit"><div class="cd-num" id="cd-mins">00</div><div class="cd-label">دقيقة</div></div>
-                        <div class="cd-unit"><div class="cd-num" id="cd-secs">00</div><div class="cd-label">ثانية</div></div>
+                    <div class="dual-countdown-wrap" id="dualCountdownWrap">
+                        <a class="btn-motion-countdown" href="countdown.html" onclick="event.stopPropagation()">
+                            <span>⏳ افتح شاشة عداد الموشن جرافيك الكاملة (كتب الكتاب والفرح) ✨</span>
+                        </a>
+
+                        <!-- كتب الكتاب 31/12/2026 -->
+                        <div class="dual-cd-card">
+                            <div class="dual-cd-head">
+                                <span>✍️ كتب الكتاب</span>
+                                <span class="dual-cd-date">الخميس ٣١ / ١٢ / ٢٠٢٦</span>
+                            </div>
+                            <div class="dual-cd-total">⚡ باقي <span id="katb-total-secs">0</span> ثانية</div>
+                            <div class="countdown">
+                                <div class="cd-unit"><div class="cd-num" id="katb-days">00</div><div class="cd-label">يوم</div></div>
+                                <div class="cd-unit"><div class="cd-num" id="katb-hours">00</div><div class="cd-label">ساعة</div></div>
+                                <div class="cd-unit"><div class="cd-num" id="katb-mins">00</div><div class="cd-label">دقيقة</div></div>
+                                <div class="cd-unit"><div class="cd-num" id="katb-secs">00</div><div class="cd-label">ثانية</div></div>
+                            </div>
+                        </div>
+
+                        <!-- الفرح 22/01/2027 -->
+                        <div class="dual-cd-card">
+                            <div class="dual-cd-head">
+                                <span>👑 الفرح — ليلة العمر</span>
+                                <span class="dual-cd-date">الجمعة ٢٢ / ٠١ / ٢٠٢٧</span>
+                            </div>
+                            <div class="dual-cd-total">⚡ باقي <span id="wed-total-secs">0</span> ثانية</div>
+                            <div class="countdown">
+                                <div class="cd-unit"><div class="cd-num" id="wed-days">00</div><div class="cd-label">يوم</div></div>
+                                <div class="cd-unit"><div class="cd-num" id="wed-hours">00</div><div class="cd-label">ساعة</div></div>
+                                <div class="cd-unit"><div class="cd-num" id="wed-mins">00</div><div class="cd-label">دقيقة</div></div>
+                                <div class="cd-unit"><div class="cd-num" id="wed-secs">00</div><div class="cd-label">ثانية</div></div>
+                            </div>
+                        </div>
+
+                        <a class="btn-motion-countdown" href="countdown.html" onclick="event.stopPropagation()">
+                            <span>🎆 عرض الموشن جرافيك والعد بالثواني وأجزاء الثانية</span>
+                        </a>
                     </div>
 
 
@@ -3840,34 +3964,43 @@
         }
     }
 
-    /* ══════ COUNTDOWN ══════ */
+    /* ══════ DUAL COUNTDOWN (KATB 31/12/2026 & WEDDING 22/01/2027) ══════ */
     function startCountdown() {
-        const target = new Date('2026-09-18T19:00:00+03:00').getTime();
+        const targets = [
+            { prefix: 'katb', ts: new Date('2026-12-31T19:00:00+02:00').getTime() },
+            { prefix: 'wed', ts: new Date('2027-01-22T19:00:00+02:00').getTime() }
+        ];
 
         function update() {
             const now = Date.now();
-            const diff = target - now;
-            if (diff <= 0) {
-                ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id => {
-                    const el = document.getElementById(id);
-                    if (el) el.textContent = '🎉';
-                });
-                return;
-            }
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const secs = Math.floor((diff % (1000 * 60)) / 1000);
+            targets.forEach(item => {
+                const diff = Math.max(0, item.ts - now);
+                const elTotal = document.getElementById(item.prefix + '-total-secs');
+                const elDays = document.getElementById(item.prefix + '-days');
+                const elHours = document.getElementById(item.prefix + '-hours');
+                const elMins = document.getElementById(item.prefix + '-mins');
+                const elSecs = document.getElementById(item.prefix + '-secs');
 
-            const elDays = document.getElementById('cd-days');
-            const elHours = document.getElementById('cd-hours');
-            const elMins = document.getElementById('cd-mins');
-            const elSecs = document.getElementById('cd-secs');
+                if (diff <= 0) {
+                    if (elTotal) elTotal.textContent = '0';
+                    [elDays, elHours, elMins, elSecs].forEach(el => {
+                        if (el) el.textContent = '🎉';
+                    });
+                    return;
+                }
 
-            if (elDays) elDays.textContent = String(days).padStart(2, '0');
-            if (elHours) elHours.textContent = String(hours).padStart(2, '0');
-            if (elMins) elMins.textContent = String(mins).padStart(2, '0');
-            if (elSecs) elSecs.textContent = String(secs).padStart(2, '0');
+                const totalSecs = Math.floor(diff / 1000);
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+                if (elTotal) elTotal.textContent = toArabicNum(totalSecs.toLocaleString('en-US'));
+                if (elDays) elDays.textContent = toArabicNum(String(days).padStart(2, '0'));
+                if (elHours) elHours.textContent = toArabicNum(String(hours).padStart(2, '0'));
+                if (elMins) elMins.textContent = toArabicNum(String(mins).padStart(2, '0'));
+                if (elSecs) elSecs.textContent = toArabicNum(String(secs).padStart(2, '0'));
+            });
         }
 
         update();
